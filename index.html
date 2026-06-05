@@ -384,6 +384,32 @@ section{position:relative;z-index:1}
 #about-reveal{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);pointer-events:none}
 #about-reveal.in{opacity:1;transform:translateY(0);pointer-events:auto}
 .about-eyebrow{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;color:#9c8f80;letter-spacing:.16em;text-transform:lowercase;margin-bottom:28px}
+
+/* Handwritten label — matches reference: Caveat font, double underline */
+.about-eyebrow-hand{
+  font-family:'Caveat',cursive;
+  font-size:32px;
+  font-weight:500;
+  color:#1a1714;
+  letter-spacing:.02em;
+  margin-bottom:32px;
+  display:inline-block;
+  position:relative;
+  line-height:1.2;
+}
+/* Double underline via layered box-shadows on a pseudo-element */
+.about-eyebrow-hand::after{
+  content:'';
+  display:block;
+  margin-top:6px;
+  height:2px;
+  background:#1a1714;
+  border-radius:2px;
+  box-shadow:0 5px 0 0 #1a1714;
+  width:110%;
+  margin-left:-5%;
+  opacity:.7;
+}
 .about-big-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.6vw,30px);font-weight:400;line-height:1.65;color:#1a1714;max-width:680px;margin:0 auto;text-align:center}
 .about-big-text em{font-style:italic;color:#6b6055}
 .about-read-link{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;color:#1a1714;text-decoration:underline;text-underline-offset:4px;letter-spacing:.04em;margin-top:28px;transition:opacity .2s,gap .3s ease;cursor:pointer;background:none;border:none;padding:0}
@@ -406,16 +432,7 @@ section{position:relative;z-index:1}
 .astat-n{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#1a1714;line-height:1;margin-bottom:4px}
 .astat-l{font-family:'DM Sans',sans-serif;font-size:10px;color:#9c8f80;letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
 
-/* ══ TESTIMONIALS ══ */
-#testimonials{border-top:1px solid rgba(26,23,20,.08)}
-.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(26,23,20,.08);border-radius:6px;overflow:hidden}
-.testi-card{background:#f2ece2;padding:36px 32px}
-.testi-card:nth-child(odd){background:#faf6f0}
-.testi-quote{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;line-height:1.65;color:#1a1714;margin-bottom:24px;font-style:italic}
-.testi-person{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0}
-.testi-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1714;margin-bottom:2px}
-.testi-role{font-family:'DM Sans',monospace;font-size:10px;color:#9c8f80;letter-spacing:.06em}
+/* ══ TESTIMONIALS — fan layout (defined in second block below) ══ */
 
 /* ══ FOOTER ══ */
 footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
@@ -476,7 +493,7 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
   .tl-row{grid-template-columns:1fr;gap:4px}.tl-line{display:none}.tl-date{text-align:left}
   .ft{flex-direction:column;gap:24px}.flinks{align-items:flex-start}
   #obj-annotation,#obj-wheel,.hero-caption-bl,.hero-scroll-br{display:none}
-  .testi-grid{grid-template-columns:1fr}
+  .testi-fan-scene{height:auto;padding:24px 0 0}.testi-fan{position:static;width:100%}.tfc{position:static;width:100%;transform:none!important;box-shadow:0 8px 32px rgba(26,23,20,.12)!important;margin-bottom:16px;z-index:auto!important}.testi-dots{display:none}.testi-hdr{padding:56px 24px 0}
   .cs-body{padding:40px 20px}.cs-hero{padding:88px 20px 40px}
   .cs-meta{flex-wrap:wrap;gap:24px}
   .cs-impact{grid-template-columns:repeat(2,1fr)}
@@ -517,16 +534,21 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .astat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:#1a1714;line-height:1;margin-bottom:4px}
 .astat-l{font-family:'DM Sans',sans-serif;font-size:10px;color:#9c8f80;letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
 
-/* ══ TESTIMONIALS ══ */
-#testimonials{background:#faf6f0;border-top:1px solid rgba(26,23,20,.1)}
-.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(26,23,20,.1);border-radius:6px;overflow:hidden}
-.testi-card{background:#faf6f0;padding:40px 36px}
-.testi-card:nth-child(even){background:#f2ece2}
-.testi-quote{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;line-height:1.65;color:#1a1714;margin-bottom:28px;font-style:italic}
-.testi-person{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0}
-.testi-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1714;margin-bottom:2px}
-.testi-role{font-family:'DM Mono',monospace;font-size:10px;color:#9c8f80;letter-spacing:.06em}
+/* ══ TESTIMONIALS — fan card layout ══ */
+#testimonials{background:#f2ece2;border-top:1px solid rgba(26,23,20,.08);padding:0;overflow:hidden}
+.testi-hdr{padding:80px 72px 0;max-width:600px}
+.testi-sub{font-family:'DM Sans',sans-serif;font-size:14px;color:#6b6055;line-height:1.65;margin-top:-20px;margin-bottom:0}
+.testi-fan-scene{position:relative;height:580px;display:flex;align-items:center;justify-content:center}
+.testi-fan{position:relative;width:320px;height:400px}
+.tfc{position:absolute;inset:0;width:320px;background:#ffffff;border-radius:20px;padding:32px 28px 28px;cursor:pointer;will-change:transform;transition:transform .65s cubic-bezier(.34,1.1,.64,1),box-shadow .45s ease;display:flex;flex-direction:column;justify-content:space-between;user-select:none}
+.tfc-quote{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;line-height:1.72;color:#1a1714;font-style:italic;flex:1;display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:22px}
+.tfc-person{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(26,23,20,.08);padding-top:18px;flex-shrink:0}
+.tfc-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.tfc-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#1a1714;margin-bottom:2px}
+.tfc-role{font-family:'DM Sans',sans-serif;font-size:11px;color:#9c8f80;letter-spacing:.04em}
+.testi-dots{display:flex;gap:8px;justify-content:center;padding:0 0 72px}
+.testi-dot{width:6px;height:6px;border-radius:50%;background:rgba(26,23,20,.18);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0;flex-shrink:0}
+.testi-dot.active{background:#1a1714;transform:scale(1.5)}
 
 /* ══ FOOTER ══ */
 footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
@@ -593,7 +615,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   .tl-row{grid-template-columns:1fr;gap:4px}.tl-line{display:none}.tl-date{text-align:left}
   .ft{flex-direction:column;gap:24px}.flinks{align-items:flex-start}
   #obj-annotation,#obj-wheel,.hero-caption-bl,.hero-scroll-br{display:none}
-  .testi-grid{grid-template-columns:1fr}
+  .testi-fan-scene{height:auto;padding:24px 0 0}.testi-fan{position:static;width:100%}.tfc{position:static;width:100%;transform:none!important;box-shadow:0 8px 32px rgba(26,23,20,.12)!important;margin-bottom:16px;z-index:auto!important}.testi-dots{display:none}.testi-hdr{padding:56px 24px 0}
   .cs-body{padding:40px 20px}.cs-hero{padding:88px 20px 40px}
   .cs-meta{flex-wrap:wrap;gap:24px}
   .cs-impact{grid-template-columns:repeat(2,1fr)}
@@ -940,7 +962,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 <section id="about">
   <div id="about-reveal">
     <div style="padding:80px 72px 96px;text-align:center;background:#faf6f0">
-      <div class="about-eyebrow">get to know me</div>
+      <div class="about-eyebrow-hand">about me</div>
       <p class="about-big-text">
         Currently building AI products at Apna, spending most of my time simplifying complexity and the rest obsessing over <em>good design, travel, and great stories.</em>
       </p>
@@ -1119,29 +1141,56 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="sw">
-  <div class="sr">
+<section id="testimonials">
+  <div class="testi-hdr sr">
     <div class="sec-label">validation is crucial</div>
     <h2 class="sec-h">What people<br/><em>say about me.</em></h2>
-    <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:#6b6055;max-width:400px;line-height:1.7;margin-bottom:56px">See what people who have worked with or know me say about me.</p>
+    <p class="testi-sub">Feedback from professionals at Foundit, Apna and more</p>
   </div>
-  <div class="testi-grid sr-stagger">
-    <div class="testi-card">
-      <p class="testi-quote">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. Preeti has evolved into a skilled designer, showcasing a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional in the field. Proud to have played a role in her journey."</p>
-      <div class="testi-person"><img class="testi-avatar" src="https://framerusercontent.com/images/vwakbTxzJ0yRe7jrKH8mJMKOeQ.jpeg" alt="Mandeep"/><div><div class="testi-name">Mandeep Vadera</div><div class="testi-role">Design Manager, Foundit</div></div></div>
+
+  <div class="testi-fan-scene">
+    <div class="testi-fan" id="testiFan">
+
+      <div class="tfc">
+        <p class="tfc-quote">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. She has evolved into a skilled designer with a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional. Proud to have played a role in her journey."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/vwakbTxzJ0yRe7jrKH8mJMKOeQ.jpeg" alt="Mandeep"/>
+          <div><div class="tfc-name">Mandeep Vadera</div><div class="tfc-role">Design Manager · Foundit</div></div>
+        </div>
+      </div>
+
+      <div class="tfc">
+        <p class="tfc-quote">"Preeti is a hardworking member of Foundit's Product Design team. Starting as an intern, her passion, hard work, and curiosity quickly converted her role to full-time. She consistently generates new ideas and engages in healthy debates — a valuable asset to any future team."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/mSsJMpmDmIEFpQDg4Q7kOfdo.jpeg" alt="Saurav"/>
+          <div><div class="tfc-name">Saurav Mishra</div><div class="tfc-role">Product Manager · Foundit</div></div>
+        </div>
+      </div>
+
+      <div class="tfc">
+        <p class="tfc-quote">"Working with Preeti has been an incredible experience. Her dedication to user-centered design and attention to detail consistently elevate our projects. Her ability to seamlessly integrate user feedback into high-fidelity prototypes has resulted in intuitive and engaging user experiences."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/JR4S95lU8r15VJCkcpePM1RSY.jpeg" alt="Priyanshu"/>
+          <div><div class="tfc-name">Priyanshu Gupta</div><div class="tfc-role">UX/UI Designer · Foundit</div></div>
+        </div>
+      </div>
+
+      <div class="tfc">
+        <p class="tfc-quote">"Preeti has been a cornerstone of our product design team. Her relentless focus on improving user experience and her knack for identifying and addressing pain points have significantly enhanced our products. Her seeker profile revamp drove notably higher user engagement and satisfaction."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/jKhjsVUVM8B15FLng3octsfXcxc.jpeg" alt="Vijayant"/>
+          <div><div class="tfc-name">Vijayant</div><div class="tfc-role">Product Manager · Foundit</div></div>
+        </div>
+      </div>
+
     </div>
-    <div class="testi-card">
-      <p class="testi-quote">"Preeti is a hardworking member of foundit's Product Design team. Starting as an intern, her passion, hard work, and curiosity quickly converted her role to full-time. She consistently generates new ideas and engages in healthy debates. She single-handedly designs Zuno's m-web and desktop experiences, making her a valuable asset to any future team."</p>
-      <div class="testi-person"><img class="testi-avatar" src="https://framerusercontent.com/images/mSsJMpmDmIEFpQDg4Q7kOfdo.jpeg" alt="Saurav"/><div><div class="testi-name">Saurav Mishra</div><div class="testi-role">Product Manager, Foundit</div></div></div>
-    </div>
-    <div class="testi-card">
-      <p class="testi-quote">"Working with Preeti has been an incredible experience. Her dedication to user-centered design and attention to detail consistently elevate our projects. Preeti's ability to seamlessly integrate user feedback into high-fidelity prototypes has resulted in intuitive and engaging user experiences. She is a valuable team member who brings creativity and a collaborative spirit to every project."</p>
-      <div class="testi-person"><img class="testi-avatar" src="https://framerusercontent.com/images/JR4S95lU8r15VJCkcpePM1RSY.jpeg" alt="Priyanshu"/><div><div class="testi-name">Priyanshu Gupta</div><div class="testi-role">UX/UI Designer, Foundit</div></div></div>
-    </div>
-    <div class="testi-card">
-      <p class="testi-quote">"Preeti has been a cornerstone of our product design team. Her relentless focus on improving user experience and her knack for identifying and addressing pain points have significantly enhanced our products. Preeti's work on revamping the seeker profile page, in particular, has driven higher user engagement and satisfaction. She brings a blend of creativity, strategic thinking, and technical skill."</p>
-      <div class="testi-person"><img class="testi-avatar" src="https://framerusercontent.com/images/jKhjsVUVM8B15FLng3octsfXcxc.jpeg" alt="Vijayant"/><div><div class="testi-name">Vijayant</div><div class="testi-role">Product Manager, Foundit</div></div></div>
-    </div>
+  </div>
+
+  <div class="testi-dots" id="testiDots">
+    <button class="testi-dot active"></button>
+    <button class="testi-dot"></button>
+    <button class="testi-dot"></button>
+    <button class="testi-dot"></button>
   </div>
 </section>
 
@@ -1802,6 +1851,41 @@ photoP();
 
 /* ══ GRID PARALLAX ══ */
 window.addEventListener('scroll',()=>document.body.style.setProperty('--sy',window.scrollY+'px'),{passive:true});
+
+/* ══ TESTIMONIALS FAN ══ */
+(function(){
+  const fan=document.getElementById('testiFan');
+  if(!fan) return;
+  const cards=Array.from(fan.querySelectorAll('.tfc'));
+  const dots=Array.from(document.querySelectorAll('#testiDots .testi-dot'));
+  const n=cards.length;
+  let active=0;
+
+  /* slot 0 = center/active, 1 = right, 2 = far-right/back, 3 = left */
+  const SLOTS=[
+    {tx:0,   ty:-28, rot:0,   sc:1.04, z:12, sh:'0 24px 64px rgba(26,23,20,.22),0 4px 16px rgba(26,23,20,.10)'},
+    {tx:190, ty:20,  rot:9,   sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
+    {tx:320, ty:52,  rot:17,  sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
+    {tx:-190,ty:20,  rot:-9,  sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
+  ];
+
+  function layout(){
+    cards.forEach((card,i)=>{
+      const s=SLOTS[(i-active+n)%n];
+      card.style.transform=`translateX(${s.tx}px) translateY(${s.ty}px) rotate(${s.rot}deg) scale(${s.sc})`;
+      card.style.zIndex=s.z;
+      card.style.boxShadow=s.sh;
+    });
+    dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+  }
+
+  layout();
+  let timer=setInterval(()=>{active=(active+1)%n;layout();},3400);
+
+  function goTo(i){active=i;layout();clearInterval(timer);timer=setInterval(()=>{active=(active+1)%n;layout();},3400);}
+  cards.forEach((_,i)=>cards[i].addEventListener('click',()=>goTo(i)));
+  dots.forEach((_,i)=>dots[i].addEventListener('click',()=>goTo(i)));
+})();
 
 /* ══ MAGNETIC BUTTONS ══ */
 document.querySelectorAll('.btn-fill,.btn-ghost,.nav-cta').forEach(btn=>{
