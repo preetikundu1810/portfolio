@@ -81,15 +81,74 @@ nav.scrolled{background:rgba(250,246,240,0.93);backdrop-filter:blur(16px);box-sh
 }
 
 /* ══ FLOATING OBJECTS ══ */
-/* Ruler + sketch removed per spec; only annotation + wheel + corner captions remain */
 .float-obj{position:absolute;will-change:transform;z-index:2}
-/* sketch/ruler hidden */
-#obj-sketch{display:none}
-#obj-ruler{display:none}
-/* annotation right side */
+
+/* ── Ruler (top-left) ── */
+#obj-ruler{opacity:0;transition:opacity .6s ease 1.4s}
+#obj-ruler.show{opacity:1}
+.ruler-body{
+  width:92px;height:12px;
+  background:linear-gradient(180deg,#d8c09a 0%,#bfa070 100%);
+  border-radius:2px;
+  display:flex;align-items:flex-end;
+  padding:0 4px 1.5px;gap:2px;
+  box-shadow:0 2px 8px rgba(0,0,0,.10);
+  overflow:hidden;
+}
+.rm{background:rgba(80,50,20,.22);flex-shrink:0;border-radius:.5px}
+.rm.t{width:1px;height:8px}
+.rm.s{width:1px;height:5px}
+.rm.xs{width:1px;height:3px}
+
+/* ── Pencil stub below ruler + "drag" label ── */
+#obj-sketch{opacity:0;transition:opacity .6s ease 1.5s}
+#obj-sketch.show{opacity:1}
+.sketch-card{
+  width:74px;height:8px;
+  background:linear-gradient(180deg,#c8a46a 0%,#b08848 100%);
+  border-radius:1.5px;
+  box-shadow:0 1px 4px rgba(0,0,0,.10);
+}
+.sketch-spine,.sketch-lines,.sketch-pencil{display:none}
+.sketch-drag{
+  font-family:'Caveat',cursive;font-size:12px;
+  color:#9c8f80;letter-spacing:.06em;margin-top:7px;
+}
+
+/* ── Notebook (bottom-left, above caption) ── */
+.hero-notebook{
+  position:absolute;bottom:62px;left:24px;
+  z-index:3;opacity:0;transition:opacity .6s ease 1.2s;
+}
+.hero-notebook.show{opacity:1}
+.notebook-cover{
+  width:84px;height:84px;background:#f0ebe2;
+  border-radius:4px;
+  box-shadow:0 4px 20px rgba(0,0,0,.12),0 1px 3px rgba(0,0,0,.06);
+  transform:rotate(-4deg);
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.notebook-spine{
+  position:absolute;left:0;top:0;bottom:0;width:9px;
+  background:linear-gradient(90deg,#b88840,#cca058);
+}
+.notebook-symbols{
+  padding:0 8px 0 16px;
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%;
+}
+.nb-sym{
+  width:22px;height:22px;
+  border:1.5px solid rgba(100,75,40,.25);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Caveat',cursive;font-size:12px;color:rgba(100,75,40,.5);
+}
+
+/* ── Annotation (right side, vertical) ── */
 #obj-annotation{top:38%;right:44px;writing-mode:vertical-rl;font-family:'Caveat',cursive;font-size:12px;color:#9c8f80;letter-spacing:.1em;transform:rotate(180deg);opacity:0;transition:opacity .8s ease .8s}
 #obj-annotation.show{opacity:1}
-/* colour wheel bottom right */
+
+/* ── Colour wheel (bottom-right) ── */
 #obj-wheel{bottom:220px;right:32px;width:72px;height:72px;opacity:0;transition:opacity .6s ease .4s}
 #obj-wheel.show{opacity:1}
 .hero-caption-bl{position:absolute;bottom:28px;left:36px;font-family:'Caveat',cursive;font-size:12px;color:#9c8f80;letter-spacing:.08em;z-index:3;opacity:0;transition:opacity .6s ease 1.2s}
@@ -189,11 +248,11 @@ nav.scrolled{background:rgba(250,246,240,0.93);backdrop-filter:blur(16px);box-sh
   bottom:0;
   left:50%;transform:translateX(-50%);
   width:320px;height:196px;
-  border-radius:12px 12px 0 0;
+  border-radius:12px;
   background:linear-gradient(160deg,#e0d4c4 0%,#c8b49a 100%);
   overflow:hidden;
   will-change:transform;
-  box-shadow:0 -6px 40px rgba(26,23,20,.10);
+  box-shadow:0 8px 48px rgba(26,23,20,.12);
   opacity:0;
   z-index:2;
 }
@@ -977,6 +1036,18 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   </div>
 
   <!-- Corner captions -->
+  <!-- Bottom-left: sketchbook notebook -->
+  <div class="hero-notebook float-obj" id="obj-notebook">
+    <div class="notebook-cover">
+      <div class="notebook-spine"></div>
+      <div class="notebook-symbols">
+        <div class="nb-sym">A</div>
+        <div class="nb-sym">B</div>
+        <div class="nb-sym">✕</div>
+        <div class="nb-sym">◎</div>
+      </div>
+    </div>
+  </div>
   <div class="hero-caption-bl" id="caption-bl">remind: trust the process</div>
   <div class="hero-scroll-br" id="scroll-br">
     <div class="scroll-tick"></div><span>scroll to explore</span>
@@ -1774,7 +1845,7 @@ function startSite(){
   setTimeout(()=>document.getElementById('hero-btns').classList.add('in'),1150);
   setTimeout(()=>document.getElementById('expand-card').classList.add('in'),1350);
   setTimeout(()=>{
-    ['obj-ruler','obj-sketch','obj-annotation','obj-wheel','caption-bl','scroll-br']
+    ['obj-ruler','obj-sketch','obj-annotation','obj-wheel','caption-bl','scroll-br','obj-notebook']
       .forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('show');});
   },1700);
 }
@@ -1829,19 +1900,24 @@ function updateExpansion(){
   prevP=raw;
   const vw=window.innerWidth, vh=window.innerHeight;
 
-  /* Phase 1: card expands 0 → 0.68 of scroll progress */
+  /* Phase 1: card expands 0 → 0.68 of scroll progress — constrained, never full-bleed */
   const p1=easeInOut(clamp(raw/0.68,0,1));
-  const cardW=lerp(320,vw,p1);
-  const cardH=lerp(196,vh,p1);
-  const cardR=lerp(12,0,p1);
+  const gutter=Math.max(80,vw*0.07);          /* responsive gutter: 7vw min 80px each side */
+  const maxCardW=Math.min(1200,vw-gutter*2);  /* max 1200px, always has side margins */
+  const maxCardH=Math.min(vh*0.78,820);        /* max 78vh — background stays visible above */
+  const cardW=lerp(320,maxCardW,p1);
+  const cardH=lerp(196,maxCardH,p1);
+  const cardR=lerp(12,16,p1);                 /* radius stays — never flush with edge */
   const cardL=(vw-cardW)/2;
+  const cardBottom=lerp(0,vh*0.06,p1);        /* slight lift from bottom edge when expanded */
 
   expandCard.style.width=cardW+'px';
   expandCard.style.height=cardH+'px';
-  expandCard.style.borderRadius=cardR+'px '+cardR+'px 0 0';
+  expandCard.style.borderRadius=cardR+'px';
   expandCard.style.left=cardL+'px';
+  expandCard.style.bottom=cardBottom+'px';
   expandCard.style.transform='none';
-  expandCard.style.boxShadow=`0 -6px 40px rgba(26,23,20,${lerp(.10,0,p1)})`;
+  expandCard.style.boxShadow=`0 8px 60px rgba(26,23,20,${lerp(.10,.22,p1)})`;
 
   /* Inner image scales slightly slower (parallax feel) */
   ecInner.style.transform=`scale(${lerp(1,1.06,p1)})`;
