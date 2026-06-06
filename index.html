@@ -16,26 +16,29 @@ body{background:#faf6f0;color:#1a1714;font-family:'DM Sans',sans-serif;font-size
 /* ══ CUSTOM CURSOR ══ */
 #custom-cursor{
   position:fixed;top:0;left:0;
-  pointer-events:none;
-  z-index:2147483647;
+  pointer-events:none;z-index:2147483647;
   display:none;
-  transform:translate(-300px,-300px);
+  /* 4-directional drop-shadow = uniform black outline on entire merged cursor */
+  filter:
+    drop-shadow(1px 0 0 #1a1714)
+    drop-shadow(-1px 0 0 #1a1714)
+    drop-shadow(0 1px 0 #1a1714)
+    drop-shadow(0 -1px 0 #1a1714);
 }
-#custom-cursor svg.cc-arrow{
+.cc-arrow{
+  display:block;
   position:absolute;top:0;left:0;
-  overflow:visible;
 }
-.cc-label{
-  position:absolute;top:14px;left:12px;
-  background:#38a016;color:#fff;
-  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
-  padding:6px 16px;border-radius:100px;
-  white-space:nowrap;line-height:1.2;
-  box-shadow:0 2px 6px rgba(0,0,0,0.14);
+.cc-pill{
+  position:absolute;top:14px;left:11px;
+  background:#d4f049;color:#1a1714;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;
+  padding:5px 14px;border-radius:100px;
+  white-space:nowrap;line-height:1.4;
   transition:transform .15s cubic-bezier(.34,1.56,.64,1);
   transform-origin:left center;
 }
-.cc-label.hov{transform:scale(1.08)}
+.cc-pill.hov{transform:scale(1.08)}
 
 /* ══ VIEWS (SPA routing) ══ */
 .view{display:none;min-height:100vh}
@@ -1721,12 +1724,12 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   </div>
 </div><!-- end cs-profile -->
 
-<!-- CUSTOM CURSOR — must be before <script> so getElementById finds it -->
+<!-- CUSTOM CURSOR -->
 <div id="custom-cursor" aria-hidden="true">
-  <svg class="cc-arrow" width="22" height="26" viewBox="0 0 22 26" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2 2L2 22L7 17L10.5 25L14.5 23L11 15L17 15Z" fill="#38a016"/>
+  <svg class="cc-arrow" width="20" height="24" viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 1L2 19L6.5 14.5L10 22.5L13 21L9.5 13L15 13Z" fill="#d4f049"/>
   </svg>
-  <span class="cc-label" id="ccLabel">You</span>
+  <span class="cc-pill" id="ccLabel">You</span>
 </div>
 
 <script>
@@ -1898,7 +1901,7 @@ window.addEventListener('scroll',()=>document.body.style.setProperty('--sy',wind
   document.addEventListener('mouseover',function(e){
     if(!lbl)return;
     var hit=e.target.closest('a,button,.pcard,.tfc,.nav-cta,.pcard-cta,[onclick]');
-    lbl.className=hit?'hov':'';
+    lbl.classList.toggle('hov',!!hit);
   },{passive:true});
   (function tick(){
     cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;
