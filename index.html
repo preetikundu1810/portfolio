@@ -13,6 +13,34 @@
 html{scroll-behavior:smooth}
 body{background:#faf6f0;color:#1a1714;font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.5;overflow-x:hidden}
 
+/* ══ CUSTOM CURSOR ══ */
+*{cursor:none!important}
+#custom-cursor{
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:999999;
+  opacity:0;will-change:transform;
+  transition:opacity .15s;
+}
+#custom-cursor.visible{opacity:1}
+.cc-arrow{
+  position:absolute;top:0;left:0;
+  width:20px;height:24px;
+  background:#38a016;
+  clip-path:polygon(0% 0%, 0% 87%, 28% 68%, 43% 100%, 60% 93%, 43% 57%, 70% 57%);
+}
+.cc-label{
+  position:absolute;top:13px;left:11px;
+  background:#38a016;color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  padding:6px 15px;border-radius:100px;
+  white-space:nowrap;line-height:1;
+  box-shadow:0 2px 6px rgba(0,0,0,0.13);
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1);
+  transform-origin:left center;
+}
+.cc-label.hov{transform:scale(1.08)}
+@media(max-width:960px){#custom-cursor{display:none!important}*{cursor:auto!important}}
+
 /* ══ VIEWS (SPA routing) ══ */
 .view{display:none;min-height:100vh}
 .view.active{display:block}
@@ -1152,34 +1180,34 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
     <div class="testi-fan" id="testiFan">
 
       <div class="tfc">
-        <p class="tfc-quote">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. She has evolved into a skilled designer with a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional. Proud to have played a role in her journey."</p>
+        <p class="tfc-quote">"Preeti is born curious and has been very crucial in defining and building user experience at Foundit. She has an eye for detail for the work. She is a go-getter and asks the right questions. She is really quick with iteration and absorbing feedback."</p>
         <div class="tfc-person">
-          <img class="tfc-avatar" src="https://framerusercontent.com/images/vwakbTxzJ0yRe7jrKH8mJMKOeQ.jpeg" alt="Mandeep"/>
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/jKhjsVUVM8B15FLng3octsfXcxc.jpeg" alt="Vijayant Kumar"/>
+          <div><div class="tfc-name">Vijayant Kumar</div><div class="tfc-role">Product Manager · Foundit</div></div>
+        </div>
+      </div>
+
+      <div class="tfc">
+        <p class="tfc-quote">"Preeti began her career at Foundit, successfully transitioning from an intern to a full-time role. Over her two-year journey, I witnessed her remarkable growth, which gave us the confidence to entrust her with multiple key projects. She consistently delivered outstanding results with minimal guidance, handling them single-handedly. Her ability to bring fresh, innovative ideas to the table was invaluable."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://ui-avatars.com/api/?name=Thilak+Bhat&background=e0d4c4&color=1a1714&size=80&bold=true" alt="Thilak Bhat"/>
+          <div><div class="tfc-name">Thilak Bhat</div><div class="tfc-role">Senior Product Designer · Cooper</div></div>
+        </div>
+      </div>
+
+      <div class="tfc">
+        <p class="tfc-quote">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. She has evolved into a skilled designer, showcasing a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional in the field."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/vwakbTxzJ0yRe7jrKH8mJMKOeQ.jpeg" alt="Mandeep Vadera"/>
           <div><div class="tfc-name">Mandeep Vadera</div><div class="tfc-role">Design Manager · Foundit</div></div>
         </div>
       </div>
 
       <div class="tfc">
-        <p class="tfc-quote">"Preeti is a hardworking member of Foundit's Product Design team. Starting as an intern, her passion, hard work, and curiosity quickly converted her role to full-time. She consistently generates new ideas and engages in healthy debates — a valuable asset to any future team."</p>
+        <p class="tfc-quote">"Preeti is one heck of a hardworking youngster in Foundit's Product Design team. I have literally seen her exponential growth curve before my eyes — from intern to full-time, driven by sheer passion, hard work, and curiosity to improve. She constantly comes up with new ideas and never shies away from a healthy debate."</p>
         <div class="tfc-person">
-          <img class="tfc-avatar" src="https://framerusercontent.com/images/mSsJMpmDmIEFpQDg4Q7kOfdo.jpeg" alt="Saurav"/>
+          <img class="tfc-avatar" src="https://framerusercontent.com/images/mSsJMpmDmIEFpQDg4Q7kOfdo.jpeg" alt="Saurav Mishra"/>
           <div><div class="tfc-name">Saurav Mishra</div><div class="tfc-role">Product Manager · Foundit</div></div>
-        </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Working with Preeti has been an incredible experience. Her dedication to user-centered design and attention to detail consistently elevate our projects. Her ability to seamlessly integrate user feedback into high-fidelity prototypes has resulted in intuitive and engaging user experiences."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="https://framerusercontent.com/images/JR4S95lU8r15VJCkcpePM1RSY.jpeg" alt="Priyanshu"/>
-          <div><div class="tfc-name">Priyanshu Gupta</div><div class="tfc-role">UX/UI Designer · Foundit</div></div>
-        </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Preeti has been a cornerstone of our product design team. Her relentless focus on improving user experience and her knack for identifying and addressing pain points have significantly enhanced our products. Her seeker profile revamp drove notably higher user engagement and satisfaction."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="https://framerusercontent.com/images/jKhjsVUVM8B15FLng3octsfXcxc.jpeg" alt="Vijayant"/>
-          <div><div class="tfc-name">Vijayant</div><div class="tfc-role">Product Manager · Foundit</div></div>
         </div>
       </div>
 
@@ -1852,6 +1880,26 @@ photoP();
 /* ══ GRID PARALLAX ══ */
 window.addEventListener('scroll',()=>document.body.style.setProperty('--sy',window.scrollY+'px'),{passive:true});
 
+/* ══ CUSTOM CURSOR ══ */
+(function(){
+  const cur=document.getElementById('custom-cursor');
+  const lbl=document.getElementById('ccLabel');
+  if(!cur||window.matchMedia('(max-width:960px)').matches)return;
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.classList.add('visible');},{passive:true});
+  document.addEventListener('mouseleave',()=>cur.classList.remove('visible'));
+  document.addEventListener('mouseenter',()=>cur.classList.add('visible'));
+  document.addEventListener('mouseover',e=>{
+    const hit=e.target.closest('a,button,.pcard,.tfc,.nav-cta,.gtkm-cta,[onclick]');
+    lbl.classList.toggle('hov',!!hit);
+  },{passive:true});
+  (function loop(){
+    cx=lerp(cx,mx,0.15);cy=lerp(cy,my,0.15);
+    cur.style.transform=`translate(${cx}px,${cy}px)`;
+    requestAnimationFrame(loop);
+  })();
+})();
+
 /* ══ TESTIMONIALS FAN ══ */
 (function(){
   const fan=document.getElementById('testiFan');
@@ -1896,5 +1944,11 @@ document.querySelectorAll('.btn-fill,.btn-ghost,.nav-cta').forEach(btn=>{
   btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
 });
 </script>
+
+<!-- CUSTOM CURSOR -->
+<div id="custom-cursor" aria-hidden="true">
+  <div class="cc-arrow"></div>
+  <span class="cc-label" id="ccLabel">You</span>
+</div>
 </body>
 </html>
