@@ -684,8 +684,8 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 /* ══ CARD HOVER DECORATIONS ══ */
 .pcard-wrap{position:relative}
 .pcard-deco{position:absolute;pointer-events:none;z-index:20;opacity:0;transition:opacity .3s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
-.pcard-deco-tl{top:-68px;left:14px;transform:translateY(-18px) scale(0.82) rotate(-18deg);transform-origin:50% 100%}
-.pcard-deco-tr{top:-44px;right:14px;transform:translateY(-18px) scale(0.82) rotate(18deg);transform-origin:50% 100%}
+.pcard-deco-tl{top:-28px;left:18px;transform:translateY(-10px) scale(0.8) rotate(-18deg);transform-origin:50% 100%}
+.pcard-deco-tr{top:-28px;right:18px;transform:translateY(-10px) scale(0.8) rotate(18deg);transform-origin:50% 100%}
 .pcard-wrap:hover .pcard-deco{opacity:1}
 .pcard-wrap:hover .pcard-deco-tl{transform:translateY(0) scale(1) rotate(-12deg)}
 .pcard-wrap:hover .pcard-deco-tr{transform:translateY(0) scale(1) rotate(12deg)}
@@ -1022,7 +1022,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <span class="word-reveal" style="display:inline-block"><span class="word-inner" data-delay="0.68">&nbsp;Kundu</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
-        UX/UI Designer based in Bengaluru — turning complex<br/>problems into simple, delightful experiences.
+        AI-first Product Designer crafting thoughtful experiences<br/>and turning ideas into experiences people love to use.
       </p>
       <div id="hero-tags"></div>
       <div class="hero-btns" id="hero-btns">
@@ -1036,11 +1036,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   <div id="expand-card">
     <div class="ec-inner" id="ec-inner">
       <div class="ec-monogram">PK</div>
-      <div class="ec-label">available for 2026</div>
-    </div>
-    <div class="ec-overlay" id="ec-overlay">
-      <div class="ec-overlay-label">about me</div>
-      <div class="ec-overlay-title">Hey there,<br/><em>I'm Preeti!</em></div>
+
     </div>
   </div>
 
@@ -1071,7 +1067,10 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
     <div style="padding:80px 72px 96px;text-align:center;background:#faf6f0">
       <div class="about-eyebrow-hand">about me</div>
       <p class="about-big-text">
-        Currently building AI products at Apna, spending most of my time simplifying complexity and the rest obsessing over <em>good design, travel, and great stories.</em>
+        With 4+ years of experience, I'm currently designing AI products at Apna, owning end-to-end experiences across candidate and recruiter platforms — from onboarding and job discovery to hiring workflows and employer-candidate interactions. My work combines <em>UX audits, research, critique, and prototyping</em> to turn complex problems into intuitive experiences.
+      </p>
+      <p class="about-big-text" style="margin-top:28px;">
+        Outside of work, I enjoy café hopping, getting lost in a good series or movie, painting, sketching, and constantly finding new ways to <em>refresh and decorate my space.</em>
       </p>
     </div>
   </div>
@@ -1262,6 +1261,13 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="testi-hdr sr">
+    <!-- "testimonials" hand-drawn label — same Caveat font as "proudly" -->
+    <div style="display:inline-block;margin-bottom:20px;position:relative;">
+      <span style="font-family:'Caveat',cursive;font-size:22px;font-weight:500;color:#1a1714;letter-spacing:.03em;line-height:1;">testimonials</span>
+      <svg style="position:absolute;left:0;right:0;bottom:-6px;width:100%;overflow:visible" height="6" viewBox="0 0 100 6" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 3.5C20 1.5 80 1.5 99 3.5" stroke="#1a1714" stroke-width="1.5" stroke-linecap="round" opacity="0.72"/>
+      </svg>
+    </div>
     <h2 class="sec-h">Kind words from Coworkers</h2>
   </div>
 
@@ -1311,54 +1317,6 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   </div>
 </section>
 
-<!-- GET TO KNOW ME -->
-<section id="get-to-know">
-
-  <div class="gtkm-text sr">
-    <div class="gtkm-label">get to know me</div>
-    <h2 class="gtkm-headline">Get to know me?</h2>
-    <p class="gtkm-sub">View the chapter on my interests, stories<br/>and life outside of work.</p>
-    <button class="gtkm-cta" onclick="navigate('about')">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M4 11h14M11 5l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
-
-  <!-- 4 photo cards — overlapping, rotated, flush to section bottom -->
-  <div class="gtkm-cards sr">
-
-    <div class="gtkm-card" style="--rot:-5deg;--tx:-10px;--ty:18px;z-index:2">
-      <div class="gtkm-pin"></div>
-      <div class="gtkm-photo">
-        <img src="pk-photo1.jpg" alt="Preeti in the forest"/>
-      </div>
-    </div>
-
-    <div class="gtkm-card" style="--rot:4deg;--tx:8px;--ty:8px;z-index:3">
-      <div class="gtkm-pin"></div>
-      <div class="gtkm-photo">
-        <img src="pk-photo2.jpg" alt="Preeti at work"/>
-      </div>
-    </div>
-
-    <div class="gtkm-card" style="--rot:-3deg;--tx:-6px;--ty:14px;z-index:4">
-      <div class="gtkm-pin"></div>
-      <div class="gtkm-photo">
-        <img src="pk-photo3.jpg" alt="Preeti at the beach"/>
-      </div>
-    </div>
-
-    <div class="gtkm-card" style="--rot:5deg;--tx:10px;--ty:6px;z-index:2">
-      <div class="gtkm-pin"></div>
-      <div class="gtkm-photo">
-        <img src="pk-photo4.jpg" alt="Preeti at the waterfall"/>
-      </div>
-    </div>
-
-  </div>
-
-</section>
 
 <!-- FOOTER -->
 <footer>
@@ -1904,7 +1862,6 @@ setTimeout(initSR,100);
 const expandCard=document.getElementById('expand-card');
 const expandZone=document.getElementById('expand-zone');
 const ecInner=document.getElementById('ec-inner');
-const ecOverlay=document.getElementById('ec-overlay');
 const aboutReveal=document.getElementById('about-reveal');
 const heroContent=document.getElementById('hero-content');
 let prevP=-1;
@@ -1940,9 +1897,6 @@ function updateExpansion(){
 
   /* Inner image scales slightly slower (parallax feel) */
   ecInner.style.transform=`scale(${lerp(1,1.06,p1)})`;
-
-  /* Overlay text fades in at 45%–70% */
-  ecOverlay.style.opacity=clamp((raw-0.42)/0.26,0,1);
 
   /* Hero content fades out as card starts expanding (0–25%) */
   const heroFade=clamp(1-raw/0.22,0,1);
@@ -2051,9 +2005,9 @@ document.querySelectorAll('.btn-fill,.btn-ghost,.nav-cta').forEach(btn=>{
 
 /* ══ CARD HOVER DECORATIONS ══ */
 (function(){
-  const CLIP=`<svg width="72" height="108" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#E85575" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  const PIN=`<svg width="64" height="108" viewBox="0 0 64 108" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="31" rx="30" ry="29" fill="#C02848"/><ellipse cx="32" cy="29" rx="30" ry="29" fill="#E85575"/><ellipse cx="20" cy="17" rx="11" ry="8.5" fill="rgba(255,255,255,0.30)"/><circle cx="32" cy="29" r="10" fill="rgba(0,0,0,0.12)"/><circle cx="32" cy="29" r="4" fill="rgba(200,40,72,0.5)"/><rect x="26" y="56" width="12" height="14" rx="4" fill="#A02040"/><path d="M27 70L32 104L37 70Z" fill="#C02848"/><path d="M30 72L32 102" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/></svg>`;
-  const DECOS=[{svg:CLIP,pos:'tl'},{svg:PIN,pos:'tr'},{svg:CLIP,pos:'tr'},{svg:PIN,pos:'tl'},{svg:CLIP,pos:'tl'}];
+  const CLIP=`<svg width="34" height="52" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#E85575" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const PIN=`<svg width="30" height="52" viewBox="0 0 64 108" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="31" rx="30" ry="29" fill="#C02848"/><ellipse cx="32" cy="29" rx="30" ry="29" fill="#E85575"/><ellipse cx="20" cy="17" rx="11" ry="8.5" fill="rgba(255,255,255,0.30)"/><circle cx="32" cy="29" r="10" fill="rgba(0,0,0,0.12)"/><circle cx="32" cy="29" r="4" fill="rgba(200,40,72,0.5)"/><rect x="26" y="56" width="12" height="14" rx="4" fill="#A02040"/><path d="M27 70L32 104L37 70Z" fill="#C02848"/><path d="M30 72L32 102" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+  const DECOS=[{svg:CLIP,pos:'tl'},{svg:PIN,pos:'tr'},{svg:CLIP,pos:'tl'},{svg:PIN,pos:'tr'},{svg:CLIP,pos:'tl'}];
   document.querySelectorAll('#work .pcard').forEach((card,i)=>{
     const wrap=document.createElement('div');
     wrap.className='pcard-wrap';
