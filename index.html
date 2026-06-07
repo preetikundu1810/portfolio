@@ -622,7 +622,7 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 
 /* ══ TESTIMONIALS — fan card layout ══ */
 #testimonials{background:#f2ece2;border-top:1px solid rgba(26,23,20,.08);padding:0;overflow:hidden}
-.testi-hdr{padding:80px 72px 0;max-width:600px}
+.testi-hdr{padding:80px 72px 0;text-align:center}
 .testi-sub{font-family:'DM Sans',sans-serif;font-size:14px;color:#6b6055;line-height:1.65;margin-top:-20px;margin-bottom:0}
 .testi-fan-scene{position:relative;height:580px;display:flex;align-items:center;justify-content:center}
 .testi-fan{position:relative;width:320px;height:400px}
@@ -680,6 +680,15 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 .cs-impact-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#1a1714;line-height:1;margin-bottom:6px}
 .cs-impact-l{font-family:'DM Sans',sans-serif;font-size:11px;color:#9c8f80;letter-spacing:.08em;text-transform:uppercase;line-height:1.4}
 .cs-divider{width:100%;height:1px;background:rgba(26,23,20,.08);margin:48px 0}
+
+/* ══ CARD HOVER DECORATIONS ══ */
+.pcard-wrap{position:relative}
+.pcard-deco{position:absolute;pointer-events:none;z-index:20;opacity:0;transition:opacity .3s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.pcard-deco-tl{top:-68px;left:14px;transform:translateY(-18px) scale(0.82) rotate(-18deg);transform-origin:50% 100%}
+.pcard-deco-tr{top:-44px;right:14px;transform:translateY(-18px) scale(0.82) rotate(18deg);transform-origin:50% 100%}
+.pcard-wrap:hover .pcard-deco{opacity:1}
+.pcard-wrap:hover .pcard-deco-tl{transform:translateY(0) scale(1) rotate(-12deg)}
+.pcard-wrap:hover .pcard-deco-tr{transform:translateY(0) scale(1) rotate(12deg)}
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:960px){
@@ -1253,9 +1262,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="testi-hdr sr">
-    <div class="sec-label">validation is crucial</div>
-    <h2 class="sec-h">What people<br/><em>say about me.</em></h2>
-    <p class="testi-sub">Feedback from professionals at Foundit, Apna and more</p>
+    <h2 class="sec-h">Kind words from Coworkers</h2>
   </div>
 
   <div class="testi-fan-scene">
@@ -2041,6 +2048,24 @@ document.querySelectorAll('.btn-fill,.btn-ghost,.nav-cta').forEach(btn=>{
   });
   btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
 });
+
+/* ══ CARD HOVER DECORATIONS ══ */
+(function(){
+  const CLIP=`<svg width="72" height="108" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#E85575" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const PIN=`<svg width="64" height="108" viewBox="0 0 64 108" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="32" cy="31" rx="30" ry="29" fill="#C02848"/><ellipse cx="32" cy="29" rx="30" ry="29" fill="#E85575"/><ellipse cx="20" cy="17" rx="11" ry="8.5" fill="rgba(255,255,255,0.30)"/><circle cx="32" cy="29" r="10" fill="rgba(0,0,0,0.12)"/><circle cx="32" cy="29" r="4" fill="rgba(200,40,72,0.5)"/><rect x="26" y="56" width="12" height="14" rx="4" fill="#A02040"/><path d="M27 70L32 104L37 70Z" fill="#C02848"/><path d="M30 72L32 102" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-linecap="round"/></svg>`;
+  const DECOS=[{svg:CLIP,pos:'tl'},{svg:PIN,pos:'tr'},{svg:CLIP,pos:'tr'},{svg:PIN,pos:'tl'},{svg:CLIP,pos:'tl'}];
+  document.querySelectorAll('#work .pcard').forEach((card,i)=>{
+    const wrap=document.createElement('div');
+    wrap.className='pcard-wrap';
+    card.parentNode.insertBefore(wrap,card);
+    wrap.appendChild(card);
+    const d=DECOS[i]||DECOS[0];
+    const deco=document.createElement('div');
+    deco.className='pcard-deco pcard-deco-'+d.pos;
+    deco.innerHTML=d.svg;
+    wrap.insertBefore(deco,card);
+  });
+})();
 </script>
 
 </body>
