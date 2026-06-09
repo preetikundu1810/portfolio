@@ -1320,11 +1320,29 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         </div>
       </div>
 
+      <div class="tfc">
+        <p class="tfc-quote">"Preeti is one of those people you can trust with a problem and be confident it will be driven to a thoughtful, high-quality outcome. At Apna, she consistently demonstrated strong ownership, handled complex initiatives independently, and brought structure to ambiguous situations. What stood out was her ability to balance speed with quality while collaborating effectively across teams."</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://ui-avatars.com/api/?name=Piyush+Tyagi&background=d4f049&color=1a1714&size=80&bold=true" alt="Piyush Tyagi"/>
+          <div><div class="tfc-name">Piyush Tyagi</div><div class="tfc-role">Design Lead · Skillz (NYSE: SKLZ)</div></div>
+        </div>
+      </div>
+
+      <div class="tfc">
+        <p class="tfc-quote">"Worked with Preeti at Apna and honestly she's one of the best designers I've collaborated with. Her design and product thinking is really sharp — she never rushes to solutions. She digs deep into the problem first, asks the right questions, and challenges assumptions before touching Figma. That always showed in the quality of her work. Strong craft, great product instincts, and a genuine hunger to grow — any team would be lucky to have her!"</p>
+        <div class="tfc-person">
+          <img class="tfc-avatar" src="https://ui-avatars.com/api/?name=Sharath+S&background=e0d4c4&color=1a1714&size=80&bold=true" alt="Sharath S.p"/>
+          <div><div class="tfc-name">Sharath S.p</div><div class="tfc-role">Product Lead · Apna</div></div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <div class="testi-dots" id="testiDots">
     <button class="testi-dot active"></button>
+    <button class="testi-dot"></button>
+    <button class="testi-dot"></button>
     <button class="testi-dot"></button>
     <button class="testi-dot"></button>
     <button class="testi-dot"></button>
@@ -1982,12 +2000,14 @@ window.addEventListener('scroll',()=>document.body.style.setProperty('--sy',wind
   const n=cards.length;
   let active=0;
 
-  /* slot 0 = center/active, 1 = right, 2 = far-right/back, 3 = left */
+  /* slot 0 = center/active, 1 = right1, 2 = right2, 3 = rightmost-back, 4 = leftmost-back, 5 = left1 */
   const SLOTS=[
-    {tx:0,   ty:-28, rot:0,   sc:1.04, z:12, sh:'0 24px 64px rgba(26,23,20,.22),0 4px 16px rgba(26,23,20,.10)'},
-    {tx:190, ty:20,  rot:9,   sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
-    {tx:320, ty:52,  rot:17,  sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
-    {tx:-190,ty:20,  rot:-9,  sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
+    {tx:0,    ty:-28, rot:0,   sc:1.04, z:12, sh:'0 24px 64px rgba(26,23,20,.22),0 4px 16px rgba(26,23,20,.10)'},
+    {tx:190,  ty:20,  rot:9,   sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
+    {tx:320,  ty:52,  rot:17,  sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
+    {tx:420,  ty:80,  rot:24,  sc:0.65, z:1,  sh:'0 2px 8px rgba(26,23,20,.06)'},
+    {tx:-420, ty:80,  rot:-24, sc:0.65, z:1,  sh:'0 2px 8px rgba(26,23,20,.06)'},
+    {tx:-190, ty:20,  rot:-9,  sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
   ];
 
   function layout(){
