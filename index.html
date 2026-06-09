@@ -504,7 +504,7 @@ section{position:relative;z-index:1}
   margin-left:-5%;
   opacity:.7;
 }
-.about-big-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.6vw,30px);font-weight:400;line-height:1.65;color:#1a1714;max-width:680px;margin:0 auto;text-align:center}
+.about-big-text{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,26px);font-weight:400;line-height:1.7;color:#1a1714;max-width:920px;margin:0 auto;text-align:center}
 .about-big-text em{font-style:italic;color:#6b6055}
 .about-read-link{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-size:13px;color:#1a1714;text-decoration:underline;text-underline-offset:4px;letter-spacing:.04em;margin-top:28px;transition:opacity .2s,gap .3s ease;cursor:pointer;background:none;border:none;padding:0}
 .about-read-link:hover{opacity:.6;gap:14px}
@@ -2000,13 +2000,13 @@ window.addEventListener('scroll',()=>document.body.style.setProperty('--sy',wind
   const n=cards.length;
   let active=0;
 
-  /* slot 0 = center/active, 1 = right1, 2 = right2, 3 = rightmost-back, 4 = leftmost-back, 5 = left1 */
+  /* slot 0 = center-front, 1 = right1, 2 = right2, 3 = hidden-back (behind center), 4 = left2, 5 = left1 */
   const SLOTS=[
     {tx:0,    ty:-28, rot:0,   sc:1.04, z:12, sh:'0 24px 64px rgba(26,23,20,.22),0 4px 16px rgba(26,23,20,.10)'},
     {tx:190,  ty:20,  rot:9,   sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
     {tx:320,  ty:52,  rot:17,  sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
-    {tx:420,  ty:80,  rot:24,  sc:0.65, z:1,  sh:'0 2px 8px rgba(26,23,20,.06)'},
-    {tx:-420, ty:80,  rot:-24, sc:0.65, z:1,  sh:'0 2px 8px rgba(26,23,20,.06)'},
+    {tx:0,    ty:60,  rot:0,   sc:0.45, z:0,  sh:'none'},
+    {tx:-320, ty:52,  rot:-17, sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
     {tx:-190, ty:20,  rot:-9,  sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
   ];
 
