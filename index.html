@@ -657,6 +657,81 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .cs-impact-l{font-family:'DM Sans',sans-serif;font-size:10px;color:#9c8f80;letter-spacing:.08em;text-transform:uppercase;line-height:1.4}
 .cs-divider{width:100%;height:1px;background:rgba(26,23,20,.06);margin:44px 0}
 
+/* ══ AI CASE STUDY — editorial (blend of Malavika + Dhiraj refs) ══ */
+.csa{--ink:#1a1714;--mut:#6b6055;--faint:#9c8f80;--accent:#5868a2;--line:rgba(26,23,20,.10);background:#faf6f0}
+.csa-eyebrow{display:inline-block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--ink);background:rgba(88,104,162,.12);border:1px solid rgba(88,104,162,.22);padding:6px 14px;border-radius:100px;margin-bottom:22px}
+.csa-wrap{max-width:1040px;margin:0 auto;padding:0 48px}
+.csa-sec{padding:64px 0;border-top:1px dashed var(--line)}
+.csa-sec:first-child{border-top:none}
+.csa-label{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--ink);letter-spacing:.01em;margin-bottom:14px}
+.csa-head{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:clamp(26px,3.4vw,42px);line-height:1.1;color:var(--accent);margin-bottom:22px;max-width:760px}
+.csa-lead{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.8;color:var(--mut);max-width:680px;margin-bottom:16px}
+.csa-lead strong{color:var(--ink);font-weight:600}
+.csa-ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin:8px 0 4px;max-width:680px}
+.csa-ul li{font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;color:var(--mut);padding-left:20px;position:relative}
+.csa-ul li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.5}
+.csa-ul li strong{color:var(--ink);font-weight:600}
+/* two-column text + figure */
+.csa-two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.csa-two .csa-head{font-size:clamp(24px,2.8vw,34px);margin-bottom:18px}
+/* big stat cards */
+.csa-statgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:36px}
+.csa-stat{background:#faf6f0;padding:34px 30px}
+.csa-stat-n{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(40px,5vw,58px);line-height:1;color:rgba(26,23,20,.28);margin-bottom:12px}
+.csa-stat-l{font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.55;color:var(--mut)}
+/* numbered cohort/insight cards */
+.csa-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.csa-card{border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;background:#fffdf9}
+.csa-card-top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.csa-card-num{flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:var(--ink);color:#faf6f0;font-family:'DM Sans',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.csa-card-cat{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
+.csa-card-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;color:var(--ink);line-height:1.1}
+.csa-card-stat{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;line-height:1;color:var(--accent);margin-bottom:4px}
+.csa-card-sub{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--mut);line-height:1.5;margin-bottom:16px}
+.csa-card-take{display:flex;gap:9px;align-items:flex-start;border-top:1px solid var(--line);padding-top:14px;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.5;color:var(--mut)}
+.csa-card-take b{color:var(--accent);font-weight:600}
+/* how might we */
+.csa-hmw{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.csa-hmw-card{border:1px solid var(--line);border-radius:14px;padding:28px;background:#fffdf9}
+.csa-hmw-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:var(--accent);opacity:.45;line-height:.8;margin-bottom:16px}
+.csa-hmw-k{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.csa-hmw-t{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.55;color:var(--ink)}
+/* phases */
+.csa-phase{margin-top:40px}
+.csa-phase-tag{display:inline-block;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:rgba(88,104,162,.10);padding:6px 13px;border-radius:100px;margin-bottom:14px}
+.csa-phase-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(22px,2.6vw,30px);color:var(--ink);line-height:1.15;margin-bottom:14px;max-width:680px}
+.csa-why{border-left:2px solid var(--accent);background:rgba(88,104,162,.06);border-radius:0 10px 10px 0;padding:18px 22px;margin:22px 0 0;max-width:680px}
+.csa-why-h{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.csa-why p{font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7;color:var(--mut);margin:0}
+/* figure / image placeholder */
+.csa-fig{margin:26px 0 0}
+.csa-fig img{width:100%;border-radius:12px;display:block;object-fit:cover;background:#e8ddd0;border:1px solid var(--line)}
+.csa-ph{width:100%;aspect-ratio:16/9;border-radius:12px;border:1.5px dashed rgba(88,104,162,.4);background:repeating-linear-gradient(45deg,rgba(88,104,162,.03),rgba(88,104,162,.03) 12px,transparent 12px,transparent 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:24px}
+.csa-ph-i{font-size:22px;opacity:.5}
+.csa-ph-t{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--accent)}
+.csa-ph-s{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--faint);max-width:360px;line-height:1.5}
+.csa-cap{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--faint);margin-top:10px;text-align:center}
+.csa-figrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.csa-figrow .csa-fig{margin:0}
+/* learnings */
+.csa-learn{display:flex;flex-direction:column;gap:0;margin-top:28px;max-width:760px}
+.csa-learn-item{display:flex;gap:18px;padding:20px 0;border-top:1px solid var(--line)}
+.csa-learn-n{flex:0 0 auto;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--accent);line-height:1;width:36px}
+.csa-learn-b h4{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:var(--ink);margin:0 0 6px}
+.csa-learn-b p{font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.65;color:var(--mut);margin:0}
+/* impact band */
+.csa-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:32px}
+.csa-impact-item{background:#fffdf9;padding:30px 20px;text-align:center}
+.csa-impact-n{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:42px;color:var(--accent);line-height:1;margin-bottom:8px}
+.csa-impact-l{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);line-height:1.45}
+@media(max-width:860px){
+  .csa-wrap{padding:0 22px}
+  .csa-two{grid-template-columns:1fr;gap:26px}
+  .csa-statgrid,.csa-cards,.csa-hmw{grid-template-columns:1fr}
+  .csa-figrow{grid-template-columns:1fr}
+  .csa-impact{grid-template-columns:repeat(2,1fr)}
+}
+
 /* ══ RESPONSIVE ══ */
 @media(max-width:960px){
   nav{padding:0 20px}.nav-links{display:none}
@@ -1443,6 +1518,37 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       </div>
     </div>
 
+    <!-- CARD 05 -->
+    <div class="pcard sr">
+      <div class="pcard-inner">
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-cat">AI Screening · Voice AI · Apna</div>
+            <h3 class="pcard-title">AI Calling<br/>Agent</h3>
+            <p class="pcard-desc">Designed an AI voice agent that screens job applicants in Hindi or English within minutes of applying — scoring fluency, intent, and fit, then ranking them with full call transcripts ready to act on.</p>
+            <div class="pcard-tags">
+              <span class="pcard-tag">Conversational UX</span>
+              <span class="pcard-tag">Voice AI</span>
+              <span class="pcard-tag">AI-assisted UX</span>
+            </div>
+            <button class="pcard-cta" onclick="navigate('cs-ai-calling')">View Case Study <span class="arrow">→</span></button>
+          </div>
+          <div class="pcard-metrics">
+            <div class="pcard-metric"><div class="pcard-metric-n">78%</div><div class="pcard-metric-l">Candidate<br/>Pick-up Rate</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">4x</div><div class="pcard-metric-l">Faster<br/>Time-to-Shortlist</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">21 hrs</div><div class="pcard-metric-l">Recruiter Time<br/>Saved / Week</div></div>
+          </div>
+        </div>
+        <div class="pcard-visual">
+          <div class="pcard-vis-placeholder">
+            <div class="pcard-vis-num">05</div>
+            <div class="pcard-vis-label">AI Calling Agent</div>
+          </div>
+          <div class="pcard-soon">Coming Soon</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1985,6 +2091,181 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   </div>
 </div><!-- end cs-profile -->
 
+<!-- ═══════════════ CASE STUDY: AI CALLING AGENT (AI SKU) ═══════════════ -->
+<div class="view csa" id="view-cs-ai-calling">
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <button class="cs-back" onclick="navigate('home')">← Back to Work</button>
+    <span class="csa-eyebrow">Product · AI</span>
+    <h1 class="cs-title">Designing an AI agent<br/>that screens before you call</h1>
+    <p class="cs-sub">Univest-style funnels close on a human call. Hiring had the same problem: recruiters burned hours on first-round screening calls. I designed Apna's AI Calling Agent: a voice agent that screens applicants in Hindi or English within minutes of applying, then hands recruiters a ranked, transcript-backed shortlist.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-val">Product Designer II</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-val">Solo Designer · 3 of 4 verticals</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Recruiter Web · ECC</div></div>
+    </div>
+  </div>
+
+  <!-- HERO VISUAL -->
+  <div class="csa-wrap" style="padding-top:48px;padding-bottom:8px">
+    <div class="csa-fig">
+      <div class="csa-ph">
+        <div class="csa-ph-i">🖼️</div>
+        <div class="csa-ph-t">Hero: AI Calling Agent screens</div>
+        <div class="csa-ph-s">Drop the cover render here (Figma: AI-SKU hero / dashboard montage). Replace this block with an &lt;img&gt;.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="csa-wrap">
+
+    <!-- ABOUT -->
+    <div class="csa-sec">
+      <div class="csa-label">About Apna</div>
+      <h2 class="csa-head">India's largest professional & jobs platform, hiring at the scale of millions.</h2>
+      <p class="csa-lead">Apna connects job seekers with recruiters across the country, processing a massive volume of applications every day. The <strong>AI Calling Agent</strong> (internally the "AI SKU") is its voice-AI screening product: within minutes of a candidate applying, the agent calls (in Hindi or English, auto-detected), runs a recruiter-defined screening conversation, then scores and ranks every candidate with a transcript ready to act on.</p>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="csa-sec">
+      <div class="csa-label">Context</div>
+      <h2 class="csa-head">Screening was growing; the recruiter's day couldn't keep up.</h2>
+      <p class="csa-lead">High-volume roles pull in hundreds of applicants. The only way to filter them was the phone, and that didn't scale. Early-stage screening was almost entirely manual, and good candidates leaked out of the funnel before a single real conversation happened.</p>
+      <div class="csa-statgrid">
+        <div class="csa-stat"><div class="csa-stat-n">4 to 6 hrs</div><div class="csa-stat-l">A recruiter calling 50 applicants a day spends this just to find 3 worth interviewing.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">48 hrs</div><div class="csa-stat-l">The best applicants get offers within two days; slow screening loses them to competitors.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">100×</div><div class="csa-stat-l">The same five questions (notice period, availability, CTC) asked over and over.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">1 lang</div><div class="csa-stat-l">English-first tools mis-ranked candidates who were perfectly fluent in Hindi.</div></div>
+      </div>
+    </div>
+
+    <!-- THE CHALLENGE (two-col) -->
+    <div class="csa-sec">
+      <div class="csa-two">
+        <div>
+          <div class="csa-label">The Challenge 🔎</div>
+          <h2 class="csa-head">Automate the first call without losing the judgment of a good recruiter.</h2>
+          <p class="csa-lead">The agent had to feel like a competent screener: ask the right questions, adapt across languages, and score fairly. And it had to live <strong>natively inside the existing recruiter dashboard (ECC)</strong>, not as a bolt-on tool recruiters had to learn separately.</p>
+        </div>
+        <div class="csa-fig">
+          <div class="csa-ph">
+            <div class="csa-ph-i">📱</div>
+            <div class="csa-ph-t">Before: manual screening flow</div>
+            <div class="csa-ph-s">Figma: existing recruiter calling / ECC state before AI.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MY ROLE / SCOPE -->
+    <div class="csa-sec">
+      <div class="csa-label">My Role 🧩</div>
+      <h2 class="csa-head">I owned design for 3 of the 4 verticals, concept to release.</h2>
+      <div class="csa-cards">
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">01</div><div><div class="csa-card-cat">Vertical</div><div class="csa-card-title">Screening Setup</div></div></div>
+          <p class="csa-card-sub">The configuration flow where recruiters define the role, screening questions, and shortlisting criteria, in about five minutes.</p>
+          <div class="csa-card-take">↳ <span><b>Defines what the agent asks</b> and how candidates are scored.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">02</div><div><div class="csa-card-cat">Vertical</div><div class="csa-card-title">ECC Integration</div></div></div>
+          <p class="csa-card-sub">Surfacing the entire AI screening lifecycle inside the recruiter's existing dashboard, with no new tool to learn.</p>
+          <div class="csa-card-take">↳ <span><b>Candidate states end to end</b>: pending, in-progress, completed, incomplete.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">03</div><div><div class="csa-card-cat">Vertical</div><div class="csa-card-title">Recruiter & Candidate Lifecycle</div></div></div>
+          <p class="csa-card-sub">The end-to-end states a candidate moves through and how recruiters act on each outcome.</p>
+          <div class="csa-card-take">↳ <span>Profile summaries with <b>outcomes + transcripts</b>.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">04</div><div><div class="csa-card-cat">Also owned</div><div class="csa-card-title">QA & Release Readiness</div></div></div>
+          <p class="csa-card-sub">Owned quality and release readiness across these flows, shipping complex AI interactions through multiple rounds of leadership feedback.</p>
+          <div class="csa-card-take">↳ <span>Shipped through <b>multi-level leadership review</b>.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN GOALS / HMW -->
+    <div class="csa-sec">
+      <div class="csa-label">Design Goals 🎯</div>
+      <h2 class="csa-head">Three questions framed every screen decision.</h2>
+      <div class="csa-hmw">
+        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Let a recruiter configure a trustworthy screening conversation in minutes, not hours?</div></div>
+        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Make a candidate's status and screening outcome instantly clear inside the existing dashboard?</div></div>
+        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Turn a raw call into a scannable, decision-ready summary a recruiter can act on in seconds?</div></div>
+      </div>
+    </div>
+
+    <!-- SOLUTION WALKTHROUGH -->
+    <div class="csa-sec">
+      <div class="csa-label">Solution Walkthrough 🎨</div>
+      <h2 class="csa-head">Three surfaces. Each earns its place in the screening funnel.</h2>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 01 · Setup</span>
+        <h3 class="csa-phase-title">Screening configuration in ~5 minutes</h3>
+        <p class="csa-lead">Recruiters add a role, screening questions, and shortlisting criteria, defining what the agent asks and how it scores. Dimensions include fluency (rated 1 to 10 in English or Hindi), custom domain questions, availability and notice period, CTC asked naturally in conversation, work-mode and relocation preferences, and experience.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">⚙️</div><div class="csa-ph-t">Screening setup flow</div><div class="csa-ph-s">Figma: AI-SKU setup (questions, criteria, language).</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Putting scoring criteria up front makes shortlisting objective and defensible: every candidate is judged against the same bar the recruiter set.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 02 · Lifecycle</span>
+        <h3 class="csa-phase-title">Candidate states, end to end, inside ECC</h3>
+        <p class="csa-lead">I designed the full lifecycle of a candidate in the recruiter dashboard (<strong>pending</strong>, <strong>in-progress</strong>, <strong>completed</strong>, and <strong>incomplete</strong>), so recruiters always know exactly where each applicant is, without leaving their existing workflow.</p>
+        <div class="csa-figrow">
+          <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📊</div><div class="csa-ph-t">ECC: candidate states</div><div class="csa-ph-s">Pending / In-progress / Completed / Incomplete.</div></div></div>
+          <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📋</div><div class="csa-ph-t">ECC: screening dashboard</div><div class="csa-ph-s">Figma: AI-SKU II ECC integration.</div></div></div>
+        </div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Status clarity removes the recruiter's biggest anxiety in an automated flow ("what's actually happening to my candidates?") and keeps everything in one familiar place.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 03 · Outcomes</span>
+        <h3 class="csa-phase-title">Candidate profile summaries with outcomes + transcripts</h3>
+        <p class="csa-lead">A results view that brings together each candidate's outcome, scores, key signals, and the full call transcript, turning a raw conversation into a scannable summary the recruiter can act on immediately.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🗂️</div><div class="csa-ph-t">Candidate summary + transcript</div><div class="csa-ph-s">Figma: AI-SKU candidate profile / scorecard.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Recruiters skip the recording and read the signal. Scores, key answers, and the transcript sit together so the decision takes seconds, not a replay.</p></div>
+      </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div class="csa-sec">
+      <div class="csa-label">Impact 📈</div>
+      <h2 class="csa-head">AI screening, shipped at scale, and as a new revenue line.</h2>
+      <div class="csa-impact">
+        <div class="csa-impact-item"><div class="csa-impact-n">78%</div><div class="csa-impact-l">Candidate<br/>Pick-up Rate</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">4×</div><div class="csa-impact-l">Faster<br/>Time-to-Shortlist</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">21 hrs</div><div class="csa-impact-l">Recruiter Time<br/>Saved / Week</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">New</div><div class="csa-impact-l">Revenue<br/>Channel</div></div>
+      </div>
+      <ul class="csa-ul" style="margin-top:28px">
+        <li><strong>Increased revenue</strong> by launching AI screening as a paid SKU.</li>
+        <li><strong>Automated early-stage screening</strong> and cut manual calling effort.</li>
+        <li><strong>Improved clarity</strong> of candidate status and screening outcomes across the dashboard.</li>
+        <li>Delivered <strong>AI screening at scale</strong> inside Apna's recruiter ecosystem.</li>
+        <li>Shipped complex AI flows successfully through <strong>multi-level leadership feedback</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- LEARNINGS -->
+    <div class="csa-sec">
+      <div class="csa-label">Key Learnings ✨</div>
+      <h2 class="csa-head">Reflections from designing an AI-led flow.</h2>
+      <div class="csa-learn">
+        <div class="csa-learn-item"><div class="csa-learn-n">1</div><div class="csa-learn-b"><h4>Trust is the real product in an AI flow</h4><p>Recruiters hand a conversation to a machine. Clear status, transparent scoring, and a readable transcript are what make them comfortable doing it.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">2</div><div class="csa-learn-b"><h4>Configuration is a design surface, not a form</h4><p>What the recruiter sets up directly shapes screening quality, so the setup flow had to make good criteria the easy, obvious path.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">3</div><div class="csa-learn-b"><h4>Meet users where they already work</h4><p>Living inside ECC, rather than as a separate tool, was the single biggest driver of adoption.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">4</div><div class="csa-learn-b"><h4>Shipping AI means designing for the messy states</h4><p>Incomplete calls, language switches, and partial answers needed first-class states, not error toasts bolted on at the end.</p></div></div>
+      </div>
+    </div>
+
+    <button class="btn-fill" style="margin-top:8px" onclick="navigate('home')">← Back to All Work</button>
+  </div>
+</div><!-- end cs-ai-calling -->
+
 <!-- CUSTOM CURSOR -->
 <div id="custom-cursor" aria-hidden="true">
   <svg class="cc-arrow" width="20" height="24" viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg">
@@ -2005,7 +2286,8 @@ const views={
   'home':'view-home',
   'about':'view-about',
   'cs-srp':'view-cs-srp',
-  'cs-profile':'view-cs-profile'
+  'cs-profile':'view-cs-profile',
+  'cs-ai-calling':'view-cs-ai-calling'
 };
 function navigate(key){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
