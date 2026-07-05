@@ -316,7 +316,7 @@ nav.scrolled{background:rgba(250,246,240,0.93);backdrop-filter:blur(16px);box-sh
   position:relative;
   min-height:100vh;width:100%;
   overflow:visible;
-  background:#faf6f0;
+  background:#ffffff;
 }
 /* Card anchored at bottom, flush, centered */
 #expand-card{
@@ -739,6 +739,38 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
   .csa-statgrid,.csa-cards,.csa-hmw{grid-template-columns:1fr}
   .csa-figrow{grid-template-columns:1fr}
   .csa-impact{grid-template-columns:repeat(2,1fr)}
+}
+/* sticky-note insight grid */
+.csa-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.csa-note{background:#fdf6d8;border:1px solid rgba(26,23,20,.06);border-radius:3px;padding:22px 20px 24px;box-shadow:0 10px 24px rgba(26,23,20,.10);position:relative;transform:rotate(-1.2deg);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.csa-note:nth-child(2n){background:#e9f0dd;transform:rotate(1.4deg)}
+.csa-note:nth-child(3n){background:#e6ecfb;transform:rotate(-.6deg)}
+.csa-note:hover{transform:rotate(0) translateY(-4px)}
+.csa-note::before{content:'';position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:52px;height:16px;background:rgba(26,23,20,.10);border-radius:2px}
+.csa-note-n{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.csa-note-h{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--ink);line-height:1.12;margin-bottom:8px}
+.csa-note-p{font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.55;color:#4a423a}
+/* before / after table */
+.csa-table{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:32px}
+.csa-th{background:#f2ece2;padding:14px 20px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.csa-td{background:#fffdf9;padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;color:var(--mut)}
+.csa-td.aft{color:var(--ink)}
+/* two-column compare (expected vs actual) */
+.csa-compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+.csa-col{border:1px solid var(--line);border-radius:14px;padding:24px;background:#fffdf9}
+.csa-col-h{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.csa-col.expected .csa-col-h{color:var(--faint)}
+.csa-col.actual .csa-col-h{color:var(--accent)}
+/* artifact / figma link list */
+.csa-artifacts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.csa-artifact{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fffdf9;text-decoration:none;transition:border-color .2s,transform .2s}
+.csa-artifact:hover{border-color:var(--accent);transform:translateY(-2px)}
+.csa-artifact-i{flex:0 0 auto;width:30px;height:30px;border-radius:7px;background:rgba(88,104,162,.12);display:flex;align-items:center;justify-content:center;font-size:14px}
+.csa-artifact-t{font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.csa-artifact-s{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--faint)}
+@media(max-width:860px){
+  .csa-notes{grid-template-columns:1fr}
+  .csa-table,.csa-compare,.csa-artifacts{grid-template-columns:1fr}
 }
 
 /* ══ RESPONSIVE ══ */
@@ -1495,7 +1527,67 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       </div>
     </div>
 
-    <!-- CARD 04 — Onboarding Revamp (coming soon) -->
+    <!-- CARD 04 — OnlyRounds (live) -->
+    <div class="pcard sr">
+      <div class="pcard-inner">
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-cat">0→1 Product · Enterprise AI · Apna</div>
+            <h3 class="pcard-title">OnlyRounds</h3>
+            <p class="pcard-desc">Designed a source-agnostic, enterprise-grade AI hiring platform that screens and interviews candidates across every sourcing channel — built solo from concept to launch, with humans kept in control of decisions.</p>
+            <div class="pcard-tags">
+              <span class="pcard-tag">0→1 Product</span>
+              <span class="pcard-tag">AI Workflow Design</span>
+              <span class="pcard-tag">Enterprise UX</span>
+            </div>
+            <button class="pcard-cta" onclick="navigate('cs-onlyrounds')">View Case Study <span class="arrow">→</span></button>
+          </div>
+          <div class="pcard-metrics">
+            <div class="pcard-metric"><div class="pcard-metric-n">~80%</div><div class="pcard-metric-l">Connection Rate<br/>(vs ~40% human)</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">2×</div><div class="pcard-metric-l">Recruiter<br/>Productivity</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">0→1</div><div class="pcard-metric-l">Platform<br/>Built Solo</div></div>
+          </div>
+        </div>
+        <div class="pcard-visual">
+          <div class="pcard-vis-placeholder">
+            <div class="pcard-vis-num">04</div>
+            <div class="pcard-vis-label">OnlyRounds · Enterprise AI ATS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 05 — AI Hiring Assistant (live) -->
+    <div class="pcard sr">
+      <div class="pcard-inner">
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-cat">AI Hiring · Employer Platform · Apna</div>
+            <h3 class="pcard-title">AI Hiring<br/>Assistant</h3>
+            <p class="pcard-desc">Turned an AI screening SKU into an embedded hiring workflow — making AI explainable evidence recruiters can act on, not a black-box verdict, while keeping them in control of every decision.</p>
+            <div class="pcard-tags">
+              <span class="pcard-tag">UX Strategy</span>
+              <span class="pcard-tag">Usability Research</span>
+              <span class="pcard-tag">AI Workflow Design</span>
+            </div>
+            <button class="pcard-cta" onclick="navigate('cs-ai-hiring')">View Case Study <span class="arrow">→</span></button>
+          </div>
+          <div class="pcard-metrics">
+            <div class="pcard-metric"><div class="pcard-metric-n">24×7</div><div class="pcard-metric-l">Candidate<br/>Calling</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">Evidence</div><div class="pcard-metric-l">Not a<br/>Verdict</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">Embedded</div><div class="pcard-metric-l">In ECC<br/>Workflow</div></div>
+          </div>
+        </div>
+        <div class="pcard-visual">
+          <div class="pcard-vis-placeholder">
+            <div class="pcard-vis-num">05</div>
+            <div class="pcard-vis-label">AI Hiring Assistant</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 06 — Onboarding Revamp (coming soon) -->
     <div class="pcard sr">
       <div class="pcard-inner">
         <div class="pcard-body">
@@ -1518,39 +1610,8 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         </div>
         <div class="pcard-visual">
           <div class="pcard-vis-placeholder">
-            <div class="pcard-vis-num">04</div>
+            <div class="pcard-vis-num">06</div>
             <div class="pcard-vis-label">Candidate Onboarding Journey</div>
-          </div>
-          <div class="pcard-soon">Coming Soon</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 05 — OnlyRounds (coming soon) -->
-    <div class="pcard sr">
-      <div class="pcard-inner">
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <div class="pcard-cat">0→1 Product · End-to-End Ownership · Apna</div>
-            <h3 class="pcard-title">OnlyRounds</h3>
-            <p class="pcard-desc">Owned an AI-assisted multi-round hiring product end-to-end — pipeline builder, AI agents, round config and dashboards — built zero to one.</p>
-            <div class="pcard-tags">
-              <span class="pcard-tag">0→1 Product</span>
-              <span class="pcard-tag">AI Workflow Design</span>
-              <span class="pcard-tag">System Architecture</span>
-            </div>
-            <button class="pcard-cta is-soon" disabled aria-disabled="true">Coming Soon</button>
-          </div>
-          <div class="pcard-metrics">
-            <div class="pcard-metric"><div class="pcard-metric-n">0→1</div><div class="pcard-metric-l">Platform<br/>Launch</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">Full</div><div class="pcard-metric-l">Product<br/>Ownership</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">AI-led</div><div class="pcard-metric-l">Hiring<br/>Enabled</div></div>
-          </div>
-        </div>
-        <div class="pcard-visual">
-          <div class="pcard-vis-placeholder">
-            <div class="pcard-vis-num">05</div>
-            <div class="pcard-vis-label">OnlyRounds · AI ATS</div>
           </div>
           <div class="pcard-soon">Coming Soon</div>
         </div>
@@ -2274,6 +2335,502 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   </div>
 </div><!-- end cs-ai-calling -->
 
+<!-- ═══════════════ CASE STUDY: ONLYROUNDS (enterprise AI ATS) ═══════════════ -->
+<div class="view csa" id="view-cs-onlyrounds">
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <button class="cs-back" onclick="navigate('home')">← Back to Work</button>
+    <span class="csa-eyebrow">Product · Enterprise AI · 0→1</span>
+    <h1 class="cs-title">OnlyRounds</h1>
+    <p class="cs-sub">A source-agnostic, enterprise-grade AI hiring platform that screens, interviews, and coordinates candidates across every sourcing channel, while keeping humans in control of the final decision. Built solo from concept to launch.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-val">Product Designer · 0→1</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2025</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-val">Solo Designer</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Enterprise Web · Recruiter Console</div></div>
+    </div>
+  </div>
+
+  <!-- HERO VISUAL -->
+  <div class="csa-wrap" style="padding-top:48px;padding-bottom:8px">
+    <div class="csa-fig">
+      <div class="csa-ph">
+        <div class="csa-ph-i">🖼️</div>
+        <div class="csa-ph-t">Hero: OnlyRounds recruiter console</div>
+        <div class="csa-ph-s">Drop the cover render here (Figma: OnlyRounds dashboard / job lifecycle). Replace this block with an &lt;img&gt;.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="csa-wrap">
+
+    <!-- ABOUT -->
+    <div class="csa-sec">
+      <div class="csa-label">About</div>
+      <h2 class="csa-head">An AI hiring layer that sits above every sourcing channel.</h2>
+      <p class="csa-lead">Enterprise hiring teams handle huge volumes of candidates from many channels at once: job portals, ATS, databases, referrals. <strong>OnlyRounds</strong> is a source-agnostic, enterprise-grade AI screening and interviewing platform that lets teams screen, interview, and coordinate candidates consistently using AI agents, no matter where those candidates came from.</p>
+      <p class="csa-lead"><strong>What it is not:</strong> not limited to apna-sourced candidates, not a single static chatbot, and not a hiring-decision engine. Final calls always stay with humans.</p>
+    </div>
+
+    <!-- CONTEXT -->
+    <div class="csa-sec">
+      <div class="csa-label">Context</div>
+      <h2 class="csa-head">Single-channel AI screening couldn't scale to the enterprise.</h2>
+      <p class="csa-lead">apna's earlier AI screening product (AISKU) worked well for SMBs because apna was their <em>primary</em> sourcing channel. For enterprises, apna contributed only a fraction of total sourcing, so most candidates still fell back to slow, manual screening and the ROI of automation collapsed.</p>
+      <div class="csa-statgrid">
+        <div class="csa-stat"><div class="csa-stat-n">10-20%</div><div class="csa-stat-l">Share of enterprise sourcing that came from apna. The rest was screened manually.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">1 channel</div><div class="csa-stat-l">Existing AI tools automated only a single channel, leaving partial coverage and poor ROI.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">4+ sources</div><div class="csa-stat-l">Portals, ATS, databases, referrals, each with its own format and candidate state.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">~40%</div><div class="csa-stat-l">Human recruiter connection rate. Most outreach never reached the candidate.</div></div>
+      </div>
+    </div>
+
+    <!-- THE CHALLENGE (two-col) -->
+    <div class="csa-sec">
+      <div class="csa-two">
+        <div>
+          <div class="csa-label">The Challenge 🔎</div>
+          <h2 class="csa-head">Screen every candidate the same way, no matter where they came from.</h2>
+          <p class="csa-lead">Design a platform that unifies all sourcing channels into one pipeline, lets recruiters configure trustworthy AI agents for screening and interviewing, and orchestrates outreach at enterprise scale, all without taking the hiring decision out of human hands.</p>
+        </div>
+        <div class="csa-fig">
+          <div class="csa-ph">
+            <div class="csa-ph-i">🧭</div>
+            <div class="csa-ph-t">Before: fragmented, multi-channel screening</div>
+            <div class="csa-ph-s">Figma: current-state map of siloed channels.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MY ROLE / SCOPE -->
+    <div class="csa-sec">
+      <div class="csa-label">My Role 🧩</div>
+      <h2 class="csa-head">Sole designer, end to end, concept to launch.</h2>
+      <div class="csa-cards">
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">01</div><div><div class="csa-card-cat">Area</div><div class="csa-card-title">Job Lifecycle &amp; Setup</div></div></div>
+          <p class="csa-card-sub">JD ingestion, structured job creation, interview-round setup, and evaluation-criteria editing.</p>
+          <div class="csa-card-take">↳ <span>Turned a messy JD into a <b>structured source of truth</b>.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">02</div><div><div class="csa-card-cat">Area</div><div class="csa-card-title">AI Agent Configuration</div></div></div>
+          <p class="csa-card-sub">Configuring voice/video agents, language, persona, and reviewable scripts, with a test-before-go-live step.</p>
+          <div class="csa-card-take">↳ <span>Made complex agent setup <b>reviewable and safe</b>.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">03</div><div><div class="csa-card-cat">Area</div><div class="csa-card-title">Candidate Pipeline &amp; Flows</div></div></div>
+          <p class="csa-card-sub">Multiple entry points converging into one pipeline, with distinct inbound and outbound (consent-first) experiences.</p>
+          <div class="csa-card-take">↳ <span>One pipeline, <b>two candidate realities</b> handled.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">04</div><div><div class="csa-card-cat">Area</div><div class="csa-card-title">Recruiter Dashboard &amp; Reporting</div></div></div>
+          <p class="csa-card-sub">Status tracking, recordings, AI summaries, and credit/usage reporting for the workspace.</p>
+          <div class="csa-card-take">↳ <span>Decisions stay with humans, <b>backed by evidence</b>.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN GOALS / HMW -->
+    <div class="csa-sec">
+      <div class="csa-label">Design Goals 🎯</div>
+      <h2 class="csa-head">Three questions framed the whole platform.</h2>
+      <div class="csa-hmw">
+        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Unify candidates from every sourcing channel into a single, consistent pipeline?</div></div>
+        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Let recruiters configure trustworthy AI screening &amp; interview agents without drowning in complexity?</div></div>
+        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Automate outreach and coordination at scale while keeping humans in control of every decision?</div></div>
+      </div>
+    </div>
+
+    <!-- SOLUTION WALKTHROUGH -->
+    <div class="csa-sec">
+      <div class="csa-label">Solution Walkthrough 🎨</div>
+      <h2 class="csa-head">Four surfaces, one end-to-end hiring flow.</h2>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 01 · Job Setup</span>
+        <h3 class="csa-phase-title">From JD to a configured, testable job</h3>
+        <p class="csa-lead">Recruiters paste, upload, or AI-generate a JD; an LLM extracts and cleans it into a structured job that becomes the source of truth. They then set up interview rounds (screening, interview, or human-led tasks), edit AI-generated evaluation criteria, configure each agent (voice/video, language, persona), and test the agent before going live.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">⚙️</div><div class="csa-ph-t">Job setup &amp; round configuration</div><div class="csa-ph-s">Figma: JD → structured job → rounds → agent config.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>A single source-of-truth JD plus editable, AI-generated criteria makes setup fast without giving up recruiter control, and the test step builds trust before a real candidate is ever called.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 02 · Candidate Pipeline</span>
+        <h3 class="csa-phase-title">Every source converges into one pipeline</h3>
+        <p class="csa-lead">Candidates enter via bulk upload, embedded apply links, direct interview links, or auto-sourcing from ATS and job platforms, and all of them land in a single pipeline per job. <strong>Inbound</strong> candidates (who have intent) go straight into screening with a short intro; <strong>outbound</strong> candidates (contacted from a database) get an interest check and give consent first. The screening criteria stay identical across both; only the entry script changes.</p>
+        <div class="csa-figrow">
+          <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📥</div><div class="csa-ph-t">Unified candidate pipeline</div><div class="csa-ph-s">Bulk upload / links / ATS → one pipeline.</div></div></div>
+          <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🔀</div><div class="csa-ph-t">Inbound vs outbound flows</div><div class="csa-ph-s">Consent-first entry for outbound.</div></div></div>
+        </div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Keeping evaluation criteria constant while varying only the entry script gives fair, comparable results across sources, and consent-first outbound respects candidates who never asked to be contacted.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 03 · Orchestration</span>
+        <h3 class="csa-phase-title">The workflow decides when, how, and what next</h3>
+        <p class="csa-lead">An orchestration engine coordinates multi-channel outreach, deciding when to contact a candidate, through which channel (call, WhatsApp, email), for what objective (interest, screening, interview, scheduling), and what to do on response or silence. It optimises for time-of-day and honours retry limits and night-time policies. The design principle: <strong>agents decide what task; the workflow decides when and how.</strong></p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🕸️</div><div class="csa-ph-t">Workflow orchestration</div><div class="csa-ph-s">Channel · timing · retry logic.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Separating "what" (agents) from "when/how" (workflow) kept the system understandable to configure and dramatically lifted reach; automated coordination hit candidates at the right moment on the right channel.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Surface 04 · Evaluation &amp; Dashboard</span>
+        <h3 class="csa-phase-title">Evidence in, clear status out</h3>
+        <p class="csa-lead">After each interaction, the data is scored by an evaluation agent against the recruiter's criteria and resolved to a clear status: Fit, Not Fit, Partial Fit, Not Interested, No Response, or In-Progress. In the recruiter portal, teams see status at a glance, listen to recordings or watch videos, and read AI-generated summaries, plus credit and usage reporting for the workspace.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📊</div><div class="csa-ph-t">Recruiter dashboard &amp; candidate status</div><div class="csa-ph-s">Status · recordings · AI summaries.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>A tight set of well-defined statuses plus one-click access to the recording and summary lets recruiters act in seconds, and keeps the final judgment human, backed by the actual evidence.</p></div>
+      </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div class="csa-sec">
+      <div class="csa-label">Impact 📈</div>
+      <h2 class="csa-head">Enterprise AI hiring, orchestrated at scale.</h2>
+      <div class="csa-impact">
+        <div class="csa-impact-item"><div class="csa-impact-n">~80%</div><div class="csa-impact-l">Connection Rate<br/>(vs ~40% human)</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">2×</div><div class="csa-impact-l">Recruiter<br/>Productivity</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">All</div><div class="csa-impact-l">Sourcing Channels<br/>Unified</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">0→1</div><div class="csa-impact-l">Platform<br/>Built Solo</div></div>
+      </div>
+      <ul class="csa-ul" style="margin-top:28px">
+        <li>Roughly <strong>2× the connection rate</strong> of human recruiters through workflow-driven, multi-channel outreach.</li>
+        <li><strong>2× recruiter productivity</strong> by automating coordination, screening, and first-round interviews.</li>
+        <li><strong>Consistent, unbiased evaluation</strong>: the same criteria applied to every candidate, from every source.</li>
+        <li>Extended AI hiring from SMBs to the <strong>enterprise</strong> by becoming source-agnostic.</li>
+      </ul>
+    </div>
+
+    <!-- LEARNINGS -->
+    <div class="csa-sec">
+      <div class="csa-label">Key Learnings ✨</div>
+      <h2 class="csa-head">Reflections from building an enterprise AI product 0→1.</h2>
+      <div class="csa-learn">
+        <div class="csa-learn-item"><div class="csa-learn-n">1</div><div class="csa-learn-b"><h4>Separate "what" from "when"</h4><p>Letting agents own the task and the workflow own timing and channel kept an inherently complex system configurable and legible.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">2</div><div class="csa-learn-b"><h4>Source-agnostic is a design constraint, not just a backend one</h4><p>Every source has a different candidate state; the UI had to normalise them into one pipeline without hiding what mattered.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">3</div><div class="csa-learn-b"><h4>Trust comes from control + evidence</h4><p>Editable criteria, test-before-go-live, recordings, and summaries let recruiters hand work to AI while keeping the decision, and the accountability, human.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">4</div><div class="csa-learn-b"><h4>Consent is part of the experience</h4><p>Outbound candidates never asked to be contacted, so an interest-check-first flow wasn't a nicety; it was the design.</p></div></div>
+      </div>
+    </div>
+
+    <button class="btn-fill" style="margin-top:8px" onclick="navigate('home')">← Back to All Work</button>
+  </div>
+</div><!-- end cs-onlyrounds -->
+
+<!-- ═══════════════ CASE STUDY: AI HIRING ASSISTANT (AI SKU) ═══════════════ -->
+<div class="view csa" id="view-cs-ai-hiring">
+
+  <!-- 1 · HERO -->
+  <div class="cs-hero">
+    <button class="cs-back" onclick="navigate('home')">← Back to Work</button>
+    <span class="csa-eyebrow">Product · AI · Apna Employer</span>
+    <h1 class="cs-title">AI Hiring Assistant</h1>
+    <p class="cs-sub">From an AI screening SKU to an embedded AI hiring workflow. Designing an assistant that helps recruiters screen candidates faster while staying fully in control of the decision.</p>
+    <div class="cs-meta">
+      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-val">Product Design</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2025 to 2026</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-val">Product, Design, Eng, GTM, Sales, AI/ML</div></div>
+      <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Employer Web, mWeb, Candidate app</div></div>
+    </div>
+  </div>
+
+  <!-- HERO VISUAL -->
+  <div class="csa-wrap" style="padding-top:48px;padding-bottom:8px">
+    <div class="csa-fig">
+      <div class="csa-ph">
+        <div class="csa-ph-i">🖼️</div>
+        <div class="csa-ph-t">Hero: AI Hiring Assistant in the recruiter workflow</div>
+        <div class="csa-ph-s">Drop the cover render here (Figma: AI SKU final variants / ECC AI workflow). Replace this block with an &lt;img&gt;.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="csa-wrap">
+
+    <!-- 2 · METRICS ROW -->
+    <div class="csa-sec" style="border-top:none;padding-top:8px">
+      <div class="csa-label">By the numbers</div>
+      <div class="csa-impact">
+        <div class="csa-impact-item"><div class="csa-impact-n">24×7</div><div class="csa-impact-l">Candidate<br/>Calling</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">~34%*</div><div class="csa-impact-l">Recruiter Action<br/>on AI Fit</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">1.7 min*</div><div class="csa-impact-l">Time to Act<br/>(vs 4.3 min)</div></div>
+        <div class="csa-impact-item"><div class="csa-impact-n">[ + ]</div><div class="csa-impact-l">Revenue<br/>Uplift</div></div>
+      </div>
+      <p class="csa-cap" style="text-align:left">* Pending final confirmation. Revenue uplift, AI attach rate, ARPA / blended revenue, and final adoption numbers are placeholders to be filled once confirmed.</p>
+    </div>
+
+    <!-- 3 · PRODUCT CONTEXT -->
+    <div class="csa-sec">
+      <div class="csa-label">Context</div>
+      <h2 class="csa-head">Screening every applicant by hand does not scale.</h2>
+      <p class="csa-lead">Recruiters on Apna receive large volumes of applications, but screening each candidate manually is slow, repetitive, and hard to scale. For every candidate they typically verify salary expectation, location, experience, education, interest, availability, communication quality, and willingness to work specific shifts.</p>
+      <p class="csa-lead">The project started with a hypothesis: <strong>can AI call candidates, screen them, and let recruiters focus only on the most relevant ones?</strong> The early GTM framing positioned it as <strong>AutoShortlist AiJob</strong>, a premium job-posting SKU with AI screening for SMBs, mid-market recruiters, high-volume enterprises, and agencies.</p>
+    </div>
+
+    <!-- 4 · PROBLEM STATEMENT -->
+    <div class="csa-sec">
+      <div class="csa-label">Problem 🔎</div>
+      <h2 class="csa-head">Recruiters did not want AI to replace their judgment.</h2>
+      <div class="csa-compare">
+        <div class="csa-col expected">
+          <div class="csa-col-h">Initial hypothesis</div>
+          <p class="csa-lead" style="font-size:15px;margin:0">If AI can screen candidates and show fitment signals, recruiters will act faster and spend less time calling every applicant.</p>
+        </div>
+        <div class="csa-col actual">
+          <div class="csa-col-h">Research revealed</div>
+          <p class="csa-lead" style="font-size:15px;margin:0">Recruiters did not want AI to replace their judgment. They wanted it to reduce repetitive work while giving them enough evidence and control to make the final decision.</p>
+        </div>
+      </div>
+      <div class="csa-why" style="margin-top:26px"><div class="csa-why-h">Refined problem statement</div><p>How might we help recruiters use AI screening to make faster decisions while preserving their need to verify, control, and act confidently?</p></div>
+    </div>
+
+    <!-- 5 · BUSINESS + GTM GOALS -->
+    <div class="csa-sec">
+      <div class="csa-label">Goals 🎯</div>
+      <h2 class="csa-head">Save recruiter effort, surface AI evidence, ship a premium SKU.</h2>
+      <div class="csa-two" style="align-items:start">
+        <div>
+          <div class="csa-col-h" style="color:var(--faint);margin-bottom:12px">Business goals</div>
+          <ul class="csa-ul">
+            <li>Reduce manual screening effort.</li>
+            <li>Help recruiters prioritise better-fit candidates.</li>
+            <li>Make AI-generated screening evidence visible and usable.</li>
+            <li>Increase speed from application to recruiter action.</li>
+            <li>Build a premium AI-assisted hiring SKU.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="csa-col-h" style="color:var(--accent);margin-bottom:12px">GTM goals</div>
+          <ul class="csa-ul">
+            <li>24×7 candidate calling.</li>
+            <li>Immediate callback to candidates.</li>
+            <li>Recruiter time saved per job.</li>
+            <li>Faster hiring at lower cost.</li>
+            <li>Call-verified shortlisted candidates.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 · RESEARCH APPROACH -->
+    <div class="csa-sec">
+      <div class="csa-label">Research 📊</div>
+      <h2 class="csa-head">Watching recruiters actually screen.</h2>
+      <p class="csa-lead">Moderated usability testing to understand how recruiters experience AI in candidate screening: 30 to 45 minute moderated screen-share sessions with talk-aloud testing.</p>
+      <div class="csa-two" style="align-items:start">
+        <div>
+          <div class="csa-col-h" style="color:var(--faint);margin-bottom:12px">Research goals</div>
+          <ul class="csa-ul">
+            <li>Understand the natural flow when recruiters view candidate profiles.</li>
+            <li>Observe how AI screening information is interpreted.</li>
+            <li>Identify what information recruiters prioritise first.</li>
+            <li>Explore friction in status updates and next actions.</li>
+            <li>Capture trust levels in AI-driven decisions.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="csa-col-h" style="color:var(--accent);margin-bottom:12px">Tasks tested</div>
+          <ul class="csa-ul">
+            <li>Explore a candidate profile.</li>
+            <li>Review a candidate and make a decision.</li>
+            <li>Change a candidate's status.</li>
+            <li>Use available insights to decide the next step.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 · EXPECTED VS ACTUAL -->
+    <div class="csa-sec">
+      <div class="csa-label">Behaviour</div>
+      <h2 class="csa-head">The workflow we expected was not the one recruiters used.</h2>
+      <div class="csa-compare">
+        <div class="csa-col expected">
+          <div class="csa-col-h">Expected workflow</div>
+          <ul class="csa-ul" style="margin:0">
+            <li>Scan candidate list.</li>
+            <li>Use AI Fit tags and summaries.</li>
+            <li>Open candidate profile.</li>
+            <li>Review AI call recording and tagged insights.</li>
+            <li>Shortlist, reject, or follow up.</li>
+          </ul>
+        </div>
+        <div class="csa-col actual">
+          <div class="csa-col-h">Actual workflow</div>
+          <ul class="csa-ul" style="margin:0">
+            <li>Still manually re-verified candidates, often calling again after AI.</li>
+            <li>Rechecked screening questions by hand.</li>
+            <li>Used the AI score as a signal, not a final decision.</li>
+            <li>Listened to audio only when confused.</li>
+            <li>Typed candidate numbers manually and updated status through multi-step flows.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="csa-why" style="margin-top:26px"><div class="csa-why-h">Core insight</div><p>AI could not be designed as a final verdict. It needed to become evidence that helped recruiters act faster.</p></div>
+    </div>
+
+    <!-- 8 · CORE INSIGHTS (sticky notes) -->
+    <div class="csa-sec">
+      <div class="csa-label">Insights 🧠</div>
+      <h2 class="csa-head">Six things recruiters showed us.</h2>
+      <div class="csa-notes">
+        <div class="csa-note"><div class="csa-note-n">01</div><div class="csa-note-h">Recruiters still re-screen manually</div><div class="csa-note-p">Even after AI, they re-asked the same questions to verify salary, location, education, and experience.</div></div>
+        <div class="csa-note"><div class="csa-note-n">02</div><div class="csa-note-h">AI Fit was useful, but not final</div><div class="csa-note-p">Recruiters trusted AI to match leads, but did not reject candidates on AI insight alone.</div></div>
+        <div class="csa-note"><div class="csa-note-n">03</div><div class="csa-note-h">Audio built trust, but was slow</div><div class="csa-note-p">Full recordings were great proof, but impractical to hear for every candidate.</div></div>
+        <div class="csa-note"><div class="csa-note-n">04</div><div class="csa-note-h">AI insights were buried too deep</div><div class="csa-note-p">Information two clicks away lost most of its usefulness.</div></div>
+        <div class="csa-note"><div class="csa-note-n">05</div><div class="csa-note-h">Callback is a real hiring state</div><div class="csa-note-p">Candidates were busy, driving, or at work. The product needed callback and retry states.</div></div>
+        <div class="csa-note"><div class="csa-note-n">06</div><div class="csa-note-h">Status change had friction</div><div class="csa-note-p">A multi-step status change forced recruiters to break flow right after a call.</div></div>
+      </div>
+    </div>
+
+    <!-- 9 · DESIGN PRINCIPLES -->
+    <div class="csa-sec">
+      <div class="csa-label">Principles 🧩</div>
+      <h2 class="csa-head">Five rules that guided every screen.</h2>
+      <div class="csa-cards">
+        <div class="csa-card"><div class="csa-card-top"><div class="csa-card-num">01</div><div><div class="csa-card-cat">Principle</div><div class="csa-card-title">Make AI explain itself</div></div></div><p class="csa-card-sub">Show reasons, criteria, recordings, and evidence, not just a score.</p></div>
+        <div class="csa-card"><div class="csa-card-top"><div class="csa-card-num">02</div><div><div class="csa-card-cat">Principle</div><div class="csa-card-title">Keep recruiter control intact</div></div></div><p class="csa-card-sub">AI recommends, the recruiter decides.</p></div>
+        <div class="csa-card"><div class="csa-card-top"><div class="csa-card-num">03</div><div><div class="csa-card-cat">Principle</div><div class="csa-card-title">Reduce manual effort</div></div></div><p class="csa-card-sub">Remove repeated checks, manual number typing, and status friction.</p></div>
+        <div class="csa-card"><div class="csa-card-top"><div class="csa-card-num">04</div><div><div class="csa-card-cat">Principle</div><div class="csa-card-title">Bring AI closer to action</div></div></div><p class="csa-card-sub">Surface AI in the list, filters, cards, and profiles.</p></div>
+        <div class="csa-card"><div class="csa-card-top"><div class="csa-card-num">05</div><div><div class="csa-card-cat">Principle</div><div class="csa-card-title">Design for messy states</div></div></div><p class="csa-card-sub">Support callback, retry, no response, incomplete, not interested.</p></div>
+      </div>
+    </div>
+
+    <!-- 10 · DESIGN EXPLORATION -->
+    <div class="csa-sec">
+      <div class="csa-label">Exploration</div>
+      <h2 class="csa-head">From a premium SKU to a workflow layer.</h2>
+      <div class="csa-learn">
+        <div class="csa-learn-item"><div class="csa-learn-n">1</div><div class="csa-learn-b"><h4>AI as a premium job SKU</h4><p>The first direction sold AI as a new premium job type. Good for monetisation, but it asked recruiters to trust and pay for AI before feeling its value.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">2</div><div class="csa-learn-b"><h4>Express checkout education</h4><p>AI shown next to Classic and Premium jobs, with a Smart-AI card: view demo, try AI yourself, and "screens, assesses, and shortlists candidates 24/7".</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">3</div><div class="csa-learn-b"><h4>Screening question setup</h4><p>Recruiters needed control over what AI asks. This shifted the story from "AI will screen for you" to "you define what matters, AI screens at scale".</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">4</div><div class="csa-learn-b"><h4>AI inside the ECC candidate workflow</h4><p>AI became part of candidate management: active state, screened count, AI Screen Fit tab, filters, criteria, recordings, attempts, time saved, and actions.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">5</div><div class="csa-learn-b"><h4>Candidate-side AI call states</h4><p>Candidate flows explained what happens after applying, when AI calls, and what state the application is in.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">6</div><div class="csa-learn-b"><h4>AI credits and future monetisation</h4><p>The direction expanded into an AI credits / wallet model, letting recruiters activate AI even after a job is already live.</p></div></div>
+      </div>
+      <div class="csa-figrow" style="margin-top:30px">
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🧪</div><div class="csa-ph-t">Early explorations</div><div class="csa-ph-s">Figma: express checkout / Smart-AI card.</div></div></div>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🧪</div><div class="csa-ph-t">Screening question setup</div><div class="csa-ph-s">Figma: screening questions V1 / editing.</div></div></div>
+      </div>
+    </div>
+
+    <!-- 11 · FINAL SOLUTION -->
+    <div class="csa-sec">
+      <div class="csa-label">Final Solution 🎨</div>
+      <h2 class="csa-head">AI, embedded where recruiters already work.</h2>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Solution 01 · Checkout</span>
+        <h3 class="csa-phase-title">Smart-AI job in checkout</h3>
+        <p class="csa-lead">A premium job option with clear value props and demo-led education, so recruiters could understand and try AI before committing.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🛒</div><div class="csa-ph-t">Smart-AI job in express checkout</div><div class="csa-ph-s">Figma: express checkout.</div></div></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Solution 02 · Setup</span>
+        <h3 class="csa-phase-title">Screening setup before activation</h3>
+        <p class="csa-lead">Recruiters could review and edit exactly what AI would ask candidates, turning AI from a black box into something they configured.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📝</div><div class="csa-ph-t">Screening question setup and editing</div><div class="csa-ph-s">Figma: screening questions / dropdowns.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Letting recruiters define the questions made the results feel like theirs, and made shortlisting defensible against a bar they set.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Solution 03 · ECC</span>
+        <h3 class="csa-phase-title">AI Hiring Assistant active state</h3>
+        <p class="csa-lead">Inside ECC, AI visibly worked on the recruiter's behalf: "Your AI Hiring Assistant is working and screening candidates for you."</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🤖</div><div class="csa-ph-t">AI active state in ECC</div><div class="csa-ph-s">Figma: ECC AI workflow.</div></div></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Solution 04 · List</span>
+        <h3 class="csa-phase-title">AI-screened candidate list</h3>
+        <p class="csa-lead">AI Fit tabs, screened counts, criteria filters, and quick actions brought AI right into the list view where recruiters triage.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📋</div><div class="csa-ph-t">AI Fit tabs, filters, and counts</div><div class="csa-ph-s">Figma: ECC AI workflow / candidate list.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Surfacing AI in the list, not two clicks deep, matched how recruiters actually scan and prioritise.</p></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Solution 05 · Profile</span>
+        <h3 class="csa-phase-title">Candidate profile with evidence</h3>
+        <p class="csa-lead">AI summary, call recording, screening results, attempt details, candidate context, and clear action buttons, so a decision took seconds and stayed evidence-backed.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🗂️</div><div class="csa-ph-t">Candidate profile with AI evidence</div><div class="csa-ph-s">Figma: candidate applications flow.</div></div></div>
+      </div>
+
+      <div class="csa-phase">
+        <span class="csa-phase-tag">Solution 06 · States</span>
+        <h3 class="csa-phase-title">Nuanced AI call states</h3>
+        <p class="csa-lead">Fit, Not Fit, No Response, Not Interested, Callback, Interview Incomplete, AI Call Result Pending, and Retry, so the product matched the messy reality of hiring.</p>
+        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🔁</div><div class="csa-ph-t">AI call states and candidate-side flows</div><div class="csa-ph-s">Figma: candidate app success / final variants.</div></div></div>
+        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Rigid Fit / Not Fit hid real outcomes. Nuanced states let recruiters trust the system with the ambiguous cases too.</p></div>
+      </div>
+    </div>
+
+    <!-- 12 · IMPACT -->
+    <div class="csa-sec">
+      <div class="csa-label">Impact 📈</div>
+      <h2 class="csa-head">From a premium SKU to an embedded hiring workflow.</h2>
+      <ul class="csa-ul">
+        <li>AI moved from a premium SKU into an <strong>embedded hiring workflow</strong>.</li>
+        <li>Recruiters got clearer AI evidence through <strong>criteria, summaries, and recordings</strong>.</li>
+        <li>Candidate management became more action-oriented with <strong>AI Fit tabs and screened counts</strong>.</li>
+        <li>Candidate-side flows handled <strong>AI call states</strong> more clearly.</li>
+        <li>AI credits created a path for <strong>repeat monetisation</strong> beyond one-time job posting.</li>
+      </ul>
+      <p class="csa-cap" style="text-align:left;margin-top:18px">Metrics to confirm: AI adoption [add confirmed number], adoption target 3.55% to 5% in 90 days, new-user conversion 3.05% to 3.59% (confirm), overall adoption 1.95% to 2.15% (confirm), recruiter action on AI Fit ~34% (confirm), time to act 1.7 min vs 4.3 min (confirm), revenue increase / AI attach rate / ARPA [add confirmed values].</p>
+    </div>
+
+    <!-- 13 · WHAT CHANGED -->
+    <div class="csa-sec">
+      <div class="csa-label">What changed</div>
+      <h2 class="csa-head">Before and after.</h2>
+      <div class="csa-table">
+        <div class="csa-th">Before</div><div class="csa-th">After</div>
+        <div class="csa-td">AI was sold as a premium job SKU</div><div class="csa-td aft">AI became a workflow layer</div>
+        <div class="csa-td">Recruiters saw AI as a black box</div><div class="csa-td aft">Recruiters saw reasons, criteria, and call proof</div>
+        <div class="csa-td">AI value was explained in checkout</div><div class="csa-td aft">AI value was visible in the ECC workflow</div>
+        <div class="csa-td">Fit / Not Fit was too rigid</div><div class="csa-td aft">Nuanced states handled real hiring behaviour</div>
+        <div class="csa-td">AI was tied to job posting</div><div class="csa-td aft">AI credits opened reusable monetisation</div>
+      </div>
+    </div>
+
+    <!-- 14 · LEARNINGS -->
+    <div class="csa-sec">
+      <div class="csa-label">Learnings ✨</div>
+      <h2 class="csa-head">What this taught me about designing AI.</h2>
+      <div class="csa-learn">
+        <div class="csa-learn-item"><div class="csa-learn-n">1</div><div class="csa-learn-b"><h4>AI needs proof, not just prediction</h4><p>Recruiters act on evidence they can see, not a confidence score they cannot inspect.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">2</div><div class="csa-learn-b"><h4>Control is part of trust</h4><p>Letting recruiters define and edit criteria was what made them willing to lean on AI at all.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">3</div><div class="csa-learn-b"><h4>Demo matters for AI adoption</h4><p>People adopt what they can try. Demo-led education did more than feature copy.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">4</div><div class="csa-learn-b"><h4>Workflow placement matters</h4><p>AI two clicks away was AI ignored. Value had to live in the list, card, and profile.</p></div></div>
+        <div class="csa-learn-item"><div class="csa-learn-n">5</div><div class="csa-learn-b"><h4>AI products need messy states</h4><p>Callback, retry, and no-response were not edge cases. They were the everyday of hiring.</p></div></div>
+      </div>
+    </div>
+
+    <!-- 15 · FIGMA ARTIFACT MAP -->
+    <div class="csa-sec">
+      <div class="csa-label">Design artifacts</div>
+      <h2 class="csa-head">Figma screenshot map.</h2>
+      <p class="csa-lead">The source files behind each surface above. Screens from these will replace the placeholders throughout this case study.</p>
+      <div class="csa-artifacts">
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=190-7241" target="_blank" rel="noopener"><span class="csa-artifact-i">🎨</span><span><span class="csa-artifact-t">Main AI SKU file</span><br/><span class="csa-artifact-s">Figma · node 190-7241</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=190-10141" target="_blank" rel="noopener"><span class="csa-artifact-i">🛒</span><span><span class="csa-artifact-t">Express Checkout</span><br/><span class="csa-artifact-s">Figma · node 190-10141</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=1842-43177" target="_blank" rel="noopener"><span class="csa-artifact-i">▶️</span><span><span class="csa-artifact-t">Prototype</span><br/><span class="csa-artifact-s">Figma · node 1842-43177</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=2642-62907" target="_blank" rel="noopener"><span class="csa-artifact-i">📝</span><span><span class="csa-artifact-t">Screening Questions V1</span><br/><span class="csa-artifact-s">Figma · node 2642-62907</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=2642-55613" target="_blank" rel="noopener"><span class="csa-artifact-i">✏️</span><span><span class="csa-artifact-t">Dropdowns + Editing Questions</span><br/><span class="csa-artifact-s">Figma · node 2642-55613</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=290-22115" target="_blank" rel="noopener"><span class="csa-artifact-i">🤖</span><span><span class="csa-artifact-t">ECC AI Workflow</span><br/><span class="csa-artifact-s">Figma · node 290-22115</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=190-25262" target="_blank" rel="noopener"><span class="csa-artifact-i">🗂️</span><span><span class="csa-artifact-t">Candidate Applications Flow</span><br/><span class="csa-artifact-s">Figma · node 190-25262</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=7887-56772" target="_blank" rel="noopener"><span class="csa-artifact-i">🔧</span><span><span class="csa-artifact-t">Aug 19 Design Change</span><br/><span class="csa-artifact-s">Figma · node 7887-56772</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=7892-58306" target="_blank" rel="noopener"><span class="csa-artifact-i">✅</span><span><span class="csa-artifact-t">Candidate App Success</span><br/><span class="csa-artifact-s">Figma · node 7892-58306</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=2673-57206" target="_blank" rel="noopener"><span class="csa-artifact-i">💳</span><span><span class="csa-artifact-t">Available Credits</span><br/><span class="csa-artifact-s">Figma · node 2673-57206</span></span></a>
+        <a class="csa-artifact" href="https://www.figma.com/design/T6wj2M3oXvmz99EFpoDAXl/AI-SKU?node-id=3190-68361" target="_blank" rel="noopener"><span class="csa-artifact-i">🎛️</span><span><span class="csa-artifact-t">Final variants</span><br/><span class="csa-artifact-s">Figma · node 3190-68361</span></span></a>
+      </div>
+    </div>
+
+    <button class="btn-fill" style="margin-top:8px" onclick="navigate('home')">← Back to All Work</button>
+  </div>
+</div><!-- end cs-ai-hiring -->
+
 <!-- CUSTOM CURSOR -->
 <div id="custom-cursor" aria-hidden="true">
   <svg class="cc-arrow" width="20" height="24" viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg">
@@ -2295,7 +2852,9 @@ const views={
   'about':'view-about',
   'cs-srp':'view-cs-srp',
   'cs-profile':'view-cs-profile',
-  'cs-ai-calling':'view-cs-ai-calling'
+  'cs-ai-calling':'view-cs-ai-calling',
+  'cs-onlyrounds':'view-cs-onlyrounds',
+  'cs-ai-hiring':'view-cs-ai-hiring'
 };
 function navigate(key){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
