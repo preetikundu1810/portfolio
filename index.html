@@ -475,13 +475,17 @@ section{position:relative;z-index:1}
   transition:transform .25s ease;
 }
 .pcard-cta:hover .arrow{transform:translateX(4px)}
+/* "Coming Soon" reads as a status tag, not a clickable CTA */
 .pcard-cta.is-soon{
-  background:transparent;color:#9c8f80;
-  border:1px solid rgba(26,23,20,.16);
-  box-shadow:none;cursor:not-allowed;
+  align-self:flex-start;
+  background:rgba(26,23,20,.06);color:#9c8f80;
+  border:none;box-shadow:none;
+  cursor:default;pointer-events:none;
+  font-size:10px;font-weight:600;letter-spacing:.14em;
+  padding:6px 12px;border-radius:6px;
 }
 .pcard-cta.is-soon:hover{
-  background:transparent;color:#9c8f80;
+  background:rgba(26,23,20,.06);color:#9c8f80;
   transform:none;box-shadow:none;
 }
 
@@ -496,7 +500,7 @@ section{position:relative;z-index:1}
 .pcard-metric-n{
   font-family:'Cormorant Garamond',serif;
   font-size:28px;font-weight:700;
-  color:#1a1714;line-height:1;
+  color:#5868a2;line-height:1;
   margin-bottom:3px;
 }
 .pcard-metric-l{
@@ -509,7 +513,7 @@ section{position:relative;z-index:1}
 /* Right: image — full height of card, no fixed px */
 .pcard-visual{
   position:relative;overflow:hidden;
-  background:#ede5d8;
+  background:#141210;
   height:auto;
   min-height:380px;
 }
@@ -526,22 +530,24 @@ section{position:relative;z-index:1}
   position:absolute;inset:0;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  background:linear-gradient(145deg,#ede5d8,#e0d4c4);
+  background:linear-gradient(145deg,#1e1b18,#141210);
 }
 .pcard-vis-num{
   font-family:'Cormorant Garamond',serif;
   font-size:96px;font-weight:300;font-style:italic;
-  color:rgba(138,122,104,.2);user-select:none;line-height:1;
+  color:rgba(255,255,255,.16);user-select:none;line-height:1;
 }
 .pcard-vis-label{
   font-family:'DM Sans',sans-serif;
   font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:#9c8f80;margin-top:8px;
+  color:rgba(250,246,240,.55);margin-top:8px;
 }
+/* Selected Works cards container (was an inline style; class so it can respond) */
+.work-cards{padding:0 72px 80px;display:flex;flex-direction:column;gap:20px}
 /* Coming-soon badge */
 .pcard-soon{
   position:absolute;top:20px;left:20px;
-  background:rgba(26,23,20,.7);color:#faf6f0;
+  background:rgba(250,246,240,.92);color:#1a1714;
   font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;
   letter-spacing:.1em;text-transform:uppercase;
   padding:5px 12px;border-radius:100px;
@@ -646,7 +652,7 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .cs-meta{display:flex;gap:48px;border-top:1px solid rgba(26,23,20,.08);padding-top:28px}
 .cs-meta-label{font-family:'DM Sans',monospace;font-size:10px;color:#9c8f80;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
 .cs-meta-val{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#1a1714}
-.cs-cover{width:100%;aspect-ratio:16/7;overflow:hidden;background:#e8ddd0}
+.cs-cover{width:100%;aspect-ratio:16/7;overflow:hidden;background:#141210}
 .cs-cover img{width:100%;height:100%;object-fit:cover}
 .cs-body{max-width:760px;margin:0 auto;padding:72px 48px}
 .cs-section{margin-bottom:56px}
@@ -657,9 +663,9 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .cs-ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
 .cs-ul li{font-family:'DM Sans',sans-serif;font-size:14px;color:#3d3530;line-height:1.65;padding-left:18px;position:relative}
 .cs-ul li::before{content:'—';position:absolute;left:0;color:#9c8f80;font-size:12px}
-.cs-img{width:100%;border-radius:6px;margin:28px 0;display:block;object-fit:cover;background:#e8ddd0}
+.cs-img{width:100%;border-radius:6px;margin:28px 0;display:block;object-fit:cover;background:#141210}
 .cs-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
-.cs-img-grid img{width:100%;border-radius:6px;object-fit:cover;background:#e8ddd0}
+.cs-img-grid img{width:100%;border-radius:6px;object-fit:cover;background:#141210}
 .cs-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,23,20,.08);border-radius:6px;overflow:hidden;margin:36px 0}
 .cs-impact-item{background:#faf6f0;padding:24px 18px;text-align:center}
 .cs-impact-n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:#1a1714;line-height:1;margin-bottom:5px}
@@ -714,11 +720,11 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .csa-why p{font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7;color:var(--mut);margin:0}
 /* figure / image placeholder */
 .csa-fig{margin:26px 0 0}
-.csa-fig img{width:100%;border-radius:12px;display:block;object-fit:cover;background:#e8ddd0;border:1px solid var(--line)}
-.csa-ph{width:100%;aspect-ratio:16/9;border-radius:12px;border:1.5px dashed rgba(88,104,162,.4);background:repeating-linear-gradient(45deg,rgba(88,104,162,.03),rgba(88,104,162,.03) 12px,transparent 12px,transparent 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:24px}
-.csa-ph-i{font-size:22px;opacity:.5}
-.csa-ph-t{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--accent)}
-.csa-ph-s{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--faint);max-width:360px;line-height:1.5}
+.csa-fig img{width:100%;border-radius:12px;display:block;object-fit:cover;background:#141210;border:1px solid var(--line)}
+.csa-ph{width:100%;aspect-ratio:16/9;border-radius:12px;border:1.5px dashed rgba(170,180,232,.4);background:repeating-linear-gradient(45deg,rgba(255,255,255,.04),rgba(255,255,255,.04) 12px,transparent 12px,transparent 24px),#141210;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:24px}
+.csa-ph-i{font-size:22px;opacity:.7}
+.csa-ph-t{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#aab4e8}
+.csa-ph-s{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(250,246,240,.5);max-width:360px;line-height:1.5}
 .csa-cap{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--faint);margin-top:10px;text-align:center}
 .csa-figrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
 .csa-figrow .csa-fig{margin:0}
@@ -873,7 +879,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 .cs-meta-item{}
 .cs-meta-label{font-family:'DM Mono',monospace;font-size:10px;color:#9c8f80;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
 .cs-meta-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#1a1714}
-.cs-cover{width:100%;aspect-ratio:16/7;overflow:hidden;background:#e8ddd0}
+.cs-cover{width:100%;aspect-ratio:16/7;overflow:hidden;background:#141210}
 .cs-cover img{width:100%;height:100%;object-fit:cover}
 .cs-body{max-width:800px;margin:0 auto;padding:80px 72px}
 .cs-section{margin-bottom:64px}
@@ -884,9 +890,9 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 .cs-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
 .cs-ul li{font-family:'DM Sans',sans-serif;font-size:14px;color:#3d3530;line-height:1.65;padding-left:20px;position:relative}
 .cs-ul li::before{content:'—';position:absolute;left:0;color:#9c8f80;font-size:12px}
-.cs-img{width:100%;border-radius:6px;margin:32px 0;display:block;object-fit:cover;background:#e8ddd0}
+.cs-img{width:100%;border-radius:6px;margin:32px 0;display:block;object-fit:cover;background:#141210}
 .cs-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
-.cs-img-grid img{width:100%;border-radius:6px;object-fit:cover;background:#e8ddd0}
+.cs-img-grid img{width:100%;border-radius:6px;object-fit:cover;background:#141210}
 .cs-impact{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,23,20,.1);border-radius:6px;overflow:hidden;margin:40px 0}
 .cs-impact-item{background:#faf6f0;padding:28px 20px;text-align:center}
 .cs-impact-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#1a1714;line-height:1;margin-bottom:6px}
@@ -909,6 +915,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   #about{padding:0}
   footer{padding:40px 24px 28px}
   /* new pcard responsive */
+  .work-cards{padding:0 24px 64px}
   .pcard-inner{grid-template-columns:1fr;min-height:auto}
   .pcard-visual{min-height:260px;order:-1}
   .pcard-body{padding:32px 28px 28px}
@@ -1191,7 +1198,11 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 .wib-logo:hover{color:#1a1714;transform:translateY(-2px)}
 .wib-logo-img{width:auto;display:block;opacity:.95;transition:opacity .2s,transform .3s cubic-bezier(.34,1.56,.64,1)}
 .wib-logo-img:hover{opacity:1;transform:translateY(-3px)}
-@media(max-width:860px){.wib-stage{height:auto;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}.wib-pill-wrap{position:static;transform:none}.wib-pill{transform:none!important;animation:none}.wib-center{position:static;transform:none;margin:26px 0}.wib-logos{gap:48px}}
+/* Keep the scattered pills-around-the-title layout on smaller screens (do not stack); just shrink the pills */
+.wib-center{z-index:5}
+@media(max-width:860px){.wib-stage{height:540px}.wib-pill{font-size:12px;padding:10px 15px}.wib-logos{gap:48px}}
+@media(max-width:600px){.wib-stage{height:430px}.wib-pill{font-size:10px;padding:7px 11px}.wib-logos{gap:30px;flex-wrap:wrap}}
+@media(max-width:380px){.wib-stage{height:400px}.wib-pill{font-size:9px;padding:6px 9px}}
 /* ══ SNAPSHOTS — two-row bento marquee ══ */
 .snap-rows{display:flex;flex-direction:column;gap:18px}
 .snap-marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
@@ -1295,6 +1306,16 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   transform:translateY(-3px);
   box-shadow:0 14px 46px rgba(0,0,0,.32);
 }
+.fcta-email{
+  display:inline-block;
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;font-weight:500;letter-spacing:.02em;
+  color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(250,246,240,.45);
+  padding-bottom:2px;margin-bottom:34px;
+  transition:border-color .2s;
+}
+.fcta-email:hover{border-color:#fff}
 .fcta-stalk-h{
   font-family:'DM Sans',sans-serif;
   font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
@@ -1345,6 +1366,79 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 #hero-pixels .px{position:absolute;border-radius:1px;opacity:0;will-change:transform,opacity;animation:pxFloat var(--dur,3s) ease-in-out var(--delay,0s) infinite}
 @keyframes pxFloat{0%{opacity:0;transform:translateY(0)}18%{opacity:var(--op,.3)}55%{opacity:var(--op,.3);transform:translateY(-2px)}100%{opacity:0;transform:translateY(-3px)}}
 @media (prefers-reduced-motion:reduce){#hero-pixels .px{animation-duration:9s}}
+
+/* ══ MOBILE TUNING — smaller type + tighter spacing for phones (kept last so it wins) ══ */
+@media(max-width:600px){
+  /* Foundit-style case studies (cs-*) */
+  .cs-hero{padding:78px 18px 30px}
+  .cs-body{padding:30px 18px}
+  .cs-title{font-size:clamp(26px,8vw,34px);margin-bottom:16px}
+  .cs-sub{font-size:14px;margin-bottom:30px}
+  .cs-meta{gap:16px}
+  .cs-section{margin-bottom:40px}
+  .cs-section-title{font-size:clamp(20px,6vw,26px)}
+  .cs-text{font-size:14px;line-height:1.75}
+  .cs-ul li{font-size:13.5px}
+  .cs-impact{grid-template-columns:1fr 1fr}
+  .cs-impact-n{font-size:26px}
+  .cs-impact-item{padding:20px 12px}
+
+  /* Editorial (csa-*) case studies */
+  .csa-wrap{padding:0 18px}
+  .csa-sec{padding:42px 0}
+  .csa-eyebrow{font-size:11px;margin-bottom:16px;padding:5px 12px}
+  .csa-label{font-size:12px}
+  .csa-head,.csa-two .csa-head{font-size:clamp(22px,6.4vw,28px);margin-bottom:16px}
+  .csa-lead{font-size:15px;line-height:1.7}
+  .csa-ul li{font-size:14px}
+  .csa-statgrid{margin-top:26px}
+  .csa-stat{padding:24px 20px}
+  .csa-stat-n{font-size:32px}
+  .csa-cards,.csa-hmw{margin-top:26px}
+  .csa-card{padding:22px 20px 20px}
+  .csa-card-title{font-size:18px}
+  .csa-card-stat{font-size:30px}
+  .csa-hmw-card{padding:22px}
+  .csa-hmw-q{font-size:34px;margin-bottom:12px}
+  .csa-hmw-t{font-size:15px}
+  .csa-phase{margin-top:32px}
+  .csa-phase-title{font-size:clamp(20px,5.6vw,24px)}
+  .csa-why{padding:16px 18px}
+  .csa-impact-item{padding:22px 14px}
+  .csa-impact-n{font-size:30px}
+  .csa-notes{margin-top:26px}
+  .csa-note{padding:18px 16px 20px}
+  .csa-note-h{font-size:17px}
+  .csa-note-p{font-size:12.5px}
+  .csa-learn-item{gap:12px;padding:16px 0}
+  .csa-learn-n{font-size:22px;width:28px}
+  .csa-learn-b h4{font-size:14px}
+  .csa-th,.csa-td{padding:12px 14px;font-size:13px}
+  .csa-artifact{padding:12px 14px}
+  .csa-artifact-t{font-size:13px}
+
+  /* Global section headings */
+  .sec-h{font-size:clamp(24px,7.5vw,32px);margin-bottom:32px}
+  .wib-title{font-size:clamp(30px,9vw,40px)}
+  .gtk-title{font-size:clamp(34px,11vw,48px)}
+
+  /* Selected Works cards */
+  .work-cards{padding:0 16px 54px}
+  .pcard-body{padding:26px 20px 22px}
+  .pcard-metrics{gap:14px}
+  .pcard-metric-n{font-size:22px}
+  .pcard-visual{min-height:210px}
+  .pcard-vis-num{font-size:60px}
+  .pcard-title{line-height:1.05}
+  .pcard-desc{font-size:14px}
+}
+@media(max-width:380px){
+  .cs-title{font-size:24px}
+  .csa-head,.csa-two .csa-head{font-size:21px}
+  .csa-stat-n{font-size:28px}
+  .csa-impact,.cs-impact{grid-template-columns:1fr}
+  .csa-impact-n{font-size:28px}
+}
 </style>
 </head>
 <body>
@@ -1439,9 +1533,70 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 
   </div>
 
-  <div style="padding:0 72px 80px;display:flex;flex-direction:column;gap:20px">
+  <div class="work-cards">
 
-    <!-- CARD 01 -->
+    <!-- CARD 01 — Onboarding Revamp (coming soon) -->
+    <div class="pcard sr">
+      <div class="pcard-inner">
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-cat">Candidate Journey · Onboarding · Apna</div>
+            <h3 class="pcard-title">Onboarding<br/>Revamp</h3>
+            <p class="pcard-desc">Reimagined the candidate onboarding journey, smoothing first-time setup so seekers reach their first meaningful action faster and with less drop-off.</p>
+            <div class="pcard-tags">
+              <span class="pcard-tag">Journey Mapping</span>
+              <span class="pcard-tag">Flow Design</span>
+              <span class="pcard-tag">Activation UX</span>
+            </div>
+            <button class="pcard-cta is-soon" disabled aria-disabled="true">Coming Soon</button>
+          </div>
+          <div class="pcard-metrics">
+            <div class="pcard-metric"><div class="pcard-metric-n">↓</div><div class="pcard-metric-l">Onboarding<br/>Drop-off</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">Faster</div><div class="pcard-metric-l">Time to First<br/>Action</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">↑</div><div class="pcard-metric-l">Activation<br/>Rate</div></div>
+          </div>
+        </div>
+        <div class="pcard-visual">
+          <div class="pcard-vis-placeholder">
+            <div class="pcard-vis-num">01</div>
+            <div class="pcard-vis-label">Candidate Onboarding Journey</div>
+          </div>
+          <div class="pcard-soon">Coming Soon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 02 — AI Hiring Assistant (live) -->
+    <div class="pcard sr">
+      <div class="pcard-inner">
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <div class="pcard-cat">AI Hiring · Employer Platform · Apna</div>
+            <h3 class="pcard-title">AI Hiring<br/>Assistant</h3>
+            <p class="pcard-desc">Turned an AI screening SKU into an embedded hiring workflow — making AI explainable evidence recruiters can act on, not a black-box verdict, while keeping them in control of every decision.</p>
+            <div class="pcard-tags">
+              <span class="pcard-tag">UX Strategy</span>
+              <span class="pcard-tag">Usability Research</span>
+              <span class="pcard-tag">AI Workflow Design</span>
+            </div>
+            <button class="pcard-cta" onclick="navigate('cs-ai-hiring')">View Case Study <span class="arrow">→</span></button>
+          </div>
+          <div class="pcard-metrics">
+            <div class="pcard-metric"><div class="pcard-metric-n">24×7</div><div class="pcard-metric-l">Candidate<br/>Calling</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">~34%</div><div class="pcard-metric-l">Action on<br/>AI Fit</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">1.7 min</div><div class="pcard-metric-l">Time to<br/>Act</div></div>
+          </div>
+        </div>
+        <div class="pcard-visual">
+          <div class="pcard-vis-placeholder">
+            <div class="pcard-vis-num">02</div>
+            <div class="pcard-vis-label">AI Hiring Assistant</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 03 — Job Listing & JD Page Revamp (live) -->
     <div class="pcard sr">
       <div class="pcard-inner">
         <div class="pcard-body">
@@ -1469,7 +1624,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       </div>
     </div>
 
-    <!-- CARD 02 -->
+    <!-- CARD 04 — Seeker Profile (live) -->
     <div class="pcard sr">
       <div class="pcard-inner">
         <div class="pcard-body">
@@ -1497,37 +1652,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       </div>
     </div>
 
-    <!-- CARD 03 — AI Calling Agent (live) -->
-    <div class="pcard sr">
-      <div class="pcard-inner">
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <div class="pcard-cat">AI Screening · Voice AI · Apna</div>
-            <h3 class="pcard-title">AI Calling<br/>Agent</h3>
-            <p class="pcard-desc">Designed an AI voice agent that screens job applicants in Hindi or English within minutes of applying — scoring fluency, intent, and fit, then ranking them with full call transcripts ready to act on.</p>
-            <div class="pcard-tags">
-              <span class="pcard-tag">Conversational UX</span>
-              <span class="pcard-tag">Voice AI</span>
-              <span class="pcard-tag">AI-assisted UX</span>
-            </div>
-            <button class="pcard-cta" onclick="navigate('cs-ai-calling')">View Case Study <span class="arrow">→</span></button>
-          </div>
-          <div class="pcard-metrics">
-            <div class="pcard-metric"><div class="pcard-metric-n">78%</div><div class="pcard-metric-l">Candidate<br/>Pick-up Rate</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">4x</div><div class="pcard-metric-l">Faster<br/>Time-to-Shortlist</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">21 hrs</div><div class="pcard-metric-l">Recruiter Time<br/>Saved / Week</div></div>
-          </div>
-        </div>
-        <div class="pcard-visual">
-          <div class="pcard-vis-placeholder">
-            <div class="pcard-vis-num">03</div>
-            <div class="pcard-vis-label">AI Calling Agent</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 04 — OnlyRounds (live) -->
+    <!-- CARD 05 — OnlyRounds (coming soon) -->
     <div class="pcard sr">
       <div class="pcard-inner">
         <div class="pcard-body">
@@ -1540,7 +1665,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
               <span class="pcard-tag">AI Workflow Design</span>
               <span class="pcard-tag">Enterprise UX</span>
             </div>
-            <button class="pcard-cta" onclick="navigate('cs-onlyrounds')">View Case Study <span class="arrow">→</span></button>
+            <button class="pcard-cta is-soon" disabled aria-disabled="true">Coming Soon</button>
           </div>
           <div class="pcard-metrics">
             <div class="pcard-metric"><div class="pcard-metric-n">~80%</div><div class="pcard-metric-l">Connection Rate<br/>(vs ~40% human)</div></div>
@@ -1550,68 +1675,8 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         </div>
         <div class="pcard-visual">
           <div class="pcard-vis-placeholder">
-            <div class="pcard-vis-num">04</div>
-            <div class="pcard-vis-label">OnlyRounds · Enterprise AI ATS</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 05 — AI Hiring Assistant (live) -->
-    <div class="pcard sr">
-      <div class="pcard-inner">
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <div class="pcard-cat">AI Hiring · Employer Platform · Apna</div>
-            <h3 class="pcard-title">AI Hiring<br/>Assistant</h3>
-            <p class="pcard-desc">Turned an AI screening SKU into an embedded hiring workflow — making AI explainable evidence recruiters can act on, not a black-box verdict, while keeping them in control of every decision.</p>
-            <div class="pcard-tags">
-              <span class="pcard-tag">UX Strategy</span>
-              <span class="pcard-tag">Usability Research</span>
-              <span class="pcard-tag">AI Workflow Design</span>
-            </div>
-            <button class="pcard-cta" onclick="navigate('cs-ai-hiring')">View Case Study <span class="arrow">→</span></button>
-          </div>
-          <div class="pcard-metrics">
-            <div class="pcard-metric"><div class="pcard-metric-n">24×7</div><div class="pcard-metric-l">Candidate<br/>Calling</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">Evidence</div><div class="pcard-metric-l">Not a<br/>Verdict</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">Embedded</div><div class="pcard-metric-l">In ECC<br/>Workflow</div></div>
-          </div>
-        </div>
-        <div class="pcard-visual">
-          <div class="pcard-vis-placeholder">
             <div class="pcard-vis-num">05</div>
-            <div class="pcard-vis-label">AI Hiring Assistant</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 06 — Onboarding Revamp (coming soon) -->
-    <div class="pcard sr">
-      <div class="pcard-inner">
-        <div class="pcard-body">
-          <div class="pcard-top">
-            <div class="pcard-cat">Candidate Journey · Onboarding · Apna</div>
-            <h3 class="pcard-title">Onboarding<br/>Revamp</h3>
-            <p class="pcard-desc">Reimagined the candidate onboarding journey, smoothing first-time setup so seekers reach their first meaningful action faster and with less drop-off.</p>
-            <div class="pcard-tags">
-              <span class="pcard-tag">Journey Mapping</span>
-              <span class="pcard-tag">Flow Design</span>
-              <span class="pcard-tag">Activation UX</span>
-            </div>
-            <button class="pcard-cta is-soon" disabled aria-disabled="true">Coming Soon</button>
-          </div>
-          <div class="pcard-metrics">
-            <div class="pcard-metric"><div class="pcard-metric-n">↓</div><div class="pcard-metric-l">Onboarding<br/>Drop-off</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">Faster</div><div class="pcard-metric-l">Time to First<br/>Action</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">↑</div><div class="pcard-metric-l">Activation<br/>Rate</div></div>
-          </div>
-        </div>
-        <div class="pcard-visual">
-          <div class="pcard-vis-placeholder">
-            <div class="pcard-vis-num">06</div>
-            <div class="pcard-vis-label">Candidate Onboarding Journey</div>
+            <div class="pcard-vis-label">OnlyRounds · Enterprise AI ATS</div>
           </div>
           <div class="pcard-soon">Coming Soon</div>
         </div>
@@ -1717,12 +1782,12 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   <!-- Main content -->
   <div class="fcta-content" id="fctaContent">
     <h2 class="fcta-headline">Have an idea in mind? Let's build something meaningful together.</h2>
-    <a class="fcta-btn" href="mailto:kundupreeti68@gmail.com">Let's Connect</a>
+    <a class="fcta-btn" href="mailto:preetikundu1810@gmail.com">Let's Connect</a>
+    <a class="fcta-email" href="mailto:preetikundu1810@gmail.com">preetikundu1810@gmail.com</a>
     <div class="fcta-stalk-h">Wanna stalk me?</div>
     <div class="fcta-links">
       <a href="https://www.linkedin.com/in/preeti-kundu-10b2951b3" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="https://twitter.com/Preeti_kundu10" target="_blank" rel="noopener">Twitter ↗</a>
-      <a href="mailto:kundupreeti68@gmail.com">Email ↗</a>
     </div>
   </div>
 
@@ -1838,7 +1903,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <a href="https://www.linkedin.com/in/preeti-kundu-10b2951b3" target="_blank">LinkedIn ↗</a>
         <a href="https://twitter.com/Preeti_kundu10" target="_blank">Twitter ↗</a>
         <a href="https://www.instagram.com/preeti_kundu10/" target="_blank">Instagram ↗</a>
-        <a href="mailto:kundupreeti68@gmail.com">Email ↗</a>
+        <a href="mailto:preetikundu1810@gmail.com">Email ↗</a>
       </div>
     </div>
     <div class="fb">
@@ -2160,181 +2225,6 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   </div>
 </div><!-- end cs-profile -->
 
-<!-- ═══════════════ CASE STUDY: AI CALLING AGENT (AI SKU) ═══════════════ -->
-<div class="view csa" id="view-cs-ai-calling">
-
-  <!-- HERO -->
-  <div class="cs-hero">
-    <button class="cs-back" onclick="navigate('home')">← Back to Work</button>
-    <span class="csa-eyebrow">Product · AI</span>
-    <h1 class="cs-title">Designing an AI agent<br/>that screens before you call</h1>
-    <p class="cs-sub">Univest-style funnels close on a human call. Hiring had the same problem: recruiters burned hours on first-round screening calls. I designed Apna's AI Calling Agent: a voice agent that screens applicants in Hindi or English within minutes of applying, then hands recruiters a ranked, transcript-backed shortlist.</p>
-    <div class="cs-meta">
-      <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-val">Product Designer II</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2025</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Team</div><div class="cs-meta-val">Solo Designer · 3 of 4 verticals</div></div>
-      <div class="cs-meta-item"><div class="cs-meta-label">Platform</div><div class="cs-meta-val">Recruiter Web · ECC</div></div>
-    </div>
-  </div>
-
-  <!-- HERO VISUAL -->
-  <div class="csa-wrap" style="padding-top:48px;padding-bottom:8px">
-    <div class="csa-fig">
-      <div class="csa-ph">
-        <div class="csa-ph-i">🖼️</div>
-        <div class="csa-ph-t">Hero: AI Calling Agent screens</div>
-        <div class="csa-ph-s">Drop the cover render here (Figma: AI-SKU hero / dashboard montage). Replace this block with an &lt;img&gt;.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="csa-wrap">
-
-    <!-- ABOUT -->
-    <div class="csa-sec">
-      <div class="csa-label">About Apna</div>
-      <h2 class="csa-head">India's largest professional & jobs platform, hiring at the scale of millions.</h2>
-      <p class="csa-lead">Apna connects job seekers with recruiters across the country, processing a massive volume of applications every day. The <strong>AI Calling Agent</strong> (internally the "AI SKU") is its voice-AI screening product: within minutes of a candidate applying, the agent calls (in Hindi or English, auto-detected), runs a recruiter-defined screening conversation, then scores and ranks every candidate with a transcript ready to act on.</p>
-    </div>
-
-    <!-- CONTEXT -->
-    <div class="csa-sec">
-      <div class="csa-label">Context</div>
-      <h2 class="csa-head">Screening was growing; the recruiter's day couldn't keep up.</h2>
-      <p class="csa-lead">High-volume roles pull in hundreds of applicants. The only way to filter them was the phone, and that didn't scale. Early-stage screening was almost entirely manual, and good candidates leaked out of the funnel before a single real conversation happened.</p>
-      <div class="csa-statgrid">
-        <div class="csa-stat"><div class="csa-stat-n">4 to 6 hrs</div><div class="csa-stat-l">A recruiter calling 50 applicants a day spends this just to find 3 worth interviewing.</div></div>
-        <div class="csa-stat"><div class="csa-stat-n">48 hrs</div><div class="csa-stat-l">The best applicants get offers within two days; slow screening loses them to competitors.</div></div>
-        <div class="csa-stat"><div class="csa-stat-n">100×</div><div class="csa-stat-l">The same five questions (notice period, availability, CTC) asked over and over.</div></div>
-        <div class="csa-stat"><div class="csa-stat-n">1 lang</div><div class="csa-stat-l">English-first tools mis-ranked candidates who were perfectly fluent in Hindi.</div></div>
-      </div>
-    </div>
-
-    <!-- THE CHALLENGE (two-col) -->
-    <div class="csa-sec">
-      <div class="csa-two">
-        <div>
-          <div class="csa-label">The Challenge 🔎</div>
-          <h2 class="csa-head">Automate the first call without losing the judgment of a good recruiter.</h2>
-          <p class="csa-lead">The agent had to feel like a competent screener: ask the right questions, adapt across languages, and score fairly. And it had to live <strong>natively inside the existing recruiter dashboard (ECC)</strong>, not as a bolt-on tool recruiters had to learn separately.</p>
-        </div>
-        <div class="csa-fig">
-          <div class="csa-ph">
-            <div class="csa-ph-i">📱</div>
-            <div class="csa-ph-t">Before: manual screening flow</div>
-            <div class="csa-ph-s">Figma: existing recruiter calling / ECC state before AI.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MY ROLE / SCOPE -->
-    <div class="csa-sec">
-      <div class="csa-label">My Role 🧩</div>
-      <h2 class="csa-head">I owned design for 3 of the 4 verticals, concept to release.</h2>
-      <div class="csa-cards">
-        <div class="csa-card">
-          <div class="csa-card-top"><div class="csa-card-num">01</div><div><div class="csa-card-cat">Vertical</div><div class="csa-card-title">Screening Setup</div></div></div>
-          <p class="csa-card-sub">The configuration flow where recruiters define the role, screening questions, and shortlisting criteria, in about five minutes.</p>
-          <div class="csa-card-take">↳ <span><b>Defines what the agent asks</b> and how candidates are scored.</span></div>
-        </div>
-        <div class="csa-card">
-          <div class="csa-card-top"><div class="csa-card-num">02</div><div><div class="csa-card-cat">Vertical</div><div class="csa-card-title">ECC Integration</div></div></div>
-          <p class="csa-card-sub">Surfacing the entire AI screening lifecycle inside the recruiter's existing dashboard, with no new tool to learn.</p>
-          <div class="csa-card-take">↳ <span><b>Candidate states end to end</b>: pending, in-progress, completed, incomplete.</span></div>
-        </div>
-        <div class="csa-card">
-          <div class="csa-card-top"><div class="csa-card-num">03</div><div><div class="csa-card-cat">Vertical</div><div class="csa-card-title">Recruiter & Candidate Lifecycle</div></div></div>
-          <p class="csa-card-sub">The end-to-end states a candidate moves through and how recruiters act on each outcome.</p>
-          <div class="csa-card-take">↳ <span>Profile summaries with <b>outcomes + transcripts</b>.</span></div>
-        </div>
-        <div class="csa-card">
-          <div class="csa-card-top"><div class="csa-card-num">04</div><div><div class="csa-card-cat">Also owned</div><div class="csa-card-title">QA & Release Readiness</div></div></div>
-          <p class="csa-card-sub">Owned quality and release readiness across these flows, shipping complex AI interactions through multiple rounds of leadership feedback.</p>
-          <div class="csa-card-take">↳ <span>Shipped through <b>multi-level leadership review</b>.</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DESIGN GOALS / HMW -->
-    <div class="csa-sec">
-      <div class="csa-label">Design Goals 🎯</div>
-      <h2 class="csa-head">Three questions framed every screen decision.</h2>
-      <div class="csa-hmw">
-        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Let a recruiter configure a trustworthy screening conversation in minutes, not hours?</div></div>
-        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Make a candidate's status and screening outcome instantly clear inside the existing dashboard?</div></div>
-        <div class="csa-hmw-card"><div class="csa-hmw-q">?</div><div class="csa-hmw-k">How might we</div><div class="csa-hmw-t">Turn a raw call into a scannable, decision-ready summary a recruiter can act on in seconds?</div></div>
-      </div>
-    </div>
-
-    <!-- SOLUTION WALKTHROUGH -->
-    <div class="csa-sec">
-      <div class="csa-label">Solution Walkthrough 🎨</div>
-      <h2 class="csa-head">Three surfaces. Each earns its place in the screening funnel.</h2>
-
-      <div class="csa-phase">
-        <span class="csa-phase-tag">Surface 01 · Setup</span>
-        <h3 class="csa-phase-title">Screening configuration in ~5 minutes</h3>
-        <p class="csa-lead">Recruiters add a role, screening questions, and shortlisting criteria, defining what the agent asks and how it scores. Dimensions include fluency (rated 1 to 10 in English or Hindi), custom domain questions, availability and notice period, CTC asked naturally in conversation, work-mode and relocation preferences, and experience.</p>
-        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">⚙️</div><div class="csa-ph-t">Screening setup flow</div><div class="csa-ph-s">Figma: AI-SKU setup (questions, criteria, language).</div></div></div>
-        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Putting scoring criteria up front makes shortlisting objective and defensible: every candidate is judged against the same bar the recruiter set.</p></div>
-      </div>
-
-      <div class="csa-phase">
-        <span class="csa-phase-tag">Surface 02 · Lifecycle</span>
-        <h3 class="csa-phase-title">Candidate states, end to end, inside ECC</h3>
-        <p class="csa-lead">I designed the full lifecycle of a candidate in the recruiter dashboard (<strong>pending</strong>, <strong>in-progress</strong>, <strong>completed</strong>, and <strong>incomplete</strong>), so recruiters always know exactly where each applicant is, without leaving their existing workflow.</p>
-        <div class="csa-figrow">
-          <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📊</div><div class="csa-ph-t">ECC: candidate states</div><div class="csa-ph-s">Pending / In-progress / Completed / Incomplete.</div></div></div>
-          <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📋</div><div class="csa-ph-t">ECC: screening dashboard</div><div class="csa-ph-s">Figma: AI-SKU II ECC integration.</div></div></div>
-        </div>
-        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Status clarity removes the recruiter's biggest anxiety in an automated flow ("what's actually happening to my candidates?") and keeps everything in one familiar place.</p></div>
-      </div>
-
-      <div class="csa-phase">
-        <span class="csa-phase-tag">Surface 03 · Outcomes</span>
-        <h3 class="csa-phase-title">Candidate profile summaries with outcomes + transcripts</h3>
-        <p class="csa-lead">A results view that brings together each candidate's outcome, scores, key signals, and the full call transcript, turning a raw conversation into a scannable summary the recruiter can act on immediately.</p>
-        <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🗂️</div><div class="csa-ph-t">Candidate summary + transcript</div><div class="csa-ph-s">Figma: AI-SKU candidate profile / scorecard.</div></div></div>
-        <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Recruiters skip the recording and read the signal. Scores, key answers, and the transcript sit together so the decision takes seconds, not a replay.</p></div>
-      </div>
-    </div>
-
-    <!-- IMPACT -->
-    <div class="csa-sec">
-      <div class="csa-label">Impact 📈</div>
-      <h2 class="csa-head">AI screening, shipped at scale, and as a new revenue line.</h2>
-      <div class="csa-impact">
-        <div class="csa-impact-item"><div class="csa-impact-n">78%</div><div class="csa-impact-l">Candidate<br/>Pick-up Rate</div></div>
-        <div class="csa-impact-item"><div class="csa-impact-n">4×</div><div class="csa-impact-l">Faster<br/>Time-to-Shortlist</div></div>
-        <div class="csa-impact-item"><div class="csa-impact-n">21 hrs</div><div class="csa-impact-l">Recruiter Time<br/>Saved / Week</div></div>
-        <div class="csa-impact-item"><div class="csa-impact-n">New</div><div class="csa-impact-l">Revenue<br/>Channel</div></div>
-      </div>
-      <ul class="csa-ul" style="margin-top:28px">
-        <li><strong>Increased revenue</strong> by launching AI screening as a paid SKU.</li>
-        <li><strong>Automated early-stage screening</strong> and cut manual calling effort.</li>
-        <li><strong>Improved clarity</strong> of candidate status and screening outcomes across the dashboard.</li>
-        <li>Delivered <strong>AI screening at scale</strong> inside Apna's recruiter ecosystem.</li>
-        <li>Shipped complex AI flows successfully through <strong>multi-level leadership feedback</strong>.</li>
-      </ul>
-    </div>
-
-    <!-- LEARNINGS -->
-    <div class="csa-sec">
-      <div class="csa-label">Key Learnings ✨</div>
-      <h2 class="csa-head">Reflections from designing an AI-led flow.</h2>
-      <div class="csa-learn">
-        <div class="csa-learn-item"><div class="csa-learn-n">1</div><div class="csa-learn-b"><h4>Trust is the real product in an AI flow</h4><p>Recruiters hand a conversation to a machine. Clear status, transparent scoring, and a readable transcript are what make them comfortable doing it.</p></div></div>
-        <div class="csa-learn-item"><div class="csa-learn-n">2</div><div class="csa-learn-b"><h4>Configuration is a design surface, not a form</h4><p>What the recruiter sets up directly shapes screening quality, so the setup flow had to make good criteria the easy, obvious path.</p></div></div>
-        <div class="csa-learn-item"><div class="csa-learn-n">3</div><div class="csa-learn-b"><h4>Meet users where they already work</h4><p>Living inside ECC, rather than as a separate tool, was the single biggest driver of adoption.</p></div></div>
-        <div class="csa-learn-item"><div class="csa-learn-n">4</div><div class="csa-learn-b"><h4>Shipping AI means designing for the messy states</h4><p>Incomplete calls, language switches, and partial answers needed first-class states, not error toasts bolted on at the end.</p></div></div>
-      </div>
-    </div>
-
-    <button class="btn-fill" style="margin-top:8px" onclick="navigate('home')">← Back to All Work</button>
-  </div>
-</div><!-- end cs-ai-calling -->
-
 <!-- ═══════════════ CASE STUDY: ONLYROUNDS (enterprise AI ATS) ═══════════════ -->
 <div class="view csa" id="view-cs-onlyrounds">
 
@@ -2524,9 +2414,9 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   <!-- 1 · HERO -->
   <div class="cs-hero">
     <button class="cs-back" onclick="navigate('home')">← Back to Work</button>
-    <span class="csa-eyebrow">Product · AI · Apna Employer</span>
+    <span class="csa-eyebrow">Product · AI · Apna Employer · Phase 1</span>
     <h1 class="cs-title">AI Hiring Assistant</h1>
-    <p class="cs-sub">From an AI screening SKU to an embedded AI hiring workflow. Designing an assistant that helps recruiters screen candidates faster while staying fully in control of the decision.</p>
+    <p class="cs-sub">From an AI screening SKU to an embedded AI hiring workflow. Designing an assistant that helps recruiters screen candidates faster while staying fully in control of the decision. This case study covers <strong>Phase 1</strong> of the rollout; it is an evolving design that later phases will build on, not the final shipped state.</p>
     <div class="cs-meta">
       <div class="cs-meta-item"><div class="cs-meta-label">My Role</div><div class="cs-meta-val">Product Design</div></div>
       <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-val">2025 to 2026</div></div>
@@ -2566,6 +2456,12 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       <h2 class="csa-head">Screening every applicant by hand does not scale.</h2>
       <p class="csa-lead">Recruiters on Apna receive large volumes of applications, but screening each candidate manually is slow, repetitive, and hard to scale. For every candidate they typically verify salary expectation, location, experience, education, interest, availability, communication quality, and willingness to work specific shifts.</p>
       <p class="csa-lead">The project started with a hypothesis: <strong>can AI call candidates, screen them, and let recruiters focus only on the most relevant ones?</strong> The early GTM framing positioned it as <strong>AutoShortlist AiJob</strong>, a premium job-posting SKU with AI screening for SMBs, mid-market recruiters, high-volume enterprises, and agencies.</p>
+      <div class="csa-statgrid">
+        <div class="csa-stat"><div class="csa-stat-n">4 to 6 hrs</div><div class="csa-stat-l">A recruiter calling 50 applicants a day spends this just to find 3 worth interviewing.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">48 hrs</div><div class="csa-stat-l">The best applicants get offers within two days; slow screening loses them to competitors.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">100×</div><div class="csa-stat-l">The same five questions (notice period, availability, CTC) asked over and over.</div></div>
+        <div class="csa-stat"><div class="csa-stat-n">1 lang</div><div class="csa-stat-l">English-first tools mis-ranked candidates who were perfectly fluent in Hindi.</div></div>
+      </div>
     </div>
 
     <!-- 4 · PROBLEM STATEMENT -->
@@ -2583,6 +2479,34 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         </div>
       </div>
       <div class="csa-why" style="margin-top:26px"><div class="csa-why-h">Refined problem statement</div><p>How might we help recruiters use AI screening to make faster decisions while preserving their need to verify, control, and act confidently?</p></div>
+    </div>
+
+    <!-- 4b · MY ROLE / OWNERSHIP -->
+    <div class="csa-sec">
+      <div class="csa-label">My Role 🧩</div>
+      <h2 class="csa-head">I owned 3 of the 4 verticals, concept to release.</h2>
+      <div class="csa-cards">
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">01</div><div><div class="csa-card-cat">Owned</div><div class="csa-card-title">Screening Questions Setup</div></div></div>
+          <p class="csa-card-sub">The post-payment flow where recruiters define what the AI asks and how candidates are scored.</p>
+          <div class="csa-card-take">↳ <span><b>Defines the screening bar</b> the agent works to.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">02</div><div><div class="csa-card-cat">Owned</div><div class="csa-card-title">Employer Candidate Connect (ECC)</div></div></div>
+          <p class="csa-card-sub">Surfacing the whole AI screening lifecycle inside the recruiter's existing dashboard.</p>
+          <div class="csa-card-take">↳ <span>Candidate states and evidence, <b>end to end</b>.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">03</div><div><div class="csa-card-cat">Owned</div><div class="csa-card-title">Candidate Experience</div></div></div>
+          <p class="csa-card-sub">The candidate-side flow: what happens after applying, when the AI calls, and the call states.</p>
+          <div class="csa-card-take">↳ <span>Also owned <b>QA and release readiness</b> across these flows.</span></div>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">04</div><div><div class="csa-card-cat">Partner team</div><div class="csa-card-title">Pricing Selection</div></div></div>
+          <p class="csa-card-sub">The checkout SKU tier that introduces the AI add-on at the point of purchase.</p>
+          <div class="csa-card-take">↳ <span>Owned by the <b>Monetization team</b>.</span></div>
+        </div>
+      </div>
     </div>
 
     <!-- 5 · BUSINESS + GTM GOALS -->
@@ -2717,8 +2641,8 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 
     <!-- 11 · FINAL SOLUTION -->
     <div class="csa-sec">
-      <div class="csa-label">Final Solution 🎨</div>
-      <h2 class="csa-head">AI, embedded where recruiters already work.</h2>
+      <div class="csa-label">Phase 1 Design 🎨</div>
+      <h2 class="csa-head">Phase 1: AI, embedded where recruiters already work.</h2>
 
       <div class="csa-phase">
         <span class="csa-phase-tag">Solution 01 · Checkout</span>
@@ -2730,7 +2654,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       <div class="csa-phase">
         <span class="csa-phase-tag">Solution 02 · Setup</span>
         <h3 class="csa-phase-title">Screening setup before activation</h3>
-        <p class="csa-lead">Recruiters could review and edit exactly what AI would ask candidates, turning AI from a black box into something they configured.</p>
+        <p class="csa-lead">Recruiters could review and edit exactly what AI would ask candidates, turning AI from a black box into something they configured. The agent then calls each applicant within minutes of applying, in Hindi or English (auto-detected), and scores communication fluency on a 1 to 10 scale alongside the recruiter's own criteria.</p>
         <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">📝</div><div class="csa-ph-t">Screening question setup and editing</div><div class="csa-ph-s">Figma: screening questions / dropdowns.</div></div></div>
         <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Letting recruiters define the questions made the results feel like theirs, and made shortlisting defensible against a bar they set.</p></div>
       </div>
@@ -2764,6 +2688,71 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <div class="csa-fig"><div class="csa-ph"><div class="csa-ph-i">🔁</div><div class="csa-ph-t">AI call states and candidate-side flows</div><div class="csa-ph-s">Figma: candidate app success / final variants.</div></div></div>
         <div class="csa-why"><div class="csa-why-h">Why this improves UX</div><p>Rigid Fit / Not Fit hid real outcomes. Nuanced states let recruiters trust the system with the ambiguous cases too.</p></div>
       </div>
+    </div>
+
+    <!-- 11b · ECC RESEARCH (after Phase 1) -->
+    <div class="csa-sec">
+      <div class="csa-label">ECC Research 🔬</div>
+      <h2 class="csa-head">After Phase 1, we watched recruiters actually use the AI-screened dashboard.</h2>
+      <p class="csa-lead">With Phase 1 live, I ran moderated sessions with recruiters, both AI users and traditional callers, to answer three questions: what a recruiter sees in a candidate profile after AI screening, where the key elements sit in the UI, and how they interpret the data to shortlist. Recruiters ran through five short tasks:</p>
+      <ul class="csa-ul">
+        <li><strong>Scan and identify:</strong> which two candidates would you shortlist from the list, and why?</li>
+        <li><strong>Interpret AI insights:</strong> open a "Maybe Fit" profile. Why do you think it is marked that way?</li>
+        <li><strong>Listen to a call:</strong> based on the snippet and the AI summary, would you shortlist this person?</li>
+        <li><strong>Review HR suggestions:</strong> are the recommended next steps useful in real hiring?</li>
+        <li><strong>Decide quickly:</strong> how long does it take to reject or shortlist from this screen?</li>
+      </ul>
+
+      <p class="csa-lead" style="margin-top:12px"><strong>What recruiters actually did:</strong></p>
+      <div class="csa-cards">
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">01</div><div><div class="csa-card-cat">Observed</div><div class="csa-card-title">They still call everyone</div></div></div>
+          <p class="csa-card-sub">No one was rejected on AI alone. Recruiters call every candidate to confirm, treating AI as a way to prioritise, not a verdict.</p>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">02</div><div><div class="csa-card-cat">Observed</div><div class="csa-card-title">AI insights sit too deep</div></div></div>
+          <p class="csa-card-sub">Insights are two clicks down and used only about 3 in 10 times. Recruiters wanted them one click away.</p>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">03</div><div><div class="csa-card-cat">Observed</div><div class="csa-card-title">Recordings rarely get played</div></div></div>
+          <p class="csa-card-sub">Full call audio is time-consuming, so recruiters play snippets only when something confuses them.</p>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">04</div><div><div class="csa-card-cat">Observed</div><div class="csa-card-title">Status change has friction</div></div></div>
+          <p class="csa-card-sub">Changing a candidate's status is a multi-step flow that breaks momentum right after a call.</p>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">05</div><div><div class="csa-card-cat">Observed</div><div class="csa-card-title">Callback is a constant state</div></div></div>
+          <p class="csa-card-sub">Candidates are often busy or driving and ask to be called back, so callback and retry need to be first-class.</p>
+        </div>
+        <div class="csa-card">
+          <div class="csa-card-top"><div class="csa-card-num">06</div><div><div class="csa-card-cat">Observed</div><div class="csa-card-title">Manual dialing and WhatsApp gaps</div></div></div>
+          <p class="csa-card-sub">Typing numbers by hand while reading the profile is clunky; WhatsApp needs salary, an interview-location link, and a callback option.</p>
+        </div>
+      </div>
+
+      <p class="csa-lead" style="margin-top:16px"><strong>Also heard:</strong></p>
+      <ul class="csa-ul">
+        <li>The resume is trusted more than the AI profile summary, which recruiters felt could be outdated.</li>
+        <li>Location and education are the filters that actually matter to them.</li>
+        <li>The "Rejected" tab is ignored, and even 10 out of 10 candidates sometimes say "Not Interested".</li>
+        <li>Common rejection reasons: language, salary mismatch, location mismatch, and "I did not apply".</li>
+        <li>Shortlisting leans on experience, certificates, and qualifications; resumes are uploaded only after shortlisting.</li>
+      </ul>
+
+      <p class="csa-lead" style="margin-top:16px"><strong>Where things sit today (UI map):</strong></p>
+      <div class="csa-table">
+        <div class="csa-th">Element</div><div class="csa-th">Placement, and why</div>
+        <div class="csa-td">Candidate summary card</div><div class="csa-td aft">Left list view: name, title, location, experience, salary for fast triage.</div>
+        <div class="csa-td">AI Fit tag</div><div class="csa-td aft">Top of the card and expanded view, as a high-visibility status.</div>
+        <div class="csa-td">Call recording</div><div class="csa-td aft">Top of the expanded view, for verbal validation.</div>
+        <div class="csa-td">AI tag insights</div><div class="csa-td aft">Below the recording, as quick flags on matching criteria.</div>
+        <div class="csa-td">AI summary paragraph</div><div class="csa-td aft">Center of the expanded view, as a narrative interpretation.</div>
+        <div class="csa-td">Action buttons</div><div class="csa-td aft">Bottom of each view: View number, Reject, Shortlist, Interview.</div>
+        <div class="csa-td">Recommended HR actions</div><div class="csa-td aft">Below the summary, to guide the next step.</div>
+      </div>
+
+      <div class="csa-why"><div class="csa-why-h">What this means for the next phase</div><p>Bring AI insights one click closer, collapse the multi-step status change, make callback and retry first-class states, cut out manual dialing, and keep call evidence skimmable. The through-line: recruiters use AI to prioritise and then still confirm on a call, so the next phase should speed the path to that call rather than try to replace it.</p></div>
     </div>
 
     <!-- 12 · IMPACT -->
@@ -2852,7 +2841,6 @@ const views={
   'about':'view-about',
   'cs-srp':'view-cs-srp',
   'cs-profile':'view-cs-profile',
-  'cs-ai-calling':'view-cs-ai-calling',
   'cs-onlyrounds':'view-cs-onlyrounds',
   'cs-ai-hiring':'view-cs-ai-hiring'
 };
@@ -3147,18 +3135,22 @@ document.querySelectorAll('.btn-fill,.btn-ghost,.nav-cta').forEach(btn=>{
   var N=reduce?34:118;
   var base=['#A9A6E8','#A9A6E8','#A9A6E8','#8B92D9','#8B92D9','#8B92D9','#BFD8A6']; /* lavender/periwinkle + sage */
   function rand(a,b){return a+Math.random()*(b-a);}
-  function place(px){
+  function locate(px){ /* position only — safe to change any time (runs while opacity is 0) */
     px.style.left=rand(0,100).toFixed(2)+'%';
     px.style.bottom=(Math.pow(Math.random(),2)*100).toFixed(2)+'%'; /* denser near the bottom edge */
+    px.style.setProperty('--op', rand(0.10,reduce?0.22:0.40).toFixed(2));
+  }
+  function create(px){ /* one-time setup: size, colour and TIMING set once and never touched again */
     var s=rand(4,7).toFixed(1); px.style.width=s+'px'; px.style.height=s+'px';
     px.style.background=(Math.random()<0.045)?'#CFEF4D':base[Math.floor(Math.random()*base.length)]; /* lime <5% */
-    px.style.setProperty('--op', rand(0.10,reduce?0.22:0.40).toFixed(2));
     px.style.setProperty('--dur', rand(2,5).toFixed(2)+'s');
     px.style.setProperty('--delay', rand(0,4).toFixed(2)+'s');
+    locate(px);
   }
   for(var i=0;i<N;i++){
-    var px=document.createElement('span'); px.className='px'; place(px);
-    px.addEventListener('animationiteration', function(e){ place(e.target); }); /* reappear at a new spot */
+    var px=document.createElement('span'); px.className='px'; create(px);
+    /* on each loop, only relocate (never re-set --dur/--delay, which recomputes the timeline and causes the glitch) */
+    px.addEventListener('animationiteration', function(e){ locate(e.target); });
     box.appendChild(px);
   }
 })();
