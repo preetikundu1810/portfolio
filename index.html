@@ -4401,11 +4401,19 @@ window.addEventListener('scroll',()=>document.body.style.setProperty('--sy',wind
     var hit=e.target.closest('a,button,.pcard,.tfc,.nav-cta,.pcard-cta,[onclick]');
     lbl.classList.toggle('hov',!!hit);
   },{passive:true});
-  (function tick(){
-    cx+=(mx-cx)*0.15;cy+=(my-cy)*0.15;
+  /* Exponential smoothing, but measured in TIME rather than per frame. The old
+     "15% of the gap each frame" made the trail twice as long on a 60Hz screen as
+     on a 120Hz one, and read as lag. SETTLE is the time to close 90% of the gap
+     and is now identical at any refresh rate. */
+  var SETTLE=30, prev=performance.now();
+  (function tick(now){
+    var dt=Math.min(now-prev,100);   /* clamp, so returning to the tab snaps */
+    prev=now;
+    var k=1-Math.pow(0.1,dt/SETTLE);
+    cx+=(mx-cx)*k;cy+=(my-cy)*k;
     cur.style.transform='translate('+Math.round(cx*10)/10+'px,'+Math.round(cy*10)/10+'px)';
     requestAnimationFrame(tick);
-  })();
+  })(prev);
 })();
 
 /* ══ HERO CARD — static first image in hero; FAST cycle on scroll; locks final image at the end ══ */
