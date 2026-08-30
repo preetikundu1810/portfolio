@@ -2293,6 +2293,49 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   #view-cs-ai-hiring .csa-sec,
   #view-cs-ai-hiring .csa-break{border-radius:16px;margin-bottom:14px}
 }
+
+/* ══ JOB LISTING & JD CASE STUDY — SAME CARD LAYOUT AS ONBOARDING / AI HIRING ══
+   Dotted stage, content in centred white cards, one card per section. Structure
+   only: no content is touched. The hairline .cs-divider rules that used to split
+   the sections are dropped, because the gap between cards now does that job.
+   Everything is scoped to #view-cs-srp — the .cs-* classes are shared with the
+   Seeker Profile case study, which must keep its existing layout. */
+#view-cs-srp{
+  /* --line is declared on .csa and #view-cs-onboarding, not at :root, so it has
+     to be declared here too or the card borders resolve to nothing */
+  --line:rgba(26,23,20,.10);
+  padding:56px clamp(24px,14vw,300px) 96px;
+  background:
+    radial-gradient(circle, rgba(20,32,28,.12) 1px, transparent 1.6px) 0 0/22px 22px,
+    #F7F8F7;
+}
+/* the column carried the gutters before; the cards carry their own padding now */
+#view-cs-srp .cs-body{max-width:1080px;padding:0}
+
+#view-cs-srp .cs-hero,
+#view-cs-srp .cs-cover,
+#view-cs-srp .cs-section{
+  max-width:1080px;margin:0 auto 20px;
+  border:1px solid var(--line);border-radius:20px;
+  overflow:hidden;scroll-margin-top:76px;
+}
+/* no background on the shared rule, so .cs-cover keeps its dark image plate */
+#view-cs-srp .cs-hero,
+#view-cs-srp .cs-section{background:#fff}
+#view-cs-srp .cs-hero{padding:clamp(40px,5vw,72px) clamp(24px,3.4vw,56px)}
+#view-cs-srp .cs-section{padding:clamp(32px,4.2vw,60px) clamp(24px,3.4vw,56px)}
+
+/* the gap between cards separates the sections now */
+#view-cs-srp .cs-divider{display:none}
+
+@media(max-width:760px){
+  #view-cs-srp{padding-left:12px;padding-right:12px;padding-bottom:72px}
+  #view-cs-srp .cs-hero{padding:32px 18px}
+  #view-cs-srp .cs-section{padding:26px 18px}
+  #view-cs-srp .cs-hero,
+  #view-cs-srp .cs-cover,
+  #view-cs-srp .cs-section{border-radius:16px;margin-bottom:14px}
+}
 </style>
 </head>
 <body>
@@ -2481,7 +2524,10 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       </div>
     </div>
 
-    <!-- CARD 04 — Seeker Profile (live) -->
+    <!-- CARD 04 — Seeker Profile (live): HIDDEN for now, may come back.
+         Markup is kept intact below; to restore it, delete the two comment
+         markers that wrap it and nothing else. -->
+    <!--
     <div class="pcard sr">
       <div class="pcard-inner">
         <div class="pcard-body">
@@ -2508,6 +2554,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         </div>
       </div>
     </div>
+    -->
 
     <!-- CARD 05 — OnlyRounds (coming soon) -->
     <div class="pcard sr">
