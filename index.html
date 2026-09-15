@@ -394,7 +394,18 @@ nav.scrolled{background:rgba(250,246,240,0.93);backdrop-filter:blur(16px);box-sh
 .anno-foundit{left:auto;right:-136px;top:calc(100% - 2px);transform:rotate(2deg);width:200px;align-items:center}
 .anno-foundit .anno-text-sm{font-family:'Caveat',cursive;font-size:21px;font-weight:500;line-height:1.06;color:#5868a2;text-align:center;opacity:1;margin-top:-4px}
 .anno-rise{display:block;width:86px;height:86px}
-@media(max-width:1024px){.anno-apna,.anno-foundit{display:none}}
+/* the apna note sits to the LEFT of the logo, so it needs clear side space.
+   Between 900 and 1024 it still fits once narrowed; below 900 it would run
+   off the left edge, so that is where it hides. */
+@media(max-width:1024px) and (min-width:901px){
+  .anno-apna{width:220px}
+  .anno-apna .anno-text{font-size:19px}
+  .anno-sq{width:150px;height:56px;margin-right:-6px}
+  .anno-foundit{right:-104px;width:170px}
+  .anno-foundit .anno-text-sm{font-size:18px}
+  .anno-rise{width:66px;height:66px}
+}
+@media(max-width:900px){.anno-apna,.anno-foundit{display:none}}
 @media(max-width:768px){
   .hphoto-wrap.l .hphoto,.hphoto-wrap.r .hphoto{width:80px}.hphoto-wrap.c .hphoto{width:98px}
   .hphoto-wrap.l .hphoto img,.hphoto-wrap.r .hphoto img{width:80px;height:100px}
