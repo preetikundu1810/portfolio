@@ -5268,6 +5268,19 @@ function startSite(){
        both it and the loading screen multiplied the two opacities and left the
        portfolio washed out through the middle of the crossfade. */
     if(site) site.style.transform='scale('+(1+0.05*(1-fe)).toFixed(4)+')';
+    /* Reverse leg only. Going down, the site is deliberately never faded — only
+       eased out of its overscale — because fading both multiplied the two
+       opacities and washed the portfolio out through the middle. Coming back up
+       that same rule leaves a fully opaque hero sitting under a half-faded
+       loader, and the hero headline and the carriage read as one double
+       exposure. So on the way back, and only on the way back, the site fades
+       out as the loader returns, which lands the scroll cleanly on the original
+       landing state. Downward is untouched: dir is +1 there and the inline
+       opacity stays cleared, exactly as before. */
+    if(site){
+      if(dir<0&&f<1) site.style.opacity=fe.toFixed(3);
+      else if(site.style.opacity) site.style.opacity='';
+    }
     /* reveal the hero underneath as the crossfade begins, so it is already
        alive by the time it is fully visible */
     if(f>0&&!started){ started=true; startSite(); }
@@ -5287,7 +5300,10 @@ function startSite(){
   /* The portfolio must never be crossfaded in before it has loaded, so the
      scroll simply cannot pass the handoff point until it has. */
   function ceiling(){ return loaded?1:HANDOFF; }
-  function advance(d){ target=clamp(target+d,0,ceiling()); schedule(); }
+  /* which way the last input pushed, so the crossfade can treat the way back
+     differently from the way in without altering the way in */
+  var dir=1;
+  function advance(d){ if(d) dir=d<0?-1:1; target=clamp(target+d,0,ceiling()); schedule(); }
   function toEnd(){ target=ceiling(); schedule(); }
   function onPointer(e){
     mx=clamp((e.clientX/innerWidth-0.5)*2,-1,1);
