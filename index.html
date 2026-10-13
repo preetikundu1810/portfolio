@@ -609,7 +609,7 @@ section{position:relative;z-index:1}
 
 /* Metrics row — bottom of left col, separated by a hairline */
 .pcard-metrics{
-  display:flex;gap:32px;
+  display:flex;gap:44px;
   border-top:1px solid rgba(26,23,20,.07);
   padding-top:24px;
   margin-top:28px;
@@ -620,6 +620,11 @@ section{position:relative;z-index:1}
   font-size:28px;font-weight:700;
   color:#5868a2;line-height:1;
   margin-bottom:3px;
+  /* Cormorant Garamond ships old-style figures by default: the 1 is a short
+     stroke with no flag or foot, so "11" reads as the roman numeral II.
+     Lining figures put the digits on a single cap-height line. */
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
 }
 .pcard-metric-u{font-size:.62em;letter-spacing:.02em;margin-left:2px}
 .pcard-metric-l{
@@ -1067,7 +1072,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   .pcard-inner{grid-template-columns:1fr;min-height:auto}
   .pcard-visual{min-height:260px;order:-1}
   .pcard-body{padding:32px 28px 28px}
-  .pcard-metrics{gap:20px}
+  .pcard-metrics{gap:28px}
   /* old proj-row fallback */
   .proj-row,.proj-row.flip{grid-template-columns:1fr;gap:28px}
   .proj-body,.proj-visual,.proj-row.flip .proj-body,.proj-row.flip .proj-visual{order:unset}
@@ -1616,7 +1621,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   /* Selected Works cards */
   .work-cards{padding:0 16px 54px}
   .pcard-body{padding:26px 20px 22px}
-  .pcard-metrics{gap:14px}
+  .pcard-metrics{gap:20px}
   .pcard-metric-n{font-size:22px}
   .pcard-visual{min-height:210px}
   .pcard-vis-num{font-size:60px}
@@ -3120,9 +3125,8 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
             <button class="pcard-cta" onclick="navigate('cs-onboarding')">View Case Study <span class="arrow">→</span></button>
           </div>
           <div class="pcard-metrics">
-            <div class="pcard-metric"><div class="pcard-metric-n">+10.5<span class="pcard-metric-u">PP</span></div><div class="pcard-metric-l">Onboarding<br/>Increase</div></div>
+            <div class="pcard-metric"><div class="pcard-metric-n">11&thinsp;→&thinsp;7</div><div class="pcard-metric-l">Steps in<br/>the flow</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">+8<span class="pcard-metric-u">%</span></div><div class="pcard-metric-l">Overall Onboarding<br/>Increase</div></div>
-            <div class="pcard-metric"><div class="pcard-metric-n">↓</div><div class="pcard-metric-l">Onboarding<br/>Drop-off</div></div>
           </div>
         </div>
         <div class="pcard-visual is-fit">
@@ -5243,10 +5247,22 @@ function startSite(){
        only some tiles, which is the fragmentation seen on reverse scroll.
        Narrowing the viewBox by 1/es around the doorway centre (800,543) is
        geometrically identical and re-renders vectors at native resolution. */
-    ext.setAttribute('viewBox',
-      (800-800/es).toFixed(2)+' '+(543-543/es).toFixed(2)+' '+
-      (1600/es).toFixed(2)+' '+(1000/es).toFixed(2));
-    ext.style.opacity=(1-fade).toFixed(3);
+    /* Once the frame has cleared the screen the exterior is fully transparent,
+       but it was still being re-rastered every frame — five photographic plates
+       resampled at up to eight times size, which is the most expensive stretch
+       of the whole move and exactly where the compositor started handing back
+       tiles rasterised from different frames. That mismatch is the tearing.
+       Taking it out of the tree while it is invisible removes the work with no
+       visual difference at all, and it comes straight back on the way out. */
+    if(fade>=1){
+      if(ext.style.display!=='none') ext.style.display='none';
+    }else{
+      if(ext.style.display==='none') ext.style.display='';
+      ext.setAttribute('viewBox',
+        (800-800/es).toFixed(2)+' '+(543-543/es).toFixed(2)+' '+
+        (1600/es).toFixed(2)+' '+(1000/es).toFixed(2));
+      ext.style.opacity=(1-fade).toFixed(3);
+    }
     /* viewBox window equivalent to scale(is) about the interior window centre
        (800,410) under xMidYMid slice. Scaling the wrapping div made Chrome
        rasterise the plate once and stretch it — that was the blur. */
@@ -5268,22 +5284,9 @@ function startSite(){
        both it and the loading screen multiplied the two opacities and left the
        portfolio washed out through the middle of the crossfade. */
     if(site) site.style.transform='scale('+(1+0.05*(1-fe)).toFixed(4)+')';
-    /* Reverse leg only. Going down, the site is deliberately never faded — only
-       eased out of its overscale — because fading both multiplied the two
-       opacities and washed the portfolio out through the middle. Coming back up
-       that same rule leaves a fully opaque hero sitting under a half-faded
-       loader, and the hero headline and the carriage read as one double
-       exposure. So on the way back, and only on the way back, the site fades
-       out as the loader returns, which lands the scroll cleanly on the original
-       landing state. Downward is untouched: dir is +1 there and the inline
-       opacity stays cleared, exactly as before. */
-    if(site){
-      if(dir<0&&f<1) site.style.opacity=fe.toFixed(3);
-      else if(site.style.opacity) site.style.opacity='';
-    }
     /* reveal the hero underneath as the crossfade begins, so it is already
        alive by the time it is fully visible */
-    if(f>0&&!started){ started=true; startSite(); }
+    if(f>0&&!started){ started=true; committed=true; target=1; startSite(); }
 
     if(p>=0.9995&&target>=1){ finished=true; checkLoaded(); maybeReveal(); return; }
     if(Math.abs(target-p)>0.0005||Math.abs(mx-lx)>0.002||Math.abs(my-ly)>0.002) schedule();
@@ -5300,10 +5303,18 @@ function startSite(){
   /* The portfolio must never be crossfaded in before it has loaded, so the
      scroll simply cannot pass the handoff point until it has. */
   function ceiling(){ return loaded?1:HANDOFF; }
-  /* which way the last input pushed, so the crossfade can treat the way back
-     differently from the way in without altering the way in */
-  var dir=1;
-  function advance(d){ if(d) dir=d<0?-1:1; target=clamp(target+d,0,ceiling()); schedule(); }
+  /* The handoff is one way. Up to it you can scroll back and forth along the
+     platform freely; the moment it fires, the carriage has done its job and the
+     portfolio is the page. Reverse scrolling must not drag the train back over
+     it, so input stops being accepted and the remaining travel plays itself
+     out to the reveal — one continuous move rather than a crossfade the
+     visitor can sit inside or back out of. */
+  var committed=false;
+  function advance(d){
+    if(committed) return;
+    target=clamp(target+d,0,ceiling());
+    schedule();
+  }
   function toEnd(){ target=ceiling(); schedule(); }
   function onPointer(e){
     mx=clamp((e.clientX/innerWidth-0.5)*2,-1,1);
