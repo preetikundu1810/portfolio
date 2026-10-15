@@ -5248,6 +5248,8 @@ function startSite(){
     if(revealed) return; revealed=true;
     detach();
     document.body.style.overflow='';
+    /* the carriage always opens onto the top of the portfolio, never partway in */
+    window.scrollTo(0,0);
     if(!started){ started=true; startSite(); }
     /* land the crossfade exactly: site at rest, loading screen out of the way */
     inertTargets().forEach(function(el){ el.removeAttribute('inert'); });
@@ -5624,6 +5626,11 @@ function startSite(){
     advance(d);
   }
 
+  /* The browser restores the previous scroll offset on reload. overflow:hidden
+     hides that while the carriage is up, but the offset is still applied, so
+     the moment reveal() restores overflow the page is already partway down the
+     portfolio. Take the restore into our own hands. */
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
   document.body.style.overflow='hidden';
   loader.classList.add('tr-mode');
   /* Clicks used to fall straight through the loading screen to the hero,
