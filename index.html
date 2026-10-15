@@ -1786,13 +1786,18 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
    object-fit:cover no single image aspect keeps a two-phone mock-up whole. This card
    uses contain instead, on white, so the letterboxing is invisible against the image's
    own white stage. */
-/* The card panel is landscape on wide screens (696x517 at 1680px) while this
-   photo is portrait, so cover overflows vertically by 520px. Centred, that
-   crops 260px off the top and leaves the phone's screen just 10px from the
-   frame edge — the header reads as cut. 40% crops 208px instead, giving 62px
-   of air above the phone. Vertical only: there is no horizontal overflow, so
-   it stays centred across the panel by itself. */
-.pcard-visual img[src*="card-onboarding-hand"]{object-position:center 40%}
+/* The card panel is landscape on wide screens while this photo is portrait, so
+   cover overflows vertically — 520px at a 696x517 panel. Centred, that crops
+   260px off the top and clips the phone.
+
+   The anchor is set from the phone's BODY, which starts at y=396 of 2000, not
+   from where its screen starts at y=520. Measuring off the screen is what left
+   the previous value three pixels short: 40% looked clear in the maths and was
+   still cutting the phone's top edge. At 25% there is roughly 75px of air above
+   the body, and it holds across panel sizes (+92px at 906x648, +69px at
+   680x486). Vertical only — there is no horizontal overflow, so it stays
+   centred across the panel by itself. */
+.pcard-visual img[src*="card-onboarding-hand"]{object-position:center 25%}
 .pcard-visual.is-fit{background:#141210}   /* matches the image stage */
 .pcard-visual.is-fit img{object-fit:contain;object-position:center bottom}
 /* anchor to the bottom-right so the screen stays flush with those two edges and
