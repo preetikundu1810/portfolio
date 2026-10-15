@@ -2561,6 +2561,11 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 @media(max-width:760px){
   #view-cs-onboarding .protos{grid-template-columns:1fr;}
 }
+/* Shared by both case studies. Each selector is written out in full for both
+   views: a rule like `.onb-g:first-child` cannot be shared by appending the
+   second view after the class name, because the pseudo-class then binds only
+   to the second selector and the first becomes a bare `.onb-g`. Doing exactly
+   that is what silently hid the onboarding bar. */
 #view-cs-onboarding .onb-nav,#view-cs-ai-hiring .onb-nav{
   position:fixed;left:0;right:0;bottom:0;top:auto;transform:none;z-index:140;
   display:flex;align-items:flex-start;justify-content:center;gap:2px;
@@ -2570,24 +2575,24 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   border-top:1px solid var(--line);
   overflow-x:auto;scrollbar-width:none;
 }
-#view-cs-onboarding .onb-nav,#view-cs-ai-hiring .onb-nav::-webkit-scrollbar{display:none}
+#view-cs-onboarding .onb-nav::-webkit-scrollbar,#view-cs-ai-hiring .onb-nav::-webkit-scrollbar{display:none}
 #view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g{
   flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px;
   padding:2px 18px;border:0;background:none;cursor:pointer;
   border-left:1px solid var(--line);
 }
-#view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g:first-child{border-left:0}
-#view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g span{
+#view-cs-onboarding .onb-g:first-child,#view-cs-ai-hiring .onb-g:first-child{border-left:0}
+#view-cs-onboarding .onb-g span,#view-cs-ai-hiring .onb-g span{
   font-family:var(--sa);font-size:11px;font-weight:600;letter-spacing:.12em;
   text-transform:uppercase;color:var(--mute);white-space:nowrap;transition:color .2s;
 }
-#view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g:hover span,#view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g.on span{color:var(--ink)}
+#view-cs-onboarding .onb-g:hover span,#view-cs-ai-hiring .onb-g:hover span,#view-cs-onboarding .onb-g.on span,#view-cs-ai-hiring .onb-g.on span{color:var(--ink)}
 #view-cs-onboarding .onb-dots,#view-cs-ai-hiring .onb-dots{display:flex;gap:4px}
 #view-cs-onboarding .onb-dot,#view-cs-ai-hiring .onb-dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:background .2s}
-#view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g.on .onb-dot.done{background:var(--accent)}
+#view-cs-onboarding .onb-g.on .onb-dot.done,#view-cs-ai-hiring .onb-g.on .onb-dot.done{background:var(--accent)}
 @media(max-width:700px){
   #view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g{padding:2px 12px}
-  #view-cs-onboarding .onb-g,#view-cs-ai-hiring .onb-g span{font-size:10px;letter-spacing:.08em}
+  #view-cs-onboarding .onb-g span,#view-cs-ai-hiring .onb-g span{font-size:10px;letter-spacing:.08em}
 }
 
 /* ══ ONBOARDING CASE STUDY ON SMALL SCREENS ══
