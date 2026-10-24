@@ -1818,13 +1818,11 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
    the body, and it holds across panel sizes (+92px at 906x648, +69px at
    680x486). Vertical only — there is no horizontal overflow, so it stays
    centred across the panel by itself. */
-/* Centres the PHONE, not the photo. The phone sits at y 503..1326 of 2000, so
-   its midpoint is at 46% of the image rather than 50% — object-position:center
-   lands the photo's centre in the panel and pushes the phone low, while small
-   values pin it to the top and cut the bottom. 42% puts the phone's own centre
-   on the panel's centre: at a 931x695 panel that leaves 58px above and 66px
-   below it. Class, never [src*=...]: the build inlines srcs as data URIs. */
-.pcard-visual img.pv-lower{object-position:center 42%}
+/* The source is a landscape 1500x1000 build of the photo with the phone scaled
+   to 71% of the height and centred in it, so the panel needs no crop anchor —
+   plain centring shows the whole phone at every panel shape. cover could only
+   ever crop this photo tighter; zooming out had to happen in the image. */
+.pcard-visual img.pv-lower{object-position:center center}
 .pcard-visual.is-fit{background:#141210}   /* matches the image stage */
 .pcard-visual.is-fit img{object-fit:contain;object-position:center bottom}
 /* anchor to the bottom-right so the screen stays flush with those two edges and
@@ -3234,7 +3232,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
           </div>
         </div>
         <div class="pcard-visual">
-          <img data-gate src="assets/img/card-onboarding-hand-4480894c.webp" class="pv-lower" alt="Onboarding Revamp"/>
+          <img data-gate src="assets/img/card-onboarding-wide-63c7b9b1.webp" class="pv-lower" alt="Onboarding Revamp"/>
         </div>
       </div>
     </div>
