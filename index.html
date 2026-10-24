@@ -1818,11 +1818,22 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
    the body, and it holds across panel sizes (+92px at 906x648, +69px at
    680x486). Vertical only — there is no horizontal overflow, so it stays
    centred across the panel by itself. */
-/* The source is a landscape 1500x1000 build of the photo with the phone scaled
-   to 71% of the height and centred in it, so the panel needs no crop anchor —
-   plain centring shows the whole phone at every panel shape. cover could only
-   ever crop this photo tighter; zooming out had to happen in the image. */
+/* The source is a 1450x1000 landscape crop of the photo, scaled so its own
+   width fills the frame and cropped vertically around the phone — every pixel
+   is from the photograph, no padding or blurred fill. The phone lands 49px
+   from the top and 50px from the bottom of that image, so plain centring keeps
+   it whole at every panel shape the layout produces. cover can only crop
+   tighter, so zooming out had to happen in the image, not here. */
 .pcard-visual img.pv-lower{object-position:center center}
+/* The panel keeps a fixed height while its width grows, so past roughly a
+   1750px viewport it becomes wider than the image's 1.45 and cover starts
+   cropping the phone again. There are no pixels left of the sleeve to extend
+   into, and padding the sides is the blurred fill that was rejected — so above
+   that width the image is contained instead. The whole phone stays visible and
+   the card's own dark ground shows as a thin edge rather than a crop. */
+@media (min-width:1750px){
+  .pcard-visual img.pv-lower{object-fit:contain;background:#141210}
+}
 .pcard-visual.is-fit{background:#141210}   /* matches the image stage */
 .pcard-visual.is-fit img{object-fit:contain;object-position:center bottom}
 /* anchor to the bottom-right so the screen stays flush with those two edges and
@@ -3232,7 +3243,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
           </div>
         </div>
         <div class="pcard-visual">
-          <img data-gate src="assets/img/card-onboarding-wide-63c7b9b1.webp" class="pv-lower" alt="Onboarding Revamp"/>
+          <img data-gate src="assets/img/card-onboarding-fill-dbee2654.webp" class="pv-lower" alt="Onboarding Revamp"/>
         </div>
       </div>
     </div>
