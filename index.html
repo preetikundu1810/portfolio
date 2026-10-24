@@ -2251,6 +2251,36 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 #view-cs-onboarding .jstep li{font-size:.73rem;line-height:1.35;}
 #view-cs-onboarding .jstep li em{font-style:normal;color:var(--mute);font-size:.68rem;}
 
+/* ---------- current flow diagram (section 04) ---------- */
+#view-cs-onboarding .cflow{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:22px 0 6px;}
+#view-cs-onboarding .cf-band{border:1px solid var(--line);background:var(--card);border-radius:10px;
+  padding:14px 16px 15px;}
+#view-cs-onboarding .cf-band.split{background:var(--acc-soft);border-color:var(--acc-line);}
+#view-cs-onboarding .cf-band.end{border-style:dashed;background:var(--fill);}
+#view-cs-onboarding .cf-h{display:flex;gap:4px 11px;align-items:baseline;flex-wrap:wrap;margin-bottom:11px;}
+#view-cs-onboarding .cf-k{font-family:var(--mo);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;color:var(--mute);font-variant-numeric:lining-nums;}
+#view-cs-onboarding .cf-band.split .cf-k{color:var(--acc);}
+#view-cs-onboarding .cf-h b{font-size:.94rem;font-weight:650;color:var(--ink);}
+#view-cs-onboarding .cf-h i{font-style:normal;font-size:.82rem;color:var(--mute);line-height:1.4;}
+#view-cs-onboarding .cf-chips{display:flex;flex-wrap:wrap;gap:7px;}
+#view-cs-onboarding .cf-c{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
+  background:var(--fill);border-radius:999px;padding:5px 13px 5px 9px;font-size:.84rem;line-height:1.25;}
+#view-cs-onboarding .cf-c s{text-decoration:none;font-family:var(--mo);font-size:.6rem;font-weight:700;
+  color:var(--mute);font-variant-numeric:lining-nums;}
+#view-cs-onboarding .cf-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:9px;}
+#view-cs-onboarding .cf-o{background:var(--card);border:1px solid var(--acc-line);border-radius:8px;
+  padding:9px 12px;display:flex;flex-direction:column;gap:3px;}
+#view-cs-onboarding .cf-o b{font-size:.89rem;font-weight:650;}
+#view-cs-onboarding .cf-o span{font-size:.78rem;color:var(--mute);line-height:1.4;}
+#view-cs-onboarding .cf-link{position:relative;align-self:center;width:1px;height:22px;background:var(--line);}
+#view-cs-onboarding .cf-link::after{content:"";position:absolute;left:-3.5px;bottom:0;width:0;height:0;
+  border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--line);}
+#view-cs-onboarding .cf-sum{display:flex;flex-wrap:wrap;gap:7px 22px;margin-top:13px;font-family:var(--mo);
+  font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--mute);
+  font-variant-numeric:lining-nums;}
+#view-cs-onboarding .cf-sum b{color:var(--ink);font-weight:700;}
+
 /* ---------- results placeholder ---------- */
 #view-cs-onboarding .res{border:1px dashed var(--line);background:var(--fill);padding:20px 22px;
   display:flex;flex-direction:column;gap:8px;}
@@ -4634,10 +4664,60 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   <p class="lede">After login, every user got the same screens in the same order. Only two answers changed
   anything: education level and work status. Those two splits made four different paths: the shortest
   was seven screens, the longest sixteen.</p>
-  <div class="trunk">login &rarr; language &rarr; basic details &rarr; about me &rarr; location &rarr;
-  <b>education</b> &rarr; experience &rarr; <b>[fresher / experienced]</b> &rarr; experience details &rarr;
-  company &amp; industry &rarr; job detail &rarr; skills &rarr; salary &rarr; role type &rarr; preferred
-  language &rarr; preferred job role &rarr; resume &rarr; job feed</div>
+  <div class="cflow">
+    <div class="cf-band">
+      <div class="cf-h"><span class="cf-k">Screens 1&ndash;5</span><b>Everyone sees these</b>
+        <i>Same screens, same order, whoever you are.</i></div>
+      <div class="cf-chips">
+        <span class="cf-c"><s>01</s>Login</span>
+        <span class="cf-c"><s>02</s>Language</span>
+        <span class="cf-c"><s>03</s>Basic details</span>
+        <span class="cf-c"><s>04</s>About me</span>
+        <span class="cf-c"><s>05</s>Location</span>
+      </div>
+    </div>
+    <div class="cf-link"></div>
+    <div class="cf-band split">
+      <div class="cf-h"><span class="cf-k">Split 01 &middot; Screen 06</span><b>Education</b>
+        <i>The first answer that changes what comes next.</i></div>
+      <div class="cf-opts">
+        <div class="cf-o"><b>10th / 12th pass</b><span>Shorter tail.</span></div>
+        <div class="cf-o"><b>Graduate or diploma</b><span>Deeper, more credential heavy tail.</span></div>
+      </div>
+    </div>
+    <div class="cf-link"></div>
+    <div class="cf-band split">
+      <div class="cf-h"><span class="cf-k">Split 02 &middot; Screen 07</span><b>Experience</b>
+        <i>The second and last answer that changes anything.</i></div>
+      <div class="cf-opts">
+        <div class="cf-o"><b>Fresher</b><span>Skips the work history screens.</span></div>
+        <div class="cf-o"><b>Experienced</b><span>Walks all of them.</span></div>
+      </div>
+    </div>
+    <div class="cf-link"></div>
+    <div class="cf-band">
+      <div class="cf-h"><span class="cf-k">Screens 8&ndash;16</span><b>The tail</b>
+        <i>How much of this you walk is decided entirely by those two answers.</i></div>
+      <div class="cf-chips">
+        <span class="cf-c"><s>08</s>Experience details</span>
+        <span class="cf-c"><s>09</s>Company &amp; industry</span>
+        <span class="cf-c"><s>10</s>Job detail</span>
+        <span class="cf-c"><s>11</s>Skills</span>
+        <span class="cf-c"><s>12</s>Salary</span>
+        <span class="cf-c"><s>13</s>Role type</span>
+        <span class="cf-c"><s>14</s>Preferred language</span>
+        <span class="cf-c"><s>15</s>Preferred job role</span>
+        <span class="cf-c"><s>16</s>Resume</span>
+      </div>
+    </div>
+    <div class="cf-link"></div>
+    <div class="cf-band end">
+      <div class="cf-h" style="margin-bottom:0"><span class="cf-k">End</span><b>Job feed</b>
+        <i>The first screen anyone actually came for.</i></div>
+    </div>
+    <div class="cf-sum"><span>2 splits</span><span><b>4</b> possible paths</span>
+      <span>Shortest <b>7</b> screens</span><span>Longest <b>16</b></span></div>
+  </div>
   <div class="rowwrap"><div class="rk">Everyone starts here</div><div class="row"><figure class="s"><div class="fr"><img class="" src="assets/img/onb-04-62398f06.webp" width="250" height="559" alt="Language" loading="lazy"></div><figcaption><b>Language</b><span class="d"><i>4.7%</i> dropped here</span><span class="d2">80,134 reached it</span></figcaption></figure><figure class="s"><div class="fr"><img class="" src="assets/img/onb-05-b241c6c0.webp" width="250" height="559" alt="Basic details · viewed" loading="lazy"></div><figcaption><b>Basic details · viewed</b><span class="d"><i>3.3%</i> dropped here</span><span class="d2">76,337 reached it</span></figcaption></figure><figure class="s"><div class="fr"><img class="" src="assets/img/onb-06-730e1ca0.webp" width="250" height="559" alt="Basic details · cohort split" loading="lazy"></div><figcaption><b>Basic details · cohort split</b><span class="d"><i>2.6%</i> dropped here</span><span class="d2">36,460 reached it</span></figcaption></figure><figure class="s"><div class="fr"><img class="" src="assets/img/onb-07-bf0d70e7.webp" width="250" height="559" alt="About me" loading="lazy"></div><figcaption><b>About me</b><span class="d"><i>3.8%</i> dropped here</span><span class="d2">35,518 reached it</span></figcaption></figure><figure class="s"><div class="fr"><img class="" src="assets/img/onb-08-de9da2f1.webp" width="250" height="558" alt="Location" loading="lazy"></div><figcaption><b>Location</b><span class="d"><i>4.4%</i> dropped here</span><span class="d2">34,421 reached it</span></figcaption></figure><figure class="s leak"><div class="fr"><img class="" src="assets/img/onb-09-090d6a82.webp" width="250" height="558" alt="Education" loading="lazy"></div><figcaption><b>Education</b><span class="d"><i>11.1%</i> dropped here</span><span class="d2">32,915 reached it</span></figcaption></figure><figure class="s"><div class="fr"><img class="" src="assets/img/onb-10-3f3fe693.webp" width="250" height="560" alt="Experience" loading="lazy"></div><figcaption><b>Experience</b><span class="d2">splits into experienced and fresher</span><span class="d2">29,273 reached it</span></figcaption></figure></div></div>
   <p class="cap">How to read this: the percentage on a screen in the funnel sheet is how many people
   <em>landed</em> on it, so the shortfall belongs to the screen before. 95.3% land on basic details, which
