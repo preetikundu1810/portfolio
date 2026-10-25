@@ -1130,12 +1130,9 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
           mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
 }
-#testimonials .rcpt-track{display:flex;gap:26px;width:max-content;animation:rcptScroll 72s linear infinite}
+#testimonials .rcpt-track{display:flex;gap:26px;width:max-content;will-change:transform}
 #testimonials .rcpt-dup{display:contents}
-@keyframes rcptScroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-#testimonials .rcpt-track:has(.rcpt:hover){animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){
-  #testimonials .rcpt-track{animation:none}
   #testimonials .rcpt-marquee{overflow-x:auto}
 }
 #testimonials .rcpt{
@@ -6250,6 +6247,49 @@ photoP();
     i=(i+1)%slides.length;
     slides[i].classList.add('active');
   },380);
+})();
+
+/* ══ TESTIMONIALS MARQUEE ══
+   Driven per frame rather than by a CSS keyframe. The track holds two
+   identical sets; it shifts left and wraps the moment it has travelled one
+   set, so the strip never reaches an end and never empties. A percentage
+   keyframe depended on max-content resolving, which is where this broke. */
+(function(){
+  var track=document.querySelector('#testimonials .rcpt-track');
+  if(!track) return;
+  var reduce=window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce) return;                      /* leave it static, scrollable */
+  var SPEED=30;                           /* px per second */
+  var x=0, setW=0, last=0, paused=false;
+
+  function measure(){
+    var cards=track.querySelectorAll('.rcpt');
+    if(cards.length<2){ setW=0; return; }
+    /* one set = half of them; distance to the start of the second set */
+    var half=cards.length/2;
+    setW=cards[half].offsetLeft-cards[0].offsetLeft;
+    if(!(setW>0)) setW=track.scrollWidth/2;
+  }
+  measure();
+  addEventListener('resize',function(){ measure(); },{passive:true});
+  /* fonts and lazy avatars change widths after first paint */
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measure);
+  addEventListener('load',measure);
+
+  track.addEventListener('mouseover',function(e){ if(e.target.closest('.rcpt')) paused=true; });
+  track.addEventListener('mouseout', function(e){ if(e.target.closest('.rcpt')) paused=false; });
+
+  function frame(t){
+    if(!last) last=t;
+    var dt=Math.min((t-last)/1000,0.1); last=t;
+    if(!paused && setW>0){
+      x-=SPEED*dt;
+      if(x<=-setW) x+=setW;              /* wrap: back to the first card */
+      track.style.transform='translate3d('+x.toFixed(2)+'px,0,0)';
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
 
 /* ══ MAGNETIC BUTTONS ══ */
