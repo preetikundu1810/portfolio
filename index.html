@@ -1082,7 +1082,22 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .astat-l{font-family:'DM Sans',sans-serif;font-size:10px;color:#9c8f80;letter-spacing:.1em;text-transform:uppercase;line-height:1.3}
 
 /* ══ TESTIMONIALS — fan card layout ══ */
-#testimonials{background:#f7f3ec;border-top:1px solid rgba(26,23,20,.08);padding:0;overflow:hidden}
+#testimonials{
+  /* cutting-mat background, matching the Link Board reference: its base is
+     rgb(8,94,74) with a tiled grid over it. Grid drawn in CSS rather than
+     hotlinking their tile. */
+  background-color:#085e4a;
+  background-image:
+    linear-gradient(rgba(255,255,255,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.075) 1px,transparent 1px);
+  background-size:38px 38px;
+  border-top:1px solid rgba(255,255,255,.10);
+  padding:0;overflow:hidden;
+}
+/* the heading sits straight on the mat, so it has to invert. .sec-h is shared
+   with other sections, so this is scoped and does not touch them. */
+#testimonials .testi-eyebrow{color:#dfeae5}
+#testimonials .sec-h{color:#f4f8f6}
 .testi-hdr{padding:80px 72px 0;text-align:center}
 .testi-eyebrow{display:inline-block;font-family:'Caveat',cursive;font-style:italic;font-size:23px;font-weight:500;letter-spacing:.03em;color:#1a1714;margin-bottom:12px}
 .testi-eyebrow-sq{width:8px;height:8px;background:#5868a2;display:inline-block}
