@@ -6268,7 +6268,12 @@ photoP();
     /* one set = half of them; distance to the start of the second set */
     var half=cards.length/2;
     setW=cards[half].offsetLeft-cards[0].offsetLeft;
-    if(!(setW>0)) setW=track.scrollWidth/2;
+    /* fallback: scrollWidth omits the gap between the two sets, and the wrap
+       distance has to include it, or the strip jumps by one gap each loop */
+    if(!(setW>0)){
+      var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||0;
+      setW=(track.scrollWidth+gap)/2;
+    }
   }
   measure();
   addEventListener('resize',function(){ measure(); },{passive:true});
