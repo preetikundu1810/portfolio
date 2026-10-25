@@ -1139,15 +1139,26 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 #testimonials .rcpt-foot{margin-top:auto;display:flex;justify-content:space-between;gap:12px;
   padding:11px 0;border-top:1px dashed rgba(26,23,20,.26);border-bottom:1px dashed rgba(26,23,20,.26);
   font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.03em;color:#8d8275}
-/* tape and clip, alternating down the row */
-#testimonials .rcpt-tape{position:absolute;top:-15px;left:50%;width:118px;height:36px;
-  transform:translateX(-50%) rotate(-1.8deg);
+/* tape, clips and a stray pen -- a different arrangement on each card, so no
+   two receipts in view are pinned the same way */
+#testimonials .rcpt-tape{position:absolute;width:118px;height:36px;
   background:linear-gradient(168deg,rgba(178,210,230,.93),rgba(146,188,213,.86));
   box-shadow:0 1px 3px rgba(26,23,20,.16)}
 #testimonials .rcpt-tape::after{content:'';position:absolute;inset:0;
   background:repeating-linear-gradient(90deg,rgba(255,255,255,.20) 0 2px,transparent 2px 6px)}
-#testimonials .rcpt-clip{position:absolute;top:-17px;right:28px;line-height:0;
+#testimonials .rcpt-tape.warm{
+  background:linear-gradient(168deg,rgba(243,222,214,.95),rgba(230,199,188,.88))}
+#testimonials .rcpt-tape.t-mid  {top:-15px;left:42%;transform:translateX(-50%) rotate(-1.8deg)}
+#testimonials .rcpt-tape.t-right{top:-18px;right:24px;width:126px;transform:rotate(2.6deg)}
+#testimonials .rcpt-tape.t-left {top:-16px;left:18px;width:108px;transform:rotate(-4.2deg)}
+#testimonials .rcpt-pen{position:absolute;top:-2px;right:52px;width:62px;height:7px;border-radius:4px;
+  background:linear-gradient(90deg,#3a3f47,#20242a);transform:rotate(3.4deg);
+  box-shadow:0 1px 2px rgba(26,23,20,.3)}
+#testimonials .rcpt-clip{position:absolute;line-height:0;
   filter:drop-shadow(0 2px 3px rgba(26,23,20,.32))}
+#testimonials .rcpt-clip.c-tr   {top:-17px;right:30px;transform:rotate(4deg)}
+#testimonials .rcpt-clip.c-tl   {top:-17px;left:30px;transform:rotate(-5deg)}
+#testimonials .rcpt-clip.c-right{top:92px;right:-13px;transform:rotate(90deg)}
 @media(max-width:960px){
   #testimonials .rcpt{flex-basis:290px}
   #testimonials .rcpt-marquee{padding:30px 0 60px}
@@ -3455,7 +3466,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   <div class="rcpt-marquee">
     <div class="rcpt-track">
       <figure class="rcpt">
-        <span class="rcpt-tape" aria-hidden="true"></span>
+        <span class="rcpt-tape t-mid" aria-hidden="true"></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/fr-7f251a20.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3467,7 +3478,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rcpt-clip c-tr" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/09-2790de31.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3479,7 +3490,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-tape" aria-hidden="true"></span>
+        <span class="rcpt-tape t-right warm" aria-hidden="true"></span><span class="rcpt-pen" aria-hidden="true"></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/fr-b7a7144d.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3491,7 +3502,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rcpt-clip c-right" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/fr-5a8e1f28.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3503,7 +3514,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-tape" aria-hidden="true"></span>
+        <span class="rcpt-tape t-left" aria-hidden="true"></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/10-4643ed37.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3515,7 +3526,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rcpt-clip c-tl" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/11-12b4b866.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3528,7 +3539,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
       </figure>
 <div class="rcpt-dup" aria-hidden="true">
       <figure class="rcpt">
-        <span class="rcpt-tape" aria-hidden="true"></span>
+        <span class="rcpt-tape t-mid" aria-hidden="true"></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/fr-7f251a20.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3540,7 +3551,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rcpt-clip c-tr" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/09-2790de31.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3552,7 +3563,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-tape" aria-hidden="true"></span>
+        <span class="rcpt-tape t-right warm" aria-hidden="true"></span><span class="rcpt-pen" aria-hidden="true"></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/fr-b7a7144d.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3564,7 +3575,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rcpt-clip c-right" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/fr-5a8e1f28.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3576,7 +3587,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-tape" aria-hidden="true"></span>
+        <span class="rcpt-tape t-left" aria-hidden="true"></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/10-4643ed37.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
@@ -3588,7 +3599,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
       </figure>
       <figure class="rcpt">
-        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rcpt-clip c-tl" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="rcpt-head">
           <img class="rcpt-av" src="assets/img/11-12b4b866.webp" alt="" loading="lazy"/>
           <div class="rcpt-who">
