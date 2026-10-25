@@ -714,8 +714,13 @@ section{position:relative;z-index:1}
 .work-cards{padding:0 72px 80px;display:flex;flex-direction:column;gap:20px}
 /* Coming-soon badge */
 .pcard-soon{
-  position:absolute;top:20px;left:20px;
-  background:rgba(250,246,240,.92);color:#1a1714;
+  position:absolute;top:20px;right:20px;
+  /* Opaque, not .92: it sits on a photograph, so the chip has to read as a
+     chip against both the bright window and the dark desk. The ring and
+     shadow keep its edge visible wherever it lands. */
+  background:#faf6f0;color:#1a1714;
+  border:1px solid rgba(26,23,20,.16);
+  box-shadow:0 1px 6px rgba(0,0,0,.28);
   font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;
   letter-spacing:.1em;text-transform:uppercase;
   padding:5px 12px;border-radius:100px;
@@ -3378,7 +3383,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         </div>
         <div class="pcard-visual">
           <img src="assets/img/card-onlyrounds-37fd6502.webp" alt="OnlyRounds AI interview console on a desktop screen"/>
-          <div class="pcard-soon">Coming Soon</div>
+          <div class="pcard-soon" aria-hidden="true">Coming Soon</div>
         </div>
       </div>
     </div>
