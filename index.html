@@ -76,6 +76,26 @@ body{background:#faf6f0;color:#1a1714;font-family:'DM Sans',sans-serif;font-size
 #loader.tr-mode.hide{animation:none}
 #loader.tr-mode{transition:none;pointer-events:auto}   /* swallow clicks while up */
 @keyframes curtainUp{0%{transform:translateY(0)}100%{transform:translateY(-100%)}}
+/* ── mobile loading screen ──
+   The carriage is built around a cursor and a long scroll; on a phone that is
+   a lot of work before anyone sees the portfolio. Phones get a short branded
+   reveal instead. Desktop is untouched. */
+#loader .m-load{display:none}
+#loader.m-mode #tr-stage{display:none}
+#loader.m-mode .m-load{display:flex;flex-direction:column;align-items:center;gap:20px}
+.m-load-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;
+  line-height:1;color:#faf6f0;opacity:0;animation:mName .6s ease .05s forwards}
+.m-load-sub{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(250,246,240,.42);opacity:0;animation:mName .6s ease .3s forwards}
+.m-load-bar{width:128px;height:2px;border-radius:2px;background:rgba(250,246,240,.16);overflow:hidden}
+.m-load-bar i{display:block;width:42%;height:100%;border-radius:2px;background:#faf6f0;
+  transform:translateX(-120%);animation:mBar 1.1s cubic-bezier(.45,0,.25,1) .2s infinite}
+@keyframes mName{to{opacity:1}}
+@keyframes mBar{0%{transform:translateX(-120%)}100%{transform:translateX(330%)}}
+@media (prefers-reduced-motion:reduce){
+  .m-load-name,.m-load-sub{animation:none;opacity:1}
+  .m-load-bar i{animation:none;transform:none;width:100%}
+}
 
 /* ══ TRAIN LOADING SCREEN ══
    Scroll drives a camera pull-back. You start pressed against the centre
@@ -2882,6 +2902,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 
 <!-- LOADER -->
 <div id="loader">
+  <div class="m-load" aria-hidden="true"><div class="m-load-name">Preeti Kundu</div><div class="m-load-bar"><i></i></div><div class="m-load-sub">Loading</div></div>
   <div id="tr-stage" aria-hidden="true">
     <div id="tr-camera">
       <div id="tr-int">
@@ -5607,7 +5628,9 @@ function startSite(){
   var HANDOFF=0.70;            /* where the carriage gives way to the portfolio */
   var started=false;           /* startSite() fired once, at the handoff */
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var armed=!!(loader&&stage&&cam&&world&&hint&&ext&&inte&&scrim)&&!reduce;
+  /* phones take the simple loading screen, not the carriage */
+  var phone=!!(window.matchMedia&&matchMedia('(max-width:768px),(pointer:coarse)').matches);
+  var armed=!!(loader&&stage&&cam&&world&&hint&&ext&&inte&&scrim)&&!reduce&&!phone;
 
   var loaded=document.readyState==='complete';
   var finished=!armed, revealed=false;
@@ -5682,9 +5705,11 @@ function startSite(){
   }
 
   if(!armed){
+    if(phone&&loader) loader.classList.add('m-mode');
+    var HOLD=phone?1500:860;   /* long enough for the phone animation to read */
     var go=function(){
       if(document.readyState!=='complete') return false;
-      setTimeout(reveal,860); return true;      /* reveal() is idempotent */
+      setTimeout(reveal,HOLD); return true;     /* reveal() is idempotent */
     };
     if(!go()){
       window.addEventListener('load',go);
