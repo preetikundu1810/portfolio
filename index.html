@@ -1099,6 +1099,60 @@ footer{background:#1a1714;padding:56px 72px 36px;position:relative;z-index:1}
 .testi-dot{width:6px;height:6px;border-radius:50%;background:rgba(26,23,20,.18);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0;flex-shrink:0}
 .testi-dot.active{background:#1a1714;transform:scale(1.5)}
 
+/* ══ TESTIMONIALS — receipts marquee ══
+   Cards ride a single flex track holding two identical sets; the track
+   slides exactly one set (-50%) then loops, so the join is seamless and the
+   scroll never reaches an end. Hovering a card pauses it. */
+#testimonials .rcpt-marquee{
+  overflow:hidden;padding:34px 0 78px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+}
+#testimonials .rcpt-track{display:flex;gap:26px;width:max-content;animation:rcptScroll 95s linear infinite}
+#testimonials .rcpt-dup{display:contents}
+@keyframes rcptScroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+#testimonials .rcpt-track:has(.rcpt:hover){animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+  #testimonials .rcpt-track{animation:none}
+  #testimonials .rcpt-marquee{overflow-x:auto}
+}
+#testimonials .rcpt{
+  flex:0 0 332px;position:relative;margin:0;isolation:isolate;
+  background:#fbf9f4;border-radius:12px;padding:30px 26px 16px;
+  display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(26,23,20,.06),0 10px 28px rgba(26,23,20,.09);
+  transition:transform .35s cubic-bezier(.34,1.1,.64,1),box-shadow .35s ease;
+}
+#testimonials .rcpt:hover{transform:translateY(-6px);
+  box-shadow:0 2px 4px rgba(26,23,20,.08),0 18px 40px rgba(26,23,20,.16)}
+#testimonials .rcpt-head{display:flex;align-items:center;gap:13px;padding:14px 0;margin-bottom:20px;
+  border-top:1px dashed rgba(26,23,20,.26);border-bottom:1px dashed rgba(26,23,20,.26)}
+#testimonials .rcpt-av{width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0}
+#testimonials .rcpt-name{font-family:'DM Mono',monospace;font-size:13.5px;font-weight:500;
+  letter-spacing:.01em;text-transform:uppercase;color:#1a1714;line-height:1.2}
+#testimonials .rcpt-org{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;color:#8d8275;margin-top:5px;line-height:1.3}
+#testimonials .rcpt-q{position:relative;margin:0 0 22px;font-family:'DM Mono',monospace;
+  font-size:12.5px;line-height:1.85;color:#2b2722}
+#testimonials .rcpt-q::before{content:'\201C';position:absolute;left:-4px;top:-34px;z-index:-1;
+  font-family:'Cormorant Garamond',serif;font-size:96px;line-height:1;color:rgba(26,23,20,.10)}
+#testimonials .rcpt-foot{margin-top:auto;display:flex;justify-content:space-between;gap:12px;
+  padding:11px 0;border-top:1px dashed rgba(26,23,20,.26);border-bottom:1px dashed rgba(26,23,20,.26);
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.03em;color:#8d8275}
+/* tape and clip, alternating down the row */
+#testimonials .rcpt-tape{position:absolute;top:-15px;left:50%;width:118px;height:36px;
+  transform:translateX(-50%) rotate(-1.8deg);
+  background:linear-gradient(168deg,rgba(178,210,230,.93),rgba(146,188,213,.86));
+  box-shadow:0 1px 3px rgba(26,23,20,.16)}
+#testimonials .rcpt-tape::after{content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.20) 0 2px,transparent 2px 6px)}
+#testimonials .rcpt-clip{position:absolute;top:-17px;right:28px;line-height:0;
+  filter:drop-shadow(0 2px 3px rgba(26,23,20,.32))}
+@media(max-width:960px){
+  #testimonials .rcpt{flex-basis:290px}
+  #testimonials .rcpt-marquee{padding:30px 0 60px}
+}
+
 /* ══ FOOTER ══ */
 footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 .ft{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:48px;border-bottom:1px solid rgba(250,246,240,.1);margin-bottom:32px}
@@ -3394,71 +3448,159 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="testi-hdr sr">
-    <div class="testi-eyebrow">What people say about me</div>
-    <h2 class="sec-h">Not just my mom thinks I'm good at this.</h2>
+    <div class="testi-eyebrow">I got the receipts</div>
+    <h2 class="sec-h">Not just my mom thinks I&rsquo;m good at this.</h2>
   </div>
 
-  <div class="testi-fan-scene">
-    <div class="testi-fan" id="testiFan">
-
-      <div class="tfc">
-        <p class="tfc-quote">"Preeti is born curious and has been very crucial in defining and building user experience at Foundit. She has an eye for detail for the work. She is a go-getter and asks the right questions. She is really quick with iteration and absorbing feedback."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="assets/img/fr-7f251a20.webp" alt="Vijayant Kumar"/>
-          <div><div class="tfc-name">Vijayant Kumar</div><div class="tfc-role">Product Manager · Foundit</div></div>
+  <div class="rcpt-marquee">
+    <div class="rcpt-track">
+      <figure class="rcpt">
+        <span class="rcpt-tape" aria-hidden="true"></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/fr-7f251a20.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Vijayant Kumar</div>
+            <div class="rcpt-org">Product Manager · Foundit</div>
+          </div>
         </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Preeti began her career at Foundit, successfully transitioning from an intern to a full-time role. Over her two-year journey, I witnessed her remarkable growth, which gave us the confidence to entrust her with multiple key projects. She consistently delivered outstanding results with minimal guidance, handling them single-handedly."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="assets/img/09-2790de31.webp" alt="Thilak Bhat"/>
-          <div><div class="tfc-name">Thilak Bhat</div><div class="tfc-role">Senior Product Designer · Cooper</div></div>
+        <blockquote class="rcpt-q">"Preeti is born curious and has been very crucial in defining and building user experience at Foundit. She has an eye for detail for the work. She is a go-getter and asks the right questions. She is really quick with iteration and absorbing feedback."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/09-2790de31.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Thilak Bhat</div>
+            <div class="rcpt-org">Senior Product Designer · Cooper</div>
+          </div>
         </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. She has evolved into a skilled designer, showcasing a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional in the field."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="assets/img/fr-b7a7144d.webp" alt="Mandeep Vadera"/>
-          <div><div class="tfc-name">Mandeep Vadera</div><div class="tfc-role">Design Manager · Foundit</div></div>
+        <blockquote class="rcpt-q">"Preeti began her career at Foundit, successfully transitioning from an intern to a full-time role. Over her two-year journey, I witnessed her remarkable growth, which gave us the confidence to entrust her with multiple key projects. She consistently delivered outstanding results with minimal guidance, handling them single-handedly."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-tape" aria-hidden="true"></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/fr-b7a7144d.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Mandeep Vadera</div>
+            <div class="rcpt-org">Design Manager · Foundit</div>
+          </div>
         </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Preeti is one heck of a hardworking youngster in Foundit's Product Design team. I have literally seen her exponential growth curve before my eyes — from intern to full-time, driven by sheer passion, hard work, and curiosity to improve. She constantly comes up with new ideas and never shies away from a healthy debate."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="assets/img/fr-5a8e1f28.webp" alt="Saurav Mishra"/>
-          <div><div class="tfc-name">Saurav Mishra</div><div class="tfc-role">Product Manager · Foundit</div></div>
+        <blockquote class="rcpt-q">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. She has evolved into a skilled designer, showcasing a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional in the field."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/fr-5a8e1f28.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Saurav Mishra</div>
+            <div class="rcpt-org">Product Manager · Foundit</div>
+          </div>
         </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Preeti is one of those people you can trust with a problem and be confident it will be driven to a thoughtful, high-quality outcome. At Apna, she consistently demonstrated strong ownership, handled complex initiatives independently."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="assets/img/10-4643ed37.webp" alt="Piyush Tyagi"/>
-          <div><div class="tfc-name">Piyush Tyagi</div><div class="tfc-role">Design Lead · Skillz (NYSE: SKLZ)</div></div>
+        <blockquote class="rcpt-q">"Preeti is one heck of a hardworking youngster in Foundit's Product Design team. I have literally seen her exponential growth curve before my eyes — from intern to full-time, driven by sheer passion, hard work, and curiosity to improve. She constantly comes up with new ideas and never shies away from a healthy debate."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-tape" aria-hidden="true"></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/10-4643ed37.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Piyush Tyagi</div>
+            <div class="rcpt-org">Design Lead · Skillz (NYSE: SKLZ)</div>
+          </div>
         </div>
-      </div>
-
-      <div class="tfc">
-        <p class="tfc-quote">"Worked with Preeti at Apna and honestly she's one of the best designers I've collaborated with. Her design and product thinking is really sharp — she never rushes to solutions. She digs deep into the problem first, asks the right questions, and challenges assumptions before touching Figma."</p>
-        <div class="tfc-person">
-          <img class="tfc-avatar" src="assets/img/11-12b4b866.webp" alt="Sharath S.p"/>
-          <div><div class="tfc-name">Sharath S.p</div><div class="tfc-role">Product Lead · Apna</div></div>
+        <blockquote class="rcpt-q">"Preeti is one of those people you can trust with a problem and be confident it will be driven to a thoughtful, high-quality outcome. At Apna, she consistently demonstrated strong ownership, handled complex initiatives independently."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/11-12b4b866.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Sharath S.p</div>
+            <div class="rcpt-org">Product Lead · Apna</div>
+          </div>
         </div>
-      </div>
-
+        <blockquote class="rcpt-q">"Worked with Preeti at Apna and honestly she's one of the best designers I've collaborated with. Her design and product thinking is really sharp — she never rushes to solutions. She digs deep into the problem first, asks the right questions, and challenges assumptions before touching Figma."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+<div class="rcpt-dup" aria-hidden="true">
+      <figure class="rcpt">
+        <span class="rcpt-tape" aria-hidden="true"></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/fr-7f251a20.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Vijayant Kumar</div>
+            <div class="rcpt-org">Product Manager · Foundit</div>
+          </div>
+        </div>
+        <blockquote class="rcpt-q">"Preeti is born curious and has been very crucial in defining and building user experience at Foundit. She has an eye for detail for the work. She is a go-getter and asks the right questions. She is really quick with iteration and absorbing feedback."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/09-2790de31.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Thilak Bhat</div>
+            <div class="rcpt-org">Senior Product Designer · Cooper</div>
+          </div>
+        </div>
+        <blockquote class="rcpt-q">"Preeti began her career at Foundit, successfully transitioning from an intern to a full-time role. Over her two-year journey, I witnessed her remarkable growth, which gave us the confidence to entrust her with multiple key projects. She consistently delivered outstanding results with minimal guidance, handling them single-handedly."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-tape" aria-hidden="true"></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/fr-b7a7144d.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Mandeep Vadera</div>
+            <div class="rcpt-org">Design Manager · Foundit</div>
+          </div>
+        </div>
+        <blockquote class="rcpt-q">"Had the privilege of working with Preeti at the start of her UI/UX design journey. Her rapid growth and dedication were evident from day one. She has evolved into a skilled designer, showcasing a keen eye for user-centric solutions. Her passion and work ethic make her a standout professional in the field."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/fr-5a8e1f28.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Saurav Mishra</div>
+            <div class="rcpt-org">Product Manager · Foundit</div>
+          </div>
+        </div>
+        <blockquote class="rcpt-q">"Preeti is one heck of a hardworking youngster in Foundit's Product Design team. I have literally seen her exponential growth curve before my eyes — from intern to full-time, driven by sheer passion, hard work, and curiosity to improve. She constantly comes up with new ideas and never shies away from a healthy debate."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-tape" aria-hidden="true"></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/10-4643ed37.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Piyush Tyagi</div>
+            <div class="rcpt-org">Design Lead · Skillz (NYSE: SKLZ)</div>
+          </div>
+        </div>
+        <blockquote class="rcpt-q">"Preeti is one of those people you can trust with a problem and be confident it will be driven to a thoughtful, high-quality outcome. At Apna, she consistently demonstrated strong ownership, handled complex initiatives independently."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+      <figure class="rcpt">
+        <span class="rcpt-clip" aria-hidden="true"><svg width="26" height="40" viewBox="0 0 72 108" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 8C64 8 70 20 70 33L70 72C70 91 56 104 36 104C16 104 2 91 2 72L2 33C2 17 12 6 24 6C36 6 48 17 48 33L48 69C48 79 42 85 34 85C26 85 20 79 20 69L20 31" stroke="#9aa3ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="rcpt-head">
+          <img class="rcpt-av" src="assets/img/11-12b4b866.webp" alt="" loading="lazy"/>
+          <div class="rcpt-who">
+            <div class="rcpt-name">Sharath S.p</div>
+            <div class="rcpt-org">Product Lead · Apna</div>
+          </div>
+        </div>
+        <blockquote class="rcpt-q">"Worked with Preeti at Apna and honestly she's one of the best designers I've collaborated with. Her design and product thinking is really sharp — she never rushes to solutions. She digs deep into the problem first, asks the right questions, and challenges assumptions before touching Figma."</blockquote>
+        <figcaption class="rcpt-foot"><span>Testimonial</span><span>We got the receipts</span></figcaption>
+      </figure>
+</div>
     </div>
-  </div>
-
-  <div class="testi-dots" id="testiDots">
-    <button class="testi-dot active"></button>
-    <button class="testi-dot"></button>
-    <button class="testi-dot"></button>
-    <button class="testi-dot"></button>
-    <button class="testi-dot"></button>
-    <button class="testi-dot"></button>
   </div>
 </section>
 
@@ -6091,43 +6233,6 @@ photoP();
     i=(i+1)%slides.length;
     slides[i].classList.add('active');
   },380);
-})();
-
-/* ══ TESTIMONIALS FAN ══ */
-(function(){
-  const fan=document.getElementById('testiFan');
-  if(!fan) return;
-  const cards=Array.from(fan.querySelectorAll('.tfc'));
-  const dots=Array.from(document.querySelectorAll('#testiDots .testi-dot'));
-  const n=cards.length;
-  let active=0;
-
-  /* slot 0 = center-front, 1 = right1, 2 = right2, 3 = hidden-back (behind center), 4 = left2, 5 = left1 */
-  const SLOTS=[
-    {tx:0,    ty:-28, rot:0,   sc:1.04, z:12, sh:'0 24px 64px rgba(26,23,20,.22),0 4px 16px rgba(26,23,20,.10)'},
-    {tx:190,  ty:20,  rot:9,   sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
-    {tx:320,  ty:52,  rot:17,  sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
-    {tx:0,    ty:60,  rot:0,   sc:0.45, z:0,  sh:'none'},
-    {tx:-320, ty:52,  rot:-17, sc:0.78, z:3,  sh:'0 4px 16px rgba(26,23,20,.09)'},
-    {tx:-190, ty:20,  rot:-9,  sc:0.90, z:7,  sh:'0 8px 32px rgba(26,23,20,.13)'},
-  ];
-
-  function layout(){
-    cards.forEach((card,i)=>{
-      const s=SLOTS[(i-active+n)%n];
-      card.style.transform=`translateX(${s.tx}px) translateY(${s.ty}px) rotate(${s.rot}deg) scale(${s.sc})`;
-      card.style.zIndex=s.z;
-      card.style.boxShadow=s.sh;
-    });
-    dots.forEach((d,i)=>d.classList.toggle('active',i===active));
-  }
-
-  layout();
-  let timer=setInterval(()=>{active=(active+1)%n;layout();},3400);
-
-  function goTo(i){active=i;layout();clearInterval(timer);timer=setInterval(()=>{active=(active+1)%n;layout();},3400);}
-  cards.forEach((_,i)=>cards[i].addEventListener('click',()=>goTo(i)));
-  dots.forEach((_,i)=>dots[i].addEventListener('click',()=>goTo(i)));
 })();
 
 /* ══ MAGNETIC BUTTONS ══ */
