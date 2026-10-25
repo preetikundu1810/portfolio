@@ -5530,6 +5530,83 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 </section>
 
 
+<!-- 15 FUTURE SCOPE -->
+<section class="sec">
+  <p class="eyebrow">15 &middot; Future scope</p>
+  <h2>If the form is still too hard to type, let them talk.</h2>
+  <p class="lede">Three milestones made the flow shorter. They did not make it easier to answer. The people
+  we lose now are not defeated by length, they are defeated by fields they cannot fill: a date of birth in
+  a format they do not recognise, an employer name for a vehicle they own themselves. Voice is the next
+  direction, and we ran a discovery round before designing around it.</p>
+
+  <div class="two" style="margin-top:22px;align-items:start">
+    <figure class="s" style="width:196px;margin:0">
+      <div class="fr"><img src="assets/img/voice-entry.webp" width="196" height="400"
+        alt="Voice onboarding entry screen with Agent Diya and a Start call button" loading="lazy"></div>
+      <figcaption><b>Agent Diya</b><span class="d">The candidate starts a call instead of starting a form.</span></figcaption>
+    </figure>
+    <div class="stack">
+      <p><b>The prototype only puts speech where speech works.</b> Open questions &mdash; what work you do,
+      what you are good at, what job you want next, where you live &mdash; are answered by talking. Precise
+      fields stay as taps and pickers.</p>
+      <p>That split was a guess when it was drawn. The calls turned it into a finding: the open questions
+      were answered comfortably, and every question that failed was a precise one.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:28px">What the discovery calls established</h3>
+  <div class="corr">
+    <div><span class="st">Drop-off is comprehension, not privacy</span><span class="sc">&ldquo;didn&rsquo;t understand the question&rdquo; &times;4, &ldquo;didn&rsquo;t know what to enter&rdquo; &times;3</span><span class="cv">Clear</span></div>
+    <div><span class="st">Intent survives the drop-off</span><span class="sc">almost everyone who connected was still job hunting</span><span class="cv">Clear</span></div>
+    <div><span class="st">Hindi first</span><span class="sc">every connected candidate chose Hindi</span><span class="cv">Clear</span></div>
+    <div class="worst"><span class="st">A conversation beats the form</span><span class="sc">four people gave a view; four answers is not a finding</span><span class="cv">Untested</span></div>
+  </div>
+  <p class="cap">Nobody refused a question because it felt too personal. That matters: a conversation can
+  fix confusion and can do nothing about an unwillingness to share.</p>
+
+  <div class="sw2" style="margin-top:18px"><span class="k2">The blocker that voice cannot fix</span>
+    <p>A driver could not give company details because he drives his own vehicle. There is no employer, so
+    there is no answer. Another could not proceed without a licence he does not hold. <em>Talking more
+    slowly does not create facts the candidate does not have.</em> The field model is wrong for gig work,
+    and that is a separate problem from how the question is asked.</p></div>
+
+  <div class="res" style="margin-top:14px"><div class="rk2">Why this is scope, not a plan</div>
+    <p><b>The problem is confirmed. The solution is not.</b> Every call that worked worked because a human
+    rephrased the question and judged what the answer meant. A scripted agent can do neither, and nothing in
+    this round tells us whether it succeeds where a helpful person did.</p>
+    <p>The base is small and the two records disagree, so both are reported rather than averaged: the call
+    tracker logs <b>32 dialled, 12 connected, 4 completed</b>; the written notes describe roughly 18
+    candidates and 6 completed. Either way it is <b>fewer than ten completed conversations</b>, with most
+    observation columns empty. These are directions, not rates, and none of them is quoted as one.</p>
+    <p>One gate was not tested at all: whether a profile built by talking is rich enough to match jobs.
+    Nothing downstream was measured.</p></div>
+</section>
+
+<!-- 16 WHAT WE'D DO BETTER -->
+<section class="sec">
+  <p class="eyebrow">16 &middot; Looking back</p>
+  <h2>What could we have done better?</h2>
+  <div class="learn n">
+    <div><h3>We measured for two milestones before we watched anyone</h3>
+      <p>Milestone 1 and Milestone 2 both shipped and read out before we sat with a single candidate. The
+      funnel told us where people left and never once told us why. The session that found a participant who
+      could not read the flow at all would have changed what we built first, and it was available to us
+      from the beginning.</p></div>
+    <div><h3>The employer study reached 16 of 200</h3>
+      <p>The signal was consistent, but roughly 8% reach is a sample, not a measurement, and it carried a
+      decision about removing fields. A second calling round, or a sharper time-of-day, would have cost
+      little next to the weight the result ended up carrying.</p></div>
+    <div><h3>We read onboarding completion as if it were the whole funnel</h3>
+      <p>Milestone 1 lifted completion on every arm, and we reported it as a win before noticing the
+      roughly 3% we then lost further down the job application. Deferring a question does not delete it. The
+      downstream gate should have been in the readout from the first day, not added to it later.</p></div>
+    <div><h3>The gig definition was never widened</h3>
+      <p>Delivery, driver, logistics, cook and security is a narrow list, and every branching decision in
+      the project hangs on it. We kept meaning to broaden it and re-validate on a larger base, and it is
+      still the single assumption the whole structure rests on.</p></div>
+  </div>
+</section>
+
 <footer>
   <p><b>Where this stands.</b> Milestone 1 ran as a three variant test and is live. Milestone 2 is measured:
   76% completion against a 70% control. Milestone 3 is designed, with both flows built out and prototyped,
