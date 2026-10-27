@@ -569,7 +569,8 @@ section{position:relative;z-index:1}
   background:#ffffff;
   border-radius:12px;
   box-shadow:0 2px 4px rgba(26,23,20,.04), 0 8px 32px rgba(26,23,20,.07);
-  margin-bottom:24px;
+  margin-bottom:0;
+  height:100%;
   overflow:hidden;
   transition:box-shadow .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1);
 }
@@ -580,13 +581,15 @@ section{position:relative;z-index:1}
 /* Card inner: text left, image right — consistent for every card */
 .pcard-inner{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:380px;
+  grid-template-columns:1fr;   /* image over text */
+  grid-template-rows:auto 1fr;
+  min-height:0;
+  height:100%;
   align-items:stretch;
 }
 /* Left: content */
 .pcard-body{
-  padding:52px 48px 40px;
+  padding:34px 34px 30px;
   display:flex;flex-direction:column;
   justify-content:space-between;
 }
@@ -689,8 +692,9 @@ section{position:relative;z-index:1}
 .pcard-visual{
   position:relative;overflow:hidden;
   background:#141210;
+  order:-1;
   height:auto;
-  min-height:380px;
+  min-height:300px;
 }
 .pcard-visual img{
   position:absolute;inset:0;
@@ -718,7 +722,7 @@ section{position:relative;z-index:1}
   color:rgba(250,246,240,.55);margin-top:8px;
 }
 /* Selected Works cards container (was an inline style; class so it can respond) */
-.work-cards{padding:0 72px 80px;display:flex;flex-direction:column;gap:20px}
+.work-cards{padding:0 72px 80px;display:grid;grid-template-columns:repeat(2,1fr);gap:28px;align-items:stretch}
 /* Coming-soon badge */
 .pcard-soon{
   position:absolute;top:20px;right:20px;
@@ -1229,7 +1233,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 .cs-divider{width:100%;height:1px;background:rgba(26,23,20,.08);margin:48px 0}
 
 /* ══ CARD HOVER DECORATIONS ══ */
-.pcard-wrap{position:relative}
+.pcard-wrap{position:relative;height:100%}
 .pcard-deco{position:absolute;pointer-events:none;z-index:20;opacity:0;transition:opacity .3s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
 .pcard-deco-tl{top:-28px;left:18px;transform:translateY(-10px) scale(0.8) rotate(-18deg);transform-origin:50% 100%}
 .pcard-deco-tr{top:-28px;right:18px;transform:translateY(-10px) scale(0.8) rotate(18deg);transform-origin:50% 100%}
@@ -1244,7 +1248,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   #about{padding:0}
   footer{padding:40px 24px 28px}
   /* new pcard responsive */
-  .work-cards{padding:0 24px 64px}
+  .work-cards{padding:0 24px 64px;grid-template-columns:1fr;gap:22px}
   .pcard-inner{grid-template-columns:1fr;min-height:auto}
   .pcard-visual{min-height:260px;order:-1}
   .pcard-body{padding:32px 28px 28px}
