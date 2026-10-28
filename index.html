@@ -591,7 +591,7 @@ section{position:relative;z-index:1}
 .pcard-body{
   padding:34px 34px 30px;
   display:flex;flex-direction:column;
-  justify-content:space-between;
+  justify-content:flex-start;
 }
 .pcard-top{}
 .pcard-cat{
@@ -613,7 +613,6 @@ section{position:relative;z-index:1}
   font-size:14px;color:#6b6055;
   line-height:1.75;
   margin-bottom:20px;
-  max-width:420px;
   display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
 }
 .pcard-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
@@ -666,7 +665,8 @@ section{position:relative;z-index:1}
   display:flex;gap:44px;
   border-top:1px solid rgba(26,23,20,.07);
   padding-top:24px;
-  margin-top:28px;
+  margin-top:auto;
+  margin-bottom:22px;
 }
 .pcard-metric{}
 .pcard-metric-n{
@@ -693,8 +693,10 @@ section{position:relative;z-index:1}
   position:relative;overflow:hidden;
   background:#141210;
   order:-1;
+  /* the art is 1.45-1.50; a 3:2 box crops far less than the old 1.87 */
+  aspect-ratio:3/2;
   height:auto;
-  min-height:300px;
+  min-height:0;
 }
 .pcard-visual img{
   position:absolute;inset:0;
@@ -3373,12 +3375,13 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
               <span class="pcard-tag">Flow Design</span>
               <span class="pcard-tag">Activation UX</span>
             </div>
-            <button class="pcard-cta" onclick="navigate('cs-onboarding')">View Case Study <span class="arrow">→</span></button>
           </div>
           <div class="pcard-metrics">
             <div class="pcard-metric"><div class="pcard-metric-n">11&thinsp;→&thinsp;7</div><div class="pcard-metric-l">Steps in<br/>the flow</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">+8<span class="pcard-metric-u">%</span></div><div class="pcard-metric-l">Overall Onboarding<br/>Increase</div></div>
           </div>
+        
+            <button class="pcard-cta" onclick="navigate('cs-onboarding')">View Case Study <span class="arrow">→</span></button>
         </div>
         <div class="pcard-visual">
           <img data-gate src="assets/img/card-onboarding-fill-dbee2654.webp" class="pv-lower" alt="Onboarding Revamp"/>
@@ -3399,13 +3402,14 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
               <span class="pcard-tag">Usability Research</span>
               <span class="pcard-tag">AI Workflow Design</span>
             </div>
-            <button class="pcard-cta" onclick="navigate('cs-ai-hiring')">View Case Study <span class="arrow">→</span></button>
           </div>
           <div class="pcard-metrics">
             <div class="pcard-metric"><div class="pcard-metric-n">24×7</div><div class="pcard-metric-l">Candidate<br/>Calling</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">~34%</div><div class="pcard-metric-l">Action on<br/>AI Fit</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">1.7 min</div><div class="pcard-metric-l">Time to<br/>Act</div></div>
           </div>
+        
+            <button class="pcard-cta" onclick="navigate('cs-ai-hiring')">View Case Study <span class="arrow">→</span></button>
         </div>
         <div class="pcard-visual is-fit is-br">
           <img src="assets/img/ai-card-calling-agent-247ac756.webp" alt="Select your AI Agent — the AI Calling Agent set-up step in apnaHire"/>
@@ -3434,13 +3438,14 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
               <span class="pcard-tag">Quantitative Research</span>
               <span class="pcard-tag">Visual Hierarchy</span>
             </div>
-            <button class="pcard-cta" onclick="navigate('cs-profile')">View Case Study <span class="arrow">→</span></button>
           </div>
           <div class="pcard-metrics">
             <div class="pcard-metric"><div class="pcard-metric-n">6</div><div class="pcard-metric-l">Research<br/>Participants</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">↑</div><div class="pcard-metric-l">Profile Update<br/>Frequency</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">↓</div><div class="pcard-metric-l">Drop-off<br/>Rate</div></div>
           </div>
+        
+            <button class="pcard-cta" onclick="navigate('cs-profile')">View Case Study <span class="arrow">→</span></button>
         </div>
         <div class="pcard-visual">
           <img src="assets/img/08-86a66738.webp" alt="Seeker Profile Page Revamp"/>
@@ -3462,13 +3467,14 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
               <span class="pcard-tag">AI Workflow Design</span>
               <span class="pcard-tag">Enterprise UX</span>
             </div>
-            <button class="pcard-cta is-soon" disabled aria-disabled="true">Coming Soon</button>
           </div>
           <div class="pcard-metrics">
             <div class="pcard-metric"><div class="pcard-metric-n">~80%</div><div class="pcard-metric-l">Connection Rate<br/>(vs ~40% human)</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">2×</div><div class="pcard-metric-l">Recruiter<br/>Productivity</div></div>
             <div class="pcard-metric"><div class="pcard-metric-n">0→1</div><div class="pcard-metric-l">Platform<br/>Built Solo</div></div>
           </div>
+        
+            <button class="pcard-cta is-soon" disabled aria-disabled="true">Coming Soon</button>
         </div>
         <div class="pcard-visual">
           <img src="assets/img/card-onlyrounds-37fd6502.webp" alt="OnlyRounds AI interview console on a desktop screen"/>
