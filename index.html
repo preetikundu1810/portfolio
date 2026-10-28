@@ -1942,6 +1942,22 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
 @media (min-width:1750px){
   .pcard-visual img.pv-lower{object-fit:contain;background:#141210}
 }
+/* ══ ONBOARDING CARD GROUND ══
+   The Onboarding card shows a drawn field instead of a photograph: a white
+   sheet ruled 96x64, with a soft violet circle anchored off the top-right
+   corner. Values are the ones Preeti sent (6rem/4rem grid, 800px circle at
+   100% 200px). The radial is listed first so it paints over the rules, and
+   background-size has to carry a slot for it or the two grid layers inherit
+   the wrong tile. Shorthand first, then background-image — the other way round
+   the shorthand would wipe the layers out. */
+.pcard-visual.pv-grid{
+  background:#fff;
+  background-image:
+    radial-gradient(circle 800px at 100% 200px,#d5c5ff,transparent),
+    linear-gradient(to right,#f0f0f0 1px,transparent 1px),
+    linear-gradient(to bottom,#f0f0f0 1px,transparent 1px);
+  background-size:auto,96px 64px,96px 64px;
+}
 .pcard-visual.is-fit{background:#141210}   /* matches the image stage */
 .pcard-visual.is-fit img{object-fit:contain;object-position:center bottom}
 /* anchor to the bottom-right so the screen stays flush with those two edges and
@@ -3383,9 +3399,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         
             <button class="pcard-cta" onclick="navigate('cs-onboarding')">View Case Study <span class="arrow">→</span></button>
         </div>
-        <div class="pcard-visual">
-          <img data-gate src="assets/img/card-onboarding-fill-dbee2654.webp" class="pv-lower" alt="Onboarding Revamp"/>
-        </div>
+        <div class="pcard-visual pv-grid" role="presentation"></div>
       </div>
     </div>
 
