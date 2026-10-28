@@ -1958,6 +1958,24 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
     linear-gradient(to bottom,#f0f0f0 1px,transparent 1px);
   background-size:auto,96px 64px,96px 64px;
 }
+/* The hand is a cut-out, so it stands on the ruled sheet rather than filling the
+   panel: the base rule stretches every card image to cover, which would crop a
+   portrait subject to a letterbox and hide the background it is meant to sit on.
+   Sized by height and anchored to the bottom centre so it bleeds off the lower
+   edge the way the laptop does on the AI card, with the rules showing to either
+   side. The hover zoom has to keep the centring transform or the phone jumps. */
+.pcard-visual.pv-grid img{
+  /* The cut-out starts at the tip of the phone, so any overshoot anchored to the
+     bottom beheads it. Pushing the image 22% below the panel and standing it
+     120% tall puts the phone tip just inside the top edge and spends the whole
+     overshoot on the wrist instead. */
+  position:absolute;inset:auto auto -22% 50%;
+  width:auto;height:120%;
+  max-width:none;
+  object-fit:contain;
+  transform:translateX(-50%);
+}
+.pcard:hover .pcard-visual.pv-grid img{transform:translateX(-50%) scale(1.03)}
 .pcard-visual.is-fit{background:#141210}   /* matches the image stage */
 .pcard-visual.is-fit img{object-fit:contain;object-position:center bottom}
 /* anchor to the bottom-right so the screen stays flush with those two edges and
@@ -1979,9 +1997,9 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
   background:#000;
   background-image:radial-gradient(125% 125% at 50% 10%,#000 40%,#63e 100%);
 }
-.pcard-visual.pv-violet img{box-sizing:border-box;padding:26px 0 0 26px}
+.pcard-visual.pv-violet img{box-sizing:border-box;padding:56px 0 0 56px}
 @media (max-width:960px){
-  .pcard-visual.pv-violet img{padding:16px 0 0 16px}
+  .pcard-visual.pv-violet img{padding:34px 0 0 34px}
 }
 
 /* ══ MOBILE NAV ══
@@ -3414,7 +3432,9 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         
             <button class="pcard-cta" onclick="navigate('cs-onboarding')">View Case Study <span class="arrow">→</span></button>
         </div>
-        <div class="pcard-visual pv-grid" role="presentation"></div>
+        <div class="pcard-visual pv-grid">
+          <img src="assets/img/card-onboarding-cutout-b29f7a31.webp" alt="A hand holding a phone showing the apna profile set-up screen"/>
+        </div>
       </div>
     </div>
 
