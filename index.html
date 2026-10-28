@@ -1968,6 +1968,21 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
    whole and pushes the whole crop to the bottom, so the mock-ups bleed off the
    bottom edge the way the Onboarding card's do */
 .pcard-visual.is-top img{object-position:center top}
+/* ══ AI CARD GROUND ══
+   The violet-into-black radial Preeti sent, used as the AI card's stage. It has
+   to come after .is-fit — both selectors weigh the same, so order decides which
+   background wins. The screenshot is opaque and its 1.50 aspect matches the 3:2
+   panel exactly, so contain left no margin for a ground to show through; the
+   inset on the top and left opens that margin while is-br keeps the laptop
+   bleeding off the right and bottom edges the way it did before. */
+.pcard-visual.pv-violet{
+  background:#000;
+  background-image:radial-gradient(125% 125% at 50% 10%,#000 40%,#63e 100%);
+}
+.pcard-visual.pv-violet img{box-sizing:border-box;padding:26px 0 0 26px}
+@media (max-width:960px){
+  .pcard-visual.pv-violet img{padding:16px 0 0 16px}
+}
 
 /* ══ MOBILE NAV ══
    .nav-links is display:none below 960px and there was no replacement, so on a phone
@@ -3425,7 +3440,7 @@ footer{background:#1a1714;padding:64px 72px 40px;position:relative;z-index:1}
         
             <button class="pcard-cta" onclick="navigate('cs-ai-hiring')">View Case Study <span class="arrow">→</span></button>
         </div>
-        <div class="pcard-visual is-fit is-br">
+        <div class="pcard-visual is-fit is-br pv-violet">
           <img src="assets/img/ai-card-calling-agent-247ac756.webp" alt="Select your AI Agent — the AI Calling Agent set-up step in apnaHire"/>
         </div>
       </div>
