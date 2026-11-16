@@ -688,7 +688,16 @@ section{position:relative;z-index:1}
   /* the art is 1.45-1.50; a 3:2 box crops far less than the old 1.87 */
   aspect-ratio:3/2;
   height:auto;
-  min-height:0;
+  /* Every image in here is absolutely positioned, so the box gets its height
+     from aspect-ratio and nothing else. Anywhere that property does not apply
+     the panel collapses to zero and takes the artwork AND the painted ground
+     with it, leaving a card that opens straight on its category line. The floor
+     keeps it visible; the fallback below restores the true 3:2 where the
+     renderer knows @supports but not aspect-ratio. */
+  min-height:220px;
+}
+@supports not (aspect-ratio:3/2){
+  .pcard-visual{padding-top:66.6667%}
 }
 .pcard-visual img{
   position:absolute;inset:0;
